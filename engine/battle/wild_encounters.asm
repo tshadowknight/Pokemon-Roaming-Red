@@ -1,3 +1,40 @@
+ModifyLevelWild:
+	push af
+	push bc
+	push de
+	push hl
+	ld b, 0
+	ld d, 0
+	ld a, [wPartyCount]
+	ld c, a
+	ld hl, $D18C
+.searchLevel
+	ld a, [hl]	
+	cp d
+	jp c, .noHigherLevel
+	ld d, a	
+.noHigherLevel	
+	push bc
+	ld bc, 44
+	add hl, bc
+	pop bc
+	inc b
+	ld a, b
+	cp c
+	jp nz, .searchLevel
+.levelFound
+	call Random
+	and %0011
+	ld b, a
+	ld a, d	
+	sub b	
+	ld [wCurEnemyLVL],a
+	pop hl
+	pop de
+	pop bc
+	pop af	
+	ret
+
 ; try to initiate a wild pokemon encounter
 ; returns success in Z
 TryDoWildEncounter:
@@ -75,6 +112,7 @@ TryDoWildEncounter:
 	add hl, bc
 	ld a, [hli]
 	ld [wCurEnemyLVL], a
+	call ModifyLevelWild
 	ld a, [hl]
 	ld [wcf91], a
 	ld [wEnemyMonSpecies2], a
