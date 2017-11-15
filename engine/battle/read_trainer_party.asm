@@ -1,3 +1,93 @@
+ModifyLevel:
+	push af
+	push bc
+	push de
+	push hl
+	ld b, 0
+	ld d, 0
+	ld a, [wPartyCount]
+	ld c, a
+	ld hl, $D18C
+.searchLevel
+	ld a, [hl]	
+	cp d
+	jp c, .noHigherLevel
+	ld d, a	
+.noHigherLevel	
+	push bc
+	ld bc, 44
+	add hl, bc
+	pop bc
+	inc b
+	ld a, b
+	cp c
+	jp nz, .searchLevel
+.levelFound
+	call Random
+	and %0011
+	ld b, a
+	call Random
+	and %0001
+	cp 0
+	jp z, .subtract	
+	ld a, d	
+	add b	
+	jp .doneApplyingVariance	
+.subtract
+	ld a, d		
+	sub b	
+.doneApplyingVariance	
+	ld b, a 
+	ld a, [wEngagedTrainerClass]
+	cp $E5 ; Giovanni
+	jp z, .applyPlusFive
+	cp $E6 ; ROCKET
+	jp z, .applyPlusThree
+	cp $E7; Cooltrainer male
+	jp z, .applyPlusThree
+	cp $E8 ; Cooltrainer female
+	jp z, .applyPlusThree
+	cp $E9 ; Bruno
+	jp z, .applyPlusFive
+	cp $EA ; Brock
+	jp z, .applyPlusFive
+	cp $EB ; Misty
+	jp z, .applyPlusFive
+	cp $EC ; Lt. Surge
+	jp z, .applyPlusFive
+	cp $ED ; Erika
+	jp z, .applyPlusFive
+	cp $EE ; Koga
+	jp z, .applyPlusFive
+	cp $EF ; Blaine
+	jp z, .applyPlusFive
+	cp $F0 ; Sabrina
+	jp z, .applyPlusFive
+	cp $F3 ; Rival Final
+	jp z, .applyPlusFive
+	cp $F4 ; Lorelei
+	jp z, .applyPlusFive
+	cp $F6 ; Agatha
+	jp z, .applyPlusFive
+	cp $F7 ; Lance
+	jp z, .applyPlusFive
+	ld a, b
+	jp .doneApplyingBoost
+.applyPlusThree
+	ld a, b
+	add 3
+	jp .doneApplyingBoost
+.applyPlusFive	
+	ld a, b
+	add 5
+.doneApplyingBoost	
+	ld [wCurEnemyLVL],a
+	pop hl
+	pop de
+	pop bc
+	pop af	
+	ret
+	
 ReadTrainer:
 
 ; don't change any moves in a link battle
@@ -49,8 +139,9 @@ ReadTrainer:
 	ld a,[hli]
 	cp $FF ; is the trainer special?
 	jr z,.SpecialTrainer ; if so, check for special moves
-	ld [wCurEnemyLVL],a
+	
 .LoopTrainerData
+	call ModifyLevel	
 	ld a,[hli]
 	and a ; have we reached the end of the trainer data?
 	jr z,.FinishUp
@@ -69,7 +160,7 @@ ReadTrainer:
 	ld a,[hli]
 	and a ; have we reached the end of the trainer data?
 	jr z,.AddLoneMove
-	ld [wCurEnemyLVL],a
+	call ModifyLevel
 	ld a,[hli]
 	ld [wcf91],a
 	ld a,ENEMY_PARTY_DATA
