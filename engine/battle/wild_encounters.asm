@@ -28,6 +28,13 @@ ModifyLevelWild:
 	ld b, a
 	ld a, d	
 	sub b	
+	jp nc, .noUnderflow
+	ld a, 1
+.noUnderflow
+	cp 0
+	jp nz, .notZero
+	add 1
+.notZero	
 	ld [wCurEnemyLVL],a
 	pop hl
 	pop de

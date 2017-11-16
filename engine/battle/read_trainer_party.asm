@@ -31,12 +31,18 @@ ModifyLevel:
 	cp 0
 	jp z, .subtract	
 	ld a, d	
-	add b	
+	add b		
 	jp .doneApplyingVariance	
 .subtract
 	ld a, d		
 	sub b	
+	jp nc, .doneApplyingVariance
+	ld a, 1	
 .doneApplyingVariance	
+	cp 0
+	jp nz, .notZero
+	add 1
+.notZero	
 	ld b, a 
 	ld a, [wEngagedTrainerClass]
 	cp $E5 ; Giovanni
@@ -81,6 +87,11 @@ ModifyLevel:
 	ld a, b
 	add 5
 .doneApplyingBoost	
+	cp 100
+	jp c, .notAbove100
+	jp z, .notAbove100
+	ld a, 100
+.notAbove100	
 	ld [wCurEnemyLVL],a
 	pop hl
 	pop de
