@@ -49,6 +49,7 @@ LoadSpecialWarpData:
 	ld hl, ColosseumSpec2
 	jr .copyWarpData
 .notColosseum
+	jp .notFirstMap
 	ld a, [wd732]
 	bit 1, a
 	jr nz, .notFirstMap

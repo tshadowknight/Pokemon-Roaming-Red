@@ -617,3 +617,108 @@ TownMapSpriteBlinkingAnimation:
 .done
 	ld [wAnimCounter], a
 	jp DelayFrame
+	
+DisplayTownSelectionMap:
+	call LoadTownMap
+	ld hl, wUpdateSpritesEnabled
+	ld a, [hl]
+	push af
+	ld [hl], $ff
+	push hl
+	ld a, $1
+	ld [hJoy7], a
+	ld a, [wCurMap]
+	push af
+	ld b, $0
+	coord hl, 1, 0
+	ld de, wcd6d
+	call PlaceString
+	ld hl, wOAMBuffer
+	ld de, wTileMapBackup
+	ld bc, $10
+	call CopyData
+	ld hl, vSprites + $40
+	ld de, TownMapCursor
+	lb bc, BANK(TownMapCursor), (TownMapCursorEnd - TownMapCursor) / $8
+	call CopyVideoDataDouble
+	xor a
+	ld [wWhichTownMapLocation], a
+	pop af
+	jr .enterSelectionLoop
+
+.townMapSelectionLoop
+	coord hl, 0, 0
+	lb bc, 1, 20
+	call ClearScreenArea
+	ld hl, TownMapSelectionOrder
+	ld a, [wWhichTownMapLocation]
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+.enterSelectionLoop
+	ld de, wTownMapCoords
+	call LoadTownMapEntry
+	ld a, [de]
+	push hl
+	call TownMapCoordsToOAMCoords
+	ld a, $4
+	ld [wOAMBaseTile], a
+	ld hl, wOAMBuffer + $10
+	call WriteTownMapSpriteOAM ; town map cursor sprite
+	pop hl
+	ld de, wcd6d
+.copyMapSelectionName
+	ld a, [hli]
+	ld [de], a
+	inc de
+	cp $50
+	jr nz, .copyMapSelectionName
+	coord hl, 1, 0
+	ld de, wcd6d
+	call PlaceString
+	ld hl, wOAMBuffer + $10
+	ld de, wTileMapBackup + 16
+	ld bc, $10
+	call CopyData
+.inputLoopSelection
+	call TownMapSpriteBlinkingAnimation
+	call JoypadLowSensitivity
+	ld a, [hJoy5]
+	ld b, a
+	and A_BUTTON | B_BUTTON | D_UP | D_DOWN
+	jr z, .inputLoopSelection
+	ld a, SFX_TINK
+	call PlaySound
+	bit 6, b
+	jr nz, .pressedUpSelection
+	bit 7, b
+	jr nz, .pressedDownSelection
+	xor a
+	ld [wTownMapSpriteBlinkingEnabled], a
+	ld [hJoy7], a
+	ld [wAnimCounter], a
+	call ExitTownMap
+	pop hl
+	pop af
+	ld [hl], a
+	ret
+.pressedUpSelection
+	ld a, [wWhichTownMapLocation]
+	inc a
+	cp TownMapSelectionOrderEnd - TownMapSelectionOrder ; number of list items + 1
+	jr nz, .noOverflowSelection
+	xor a
+.noOverflowSelection
+	ld [wWhichTownMapLocation], a
+	jp .townMapSelectionLoop
+.pressedDownSelection
+	ld a, [wWhichTownMapLocation]
+	dec a
+	cp -1
+	jr nz, .noUnderflowSelection
+	ld a, TownMapSelectionOrderEnd - TownMapSelectionOrder - 1 ; number of list items
+.noUnderflowSelection
+	ld [wWhichTownMapLocation], a
+	jp .townMapSelectionLoop	
+	

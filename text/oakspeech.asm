@@ -41,6 +41,12 @@ _IntroduceRivalText::
 	line "his name again?"
 	prompt
 
+_AskStartLocationText::
+	text "Now..."
+	line "Which town were"
+	cont "you from again?"
+	prompt
+	
 _OakSpeechText3::
 	text "<PLAYER>!"
 

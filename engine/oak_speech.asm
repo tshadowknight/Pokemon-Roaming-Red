@@ -48,9 +48,9 @@ OakSpeech:
 	ld a,1
 	ld [wItemQuantity],a
 	call AddItemToInventory  ; give one potion
-	ld a,[wDefaultMap]
-	ld [wDestinationMap],a
-	call SpecialWarpIn
+	
+	
+	
 	xor a
 	ld [hTilesetType],a
 	ld a,[wd732]
@@ -100,9 +100,33 @@ OakSpeech:
 	call GBFadeInFromWhite
 	ld a,[wd72d]
 	and a
-	jr nz,.next
+	jr nz,.next	
+	ld hl, AskStartLocationText
+	call PrintText
+	call ChooseStartDestination
+	call GBFadeOutToWhite
+	call ClearScreen
+	ld de,RedPicFront
+	lb bc, Bank(RedPicFront), $00
+	call IntroDisplayPicCenteredOrUpperRight
+	call GBFadeInFromWhite
 	ld hl,OakSpeechText3
 	call PrintText
+	ld a,[wWhichTownMapLocation]
+	ld hl, MapIdxMapping
+	ld b, a 
+	ld a, 0 		
+.MapIdxLoop		
+	cp b
+	jp z, .idxFound
+	inc a 
+	inc hl	
+	jp .MapIdxLoop
+.idxFound	
+	ld a, [hl]
+	ld [wDestinationMap],a
+	call SpecialWarpIn
+	
 .next
 	ld a,[H_LOADEDROMBANK]
 	push af
@@ -169,6 +193,9 @@ IntroduceRivalText:
 OakSpeechText3:
 	TX_FAR _OakSpeechText3
 	db "@"
+AskStartLocationText:
+	TX_FAR _AskStartLocationText
+	db "@"	
 
 FadeInIntroPic:
 	ld hl,IntroFadePalettes
@@ -231,3 +258,15 @@ IntroDisplayPicCenteredOrUpperRight:
 	xor a
 	ld [hStartTileID],a
 	predef_jump CopyUncompressedPicToTilemap
+	
+MapIdxMapping:
+	db 0
+	db 1
+	db 2
+	db 3
+	db 5
+	db 4
+	db 6
+	db 10
+	db 7
+	db 8

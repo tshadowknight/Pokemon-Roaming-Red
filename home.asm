@@ -2070,12 +2070,19 @@ ChooseFlyDestination::
 	ld hl,wd72e
 	res 4,[hl]
 	jpba LoadTownMap_Fly
+	
 
 ; causes the text box to close without waiting for a button press after displaying text
 DisableWaitingAfterTextDisplay::
 	ld a,$01
 	ld [wDoNotWaitForButtonPressAfterDisplayingText],a
 	ret
+	
+ChooseStartDestination::
+	ld hl,wd72e
+	res 4,[hl]
+	jpba DisplayTownSelectionMap
+	ret	
 
 ; uses an item
 ; UseItem is used with dummy items to perform certain other functions as well

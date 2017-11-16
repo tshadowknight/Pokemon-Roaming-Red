@@ -47,3 +47,16 @@ TownMapOrder:
 	db INDIGO_PLATEAU
 	db POWER_PLANT
 TownMapOrderEnd:
+
+TownMapSelectionOrder:
+	db PALLET_TOWN
+	db VIRIDIAN_CITY
+	db PEWTER_CITY
+	db CERULEAN_CITY
+	db VERMILION_CITY
+	db LAVENDER_TOWN
+	db CELADON_CITY
+	db SAFFRON_CITY
+	db FUCHSIA_CITY
+	db CINNABAR_ISLAND
+TownMapSelectionOrderEnd:
