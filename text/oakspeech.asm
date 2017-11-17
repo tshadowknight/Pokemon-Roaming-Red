@@ -46,6 +46,14 @@ _AskStartLocationText::
 	line "Which town were"
 	cont "you from again?"
 	prompt
+
+_AskStarterText::
+	text "My aide already"
+	line "sent you your"
+	cont "starter #MON."
+	cont "Which one did"
+	cont "you choose?"
+	prompt	
 	
 _OakSpeechText3::
 	text "<PLAYER>!"

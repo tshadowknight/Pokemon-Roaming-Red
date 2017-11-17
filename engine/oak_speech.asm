@@ -106,26 +106,37 @@ OakSpeech:
 	call ChooseStartDestination
 	call GBFadeOutToWhite
 	call ClearScreen
+	call GBFadeInFromWhite
+	ld hl, AskStarterText
+	call PrintText
+	call ChooseStarter
+	push af
+	push bc
+	push hl
+	ld a, 80
+	ld [wMonDataLocation], a
+	ld a, 10
+	ld [wCurEnemyLVL], a
+	ld a, [wUnusedD08A]
+	ld hl, StarterPokemonIdxs
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld a, [hl]
+	ld [wcf91], a
+	call AddPartyMon
+	pop af
+	pop bc
+	pop hl
+	call GBFadeOutToWhite
+	call ClearScreen
 	ld de,RedPicFront
 	lb bc, Bank(RedPicFront), $00
 	call IntroDisplayPicCenteredOrUpperRight
 	call GBFadeInFromWhite
 	ld hl,OakSpeechText3
 	call PrintText
-	ld a,[wWhichTownMapLocation]
-	ld hl, MapIdxMapping
-	ld b, a 
-	ld a, 0 		
-.MapIdxLoop		
-	cp b
-	jp z, .idxFound
-	inc a 
-	inc hl	
-	jp .MapIdxLoop
-.idxFound	
-	ld a, [hl]
-	ld [wDestinationMap],a
-	call SpecialWarpIn
+	
 	
 .next
 	ld a,[H_LOADEDROMBANK]
@@ -172,6 +183,22 @@ OakSpeech:
 	call LoadTextBoxTilePatterns
 	ld a,1
 	ld [wUpdateSpritesEnabled],a
+	
+	ld a,[wWhichTownMapLocation]
+	ld hl, MapIdxMapping
+	ld b, a 
+	ld a, 0 		
+.MapIdxLoop		
+	cp b
+	jp z, .idxFound
+	inc a 
+	inc hl	
+	jp .MapIdxLoop
+.idxFound	
+	ld a, [hl]
+	ld [wDestinationMap],a
+	call SpecialWarpIn
+	
 	ld c,50
 	call DelayFrames
 	call GBFadeOutToWhite
@@ -196,6 +223,9 @@ OakSpeechText3:
 AskStartLocationText:
 	TX_FAR _AskStartLocationText
 	db "@"	
+AskStarterText:
+	TX_FAR _AskStarterText
+	db "@"		
 
 FadeInIntroPic:
 	ld hl,IntroFadePalettes
@@ -270,3 +300,135 @@ MapIdxMapping:
 	db 10
 	db 7
 	db 8
+
+ChooseStarter:
+	push af
+	push bc
+	push de
+	push hl	
+	ld a, 0
+	ld [wUnusedD08A], a ; current starter selection
+.drawSelectionScreen
+	ld a, [wUnusedD08A]
+	push af
+	call ClearScreen
+	pop af
+	ld hl, StarterPokemonIdxs
+	ld c, a
+	add hl, bc
+	ld a, [hl]
+	ld c, a
+	push bc
+	call DrawPokemonName		
+	pop bc	
+.inputLoopSelection	
+	call JoypadLowSensitivity
+	ld a, [hJoy5]
+	ld b, a
+	and A_BUTTON | B_BUTTON | D_LEFT | 	D_RIGHT
+	jr z, .inputLoopSelection
+	bit 5, b ; Left pressed?
+	jp nz, .pressedLeftInStarterSelect
+	bit 4, b ; Right pressed?
+	jp nz, .pressedRightInStarterSelect
+	jp .starterSelectionMade
+.pressedRightInStarterSelect
+	ld a, [wUnusedD08A]
+	add 1
+	cp 74
+	jp nz, .noOverflow
+	ld a, 0
+.noOverflow	
+	ld [wUnusedD08A], a	
+	jp .drawSelectionScreen
+.pressedLeftInStarterSelect
+	ld a, [wUnusedD08A]
+	sub 1
+	jp nc, .noUnderflow
+	ld a, 73
+.noUnderflow	
+	ld [wUnusedD08A], a	
+	jp .drawSelectionScreen	
+.starterSelectionMade	
+	pop hl
+	pop de 
+	pop bc
+	pop af
+ret	
+
+StarterPokemonIdxs:
+	db 153
+	db 176
+	db 177
+	db 123
+	db 112
+	db 36
+	db 165
+	db 5
+	db 108
+	db 84
+	db 96
+	db 15
+	db 3
+	db 4
+	db 82
+	db 100
+	db 107
+	db 185
+	db 109
+	db 65
+	db 59
+	db 77
+	db 47
+	db 57
+	db 33
+	db 71
+	db 148
+	db 106
+	db 188
+	db 24
+	db 169
+	db 163
+	db 37
+	db 173
+	db 64
+	db 70
+	db 58
+	db 13
+	db 23
+	db 25
+	db 34
+	db 48
+	db 78
+	db 6
+	db 12
+	db 17
+	db 43
+	db 44
+	db 11
+	db 55
+	db 18
+	db 40
+	db 30
+	db 2
+	db 92
+	db 157
+	db 27
+	db 42
+	db 26
+	db 72
+	db 53
+	db 51
+	db 29
+	db 60
+	db 133
+	db 19
+	db 76
+	db 102
+	db 170
+	db 98
+	db 90
+	db 171
+	db 132
+	db 88
+StarterPokemonIdxs_end:		
