@@ -207,7 +207,13 @@ OakSpeech:
 	ld [wLastBlackoutMap], a
 	ld [wDestinationMap], a 
 	call SpecialWarpIn
-	
+	SetEvent EVENT_GOT_POKEDEX
+	ld a, HS_LYING_OLD_MAN
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_OLD_MAN
+	ld [wMissableObjectIndex], a
+	predef ShowObject
 	ld c,50
 	call DelayFrames
 	call GBFadeOutToWhite

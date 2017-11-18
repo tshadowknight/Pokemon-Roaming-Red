@@ -18,6 +18,7 @@ PalletTownScriptPointers:
 	dw PalletTownScript6
 
 PalletTownScript0:
+	ret
 	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB
 	ret nz
 	ld a,[wYCoord]
