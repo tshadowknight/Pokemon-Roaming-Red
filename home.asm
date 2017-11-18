@@ -4727,36 +4727,4 @@ const_value = 1
 	add_tx_pre ElevatorText                         ; 41
 	add_tx_pre PokemonStuffText                     ; 42
 
-DrawPokemonName::	
-	ld a, [H_LOADEDROMBANK]
-	push af
-	ld a, 7
-	ld [H_LOADEDROMBANK], a
-	ld [MBC1RomBank], a
 	
-	ld de, MonsterNamesTerminated
-	ld a, 1
-.incLoop		
-	cp c
-	jp z, .incComplete	
-	inc de
-	inc de
-	inc de
-	inc de
-	inc de
-	inc de
-	inc de
-	inc de
-	inc de
-	inc de
-	inc de
-	inc a 
-	jp .incLoop
-.incComplete	
-	ld b, $0
-	coord hl, 1, 1
-	call PlaceString
-	pop af
-	ld [H_LOADEDROMBANK], a
-	ld [MBC1RomBank], a	
-	ret	

@@ -54,7 +54,11 @@ _AskStarterText::
 	cont "Which one did"
 	cont "you choose?"
 	prompt	
-	
+
+_ConfirmStarterText::
+	text "Was it this"	
+	line "#MON?"
+	done	
 _OakSpeechText3::
 	text "<PLAYER>!"
 

@@ -106,28 +106,42 @@ OakSpeech:
 	call ChooseStartDestination
 	call GBFadeOutToWhite
 	call ClearScreen
+	ld de,ProfOakPic
+	lb bc, Bank(ProfOakPic), $00
+	call IntroDisplayPicCenteredOrUpperRight
 	call GBFadeInFromWhite
 	ld hl, AskStarterText
 	call PrintText
+	
 	call ChooseStarter
 	push af
 	push bc
-	push hl
-	ld a, 80
-	ld [wMonDataLocation], a
-	ld a, 10
-	ld [wCurEnemyLVL], a
+	push hl	
 	ld a, [wUnusedD08A]
+	cp 0
+	jp nz, .noRandom
+	call Random
+	rra
+	and %01111111
+	ld hl, RandomStarterLookupTable
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld a, [hl]		
+.noRandom	
 	ld hl, StarterPokemonIdxs
 	ld b, 0
 	ld c, a
 	add hl, bc
 	ld a, [hl]
-	ld [wcf91], a
-	call AddPartyMon
+	ld b, a
+	ld a, 10
+	ld c, a	
+	call GivePokemon
 	pop af
 	pop bc
 	pop hl
+	
 	call GBFadeOutToWhite
 	call ClearScreen
 	ld de,RedPicFront
@@ -225,7 +239,10 @@ AskStartLocationText:
 	db "@"	
 AskStarterText:
 	TX_FAR _AskStarterText
-	db "@"		
+	db "@"
+ConfirmStarterText:
+	TX_FAR _ConfirmStarterText
+	db "@"			
 
 FadeInIntroPic:
 	ld hl,IntroFadePalettes
@@ -301,41 +318,109 @@ MapIdxMapping:
 	db 7
 	db 8
 
+RANDOMText:
+	db "RANDOM@"
+
+; lets the player choose a starter pokemon from the list defined in	StarterPokemonIdxs
 ChooseStarter:
 	push af
 	push bc
 	push de
-	push hl	
+	push hl
+	call ClearScreen	
+	coord hl, 0, 0
+	ld b, 8
+	ld c, 18
+	call TextBoxBorder
 	ld a, 0
 	ld [wUnusedD08A], a ; current starter selection
 .drawSelectionScreen
+	
+	coord hl, 12, 1
+	ld b, 7
+	ld c, 7
+	call ClearScreenArea
+.drawSelectionScreenNoRefreshSprite		
+	coord hl, 1, 1
+	ld b, 6
+	ld c, 11
+	call ClearScreenArea
+	coord hl, 0, 10
+	ld b, 8
+	ld c, 20
+	call ClearScreenArea	
+
 	ld a, [wUnusedD08A]
-	push af
-	call ClearScreen
-	pop af
+	cp 0
+	jp z, .showRANDOMText
 	ld hl, StarterPokemonIdxs
 	ld c, a
 	add hl, bc
 	ld a, [hl]
 	ld c, a
+	push af
 	push bc
-	call DrawPokemonName		
+	call DrawSelectionPokemonStats		
 	pop bc	
-.inputLoopSelection	
+	pop af
+	jp .drawSelectionScreenDone
+.showRANDOMText
+	push af
+	push bc
+	push de
+	ld de, RANDOMText
+	ld b, $0
+	coord hl, 1, 1
+	call PlaceString	
+	pop de
+	pop bc	
+	pop af
+.drawSelectionScreenDone	
+	ld a, 0
+	ld e, a 
+	ld d, a
+.inputLoopSelection		
+;count VBLANKS	
+	ld a, [H_VBLANKOCCURRED]
+	and a
+	jr nz, .noVBLANK
+	ld a, e	
+	inc a
+	ld e, a
+	ld a, 1
+	ld [H_VBLANKOCCURRED], a 
+.noVBLANK:	
+	ld a, e	
+	cp 30 ; delay drawing the pokemon picture x frames to allow fast scrolling through the list
+	jp c, .doneDrawingPic
+	ld a, d 
+	cp 1 ; d set by DrawSelectionPokemonPic when a pic has been drawn, avoid drawing the pic more than once
+	jp z, .doneDrawingPic
+	ld a, [wUnusedD08A]
+	cp 0
+	jp z, .doneDrawingPic ; no pic for random selection
+	ld a, c
+	call DrawSelectionPokemonPic
+.doneDrawingPic:		
+	; process inputs
+	push de
 	call JoypadLowSensitivity
+	pop de
 	ld a, [hJoy5]
 	ld b, a
-	and A_BUTTON | B_BUTTON | D_LEFT | 	D_RIGHT
+	and A_BUTTON | B_BUTTON | D_LEFT | D_RIGHT
 	jr z, .inputLoopSelection
 	bit 5, b ; Left pressed?
 	jp nz, .pressedLeftInStarterSelect
 	bit 4, b ; Right pressed?
 	jp nz, .pressedRightInStarterSelect
-	jp .starterSelectionMade
+	bit 0, b 
+	jp nz, .starterSelectionMade
+	jp .inputLoopSelection
 .pressedRightInStarterSelect
 	ld a, [wUnusedD08A]
 	add 1
-	cp 74
+	cp 75
 	jp nz, .noOverflow
 	ld a, 0
 .noOverflow	
@@ -345,18 +430,150 @@ ChooseStarter:
 	ld a, [wUnusedD08A]
 	sub 1
 	jp nc, .noUnderflow
-	ld a, 73
+	ld a, 74
 .noUnderflow	
 	ld [wUnusedD08A], a	
 	jp .drawSelectionScreen	
 .starterSelectionMade	
+	ld hl, ConfirmStarterText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jp nz, .drawSelectionScreenNoRefreshSprite
 	pop hl
 	pop de 
 	pop bc
 	pop af
 ret	
 
+DrawSelectionPokemonPic:
+	push af
+	push bc	
+	push hl	
+	ld [wcf91], a
+	ld [wd0b5], a
+	ld [wBattleMonSpecies2], a
+	ld [wWholeScreenPaletteMonSpecies], a
+	coord hl, 12, 1
+	call GetMonHeader
+	call LoadFrontSpriteByMonIndex
+	ld a, 1
+	ld d, a
+	pop hl
+	pop bc
+	pop af
+	ret
+	
+DrawSelectionPokemonStats:
+	push af
+	push bc
+	push de
+	push hl
+	ld [wcf91], a
+	ld [wd0b5], a
+	ld [wBattleMonSpecies2], a
+	ld [wWholeScreenPaletteMonSpecies], a
+	call GetMonHeader
+	ld a, [wMonHIndex]
+	ld [wd11e], a
+	call GetMonName
+	ld b, $0
+	coord hl, 1, 1
+	call PlaceString
+	
+	ld a, [wMonHType1]
+	ld hl, TypeNamesSelector
+	
+	ld b, 0
+	add a
+	ld c, a 
+	add hl, bc
+
+	ld a, [hli]
+	ld e, a
+	ld d, [hl]
+	
+	ld b, $0
+	coord hl, 1, 3
+	call PlaceString
+	
+	ld a, [wMonHType1]
+	ld b, a
+	ld a, [wMonHType2]
+	cp b
+	jp z, .statsDone
+	ld hl, TypeNamesSelector
+	
+	ld b, 0
+	add a
+	ld c, a 
+	add hl, bc
+
+	ld a, [hli]
+	ld e, a
+	ld d, [hl]
+	
+	ld b, $0
+	coord hl, 1, 4
+	call PlaceString
+.statsDone:	
+	pop hl
+	pop de 
+	pop bc
+	pop af
+	ret 
+	
+TypeNamesSelector:
+	dw .Normal
+	dw .Fighting
+	dw .Flying
+	dw .Poison
+	dw .Ground
+	dw .Rock
+	dw .Bird
+	dw .Bug
+	dw .Ghost
+
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	dw .Normal
+
+	dw .Fire
+	dw .Water
+	dw .Grass
+	dw .Electric
+	dw .Psychic
+	dw .Ice
+	dw .Dragon
+
+.Normal:   db "NORMAL@"
+.Fighting: db "FIGHTING@"
+.Flying:   db "FLYING@"
+.Poison:   db "POISON@"
+.Fire:     db "FIRE@"
+.Water:    db "WATER@"
+.Grass:    db "GRASS@"
+.Electric: db "ELECTRIC@"
+.Psychic:  db "PSYCHIC@"
+.Ice:      db "ICE@"
+.Ground:   db "GROUND@"
+.Rock:     db "ROCK@"
+.Bird:     db "BIRD@"
+.Bug:      db "BUG@"
+.Ghost:    db "GHOST@"
+.Dragon:   db "DRAGON@"
+	
 StarterPokemonIdxs:
+	db 0
 	db 153
 	db 176
 	db 177
@@ -432,3 +649,133 @@ StarterPokemonIdxs:
 	db 132
 	db 88
 StarterPokemonIdxs_end:		
+
+; can't be bothered to implement a module right now
+RandomStarterLookupTable:
+	db 1
+	db 2
+	db 3
+	db 4
+	db 5
+	db 6
+	db 7
+	db 8
+	db 9
+	db 10
+	db 11
+	db 12
+	db 13
+	db 14
+	db 15
+	db 16
+	db 17
+	db 18
+	db 19
+	db 20
+	db 21
+	db 22
+	db 23
+	db 24
+	db 25
+	db 26
+	db 27
+	db 28
+	db 29
+	db 30
+	db 31
+	db 32
+	db 33
+	db 34
+	db 35
+	db 36
+	db 37
+	db 38
+	db 39
+	db 40
+	db 41
+	db 42
+	db 43
+	db 44
+	db 45
+	db 46
+	db 47
+	db 48
+	db 49
+	db 50
+	db 51
+	db 52
+	db 53
+	db 54
+	db 55
+	db 56
+	db 57
+	db 58
+	db 59
+	db 60
+	db 61
+	db 62
+	db 63
+	db 64
+	db 65
+	db 66
+	db 67
+	db 68
+	db 69
+	db 70
+	db 71
+	db 72
+	db 73
+	db 74
+	db 1
+	db 2
+	db 3
+	db 4
+	db 5
+	db 6
+	db 7
+	db 8
+	db 9
+	db 10
+	db 11
+	db 12
+	db 13
+	db 14
+	db 15
+	db 16
+	db 17
+	db 18
+	db 19
+	db 20
+	db 21
+	db 22
+	db 23
+	db 24
+	db 25
+	db 26
+	db 27
+	db 28
+	db 29
+	db 30
+	db 31
+	db 32
+	db 33
+	db 34
+	db 35
+	db 36
+	db 37
+	db 38
+	db 39
+	db 40
+	db 41
+	db 42
+	db 43
+	db 44
+	db 45
+	db 46
+	db 47
+	db 48
+	db 49
+	db 50
+	db 51
+	db 52
+	db 53
