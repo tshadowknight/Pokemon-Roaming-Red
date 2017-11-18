@@ -5,14 +5,8 @@ ViridianMartScript:
 	ld a, [wViridianMarketCurScript]
 	jp CallFunctionInTable
 
-ViridianMartScript_1d47d:
-	CheckEvent EVENT_OAK_GOT_PARCEL
-	jr nz, .asm_1d489
-	ld hl, ViridianMartTextPointers
-	jr .asm_1d48c
-.asm_1d489
+ViridianMartScript_1d47d:	
 	ld hl, ViridianMartTextPointers + $a ; starts at ViridianMartText6
-.asm_1d48c
 	ld a, l
 	ld [wMapTextPtr], a
 	ld a, h
@@ -25,6 +19,7 @@ ViridianMartScriptPointers:
 	dw ViridianMartScript2
 
 ViridianMartScript0:
+	ret
 	call UpdateSprites
 	ld a, $4
 	ld [hSpriteIndexOrTextID], a
@@ -45,6 +40,7 @@ RLEMovement1d4bb:
 	db $ff
 
 ViridianMartScript1:
+	ret
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
