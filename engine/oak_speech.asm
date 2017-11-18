@@ -200,17 +200,12 @@ OakSpeech:
 	
 	ld a,[wWhichTownMapLocation]
 	ld hl, MapIdxMapping
-	ld b, a 
-	ld a, 0 		
-.MapIdxLoop		
-	cp b
-	jp z, .idxFound
-	inc a 
-	inc hl	
-	jp .MapIdxLoop
-.idxFound	
+	ld b, 0
+	ld c, a
+	add hl, bc	
 	ld a, [hl]
-	ld [wDestinationMap],a
+	ld [wLastBlackoutMap], a
+	ld [wDestinationMap], a 
 	call SpecialWarpIn
 	
 	ld c,50
