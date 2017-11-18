@@ -21,6 +21,7 @@ PewterCityScript0:
 	ret
 
 PewterCityScript_1925e:
+	ret
 	CheckEvent EVENT_BEAT_BROCK
 	ret nz
 	ld hl, CoordsData_19277
