@@ -4727,4 +4727,35 @@ const_value = 1
 	add_tx_pre ElevatorText                         ; 41
 	add_tx_pre PokemonStuffText                     ; 42
 
-	
+DetermineReferenceLevel::	
+	push af
+	push bc
+	push de
+	push hl
+	ld b, 0
+	ld d, 0
+	ld a, [wPartyCount]
+	ld c, a
+	ld hl, $D18C
+.searchLevel
+	ld a, [hl]	
+	cp d
+	jp c, .noHigherLevel
+	ld d, a	
+.noHigherLevel	
+	push bc
+	ld bc, 44
+	add hl, bc
+	pop bc
+	inc b
+	ld a, b
+	cp c
+	jp nz, .searchLevel
+.levelFound
+	ld a, d
+	ld [wUnusedCC5B], a
+	pop hl
+	pop de
+	pop bc
+	pop af
+	ret
