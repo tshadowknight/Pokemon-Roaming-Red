@@ -686,10 +686,9 @@ DisplayTownSelectionMap:
 	call JoypadLowSensitivity
 	ld a, [hJoy5]
 	ld b, a
-	and A_BUTTON | B_BUTTON | D_UP | D_DOWN
+	and A_BUTTON | D_UP | D_DOWN
 	jr z, .inputLoopSelection
-	ld a, SFX_TINK
-	call PlaySound
+	
 	bit 6, b
 	jr nz, .pressedUpSelection
 	bit 7, b
@@ -698,12 +697,16 @@ DisplayTownSelectionMap:
 	ld [wTownMapSpriteBlinkingEnabled], a
 	ld [hJoy7], a
 	ld [wAnimCounter], a
+	ld a, SFX_HEAL_AILMENT
+	call PlaySound
 	call ExitTownMap
 	pop hl
 	pop af
 	ld [hl], a
 	ret
 .pressedUpSelection
+	ld a, SFX_TINK
+	call PlaySound
 	ld a, [wWhichTownMapLocation]
 	inc a
 	cp TownMapSelectionOrderEnd - TownMapSelectionOrder ; number of list items + 1
@@ -713,6 +716,8 @@ DisplayTownSelectionMap:
 	ld [wWhichTownMapLocation], a
 	jp .townMapSelectionLoop
 .pressedDownSelection
+	ld a, SFX_TINK
+	call PlaySound
 	ld a, [wWhichTownMapLocation]
 	dec a
 	cp -1

@@ -325,6 +325,10 @@ MapIdxMapping:
 RANDOMText:
 	db "RANDOM@"
 
+SelectionInsctrutions1:
+	db "Choose: Left/Right@"
+SelectionInsctrutions2:
+	db "Confirm: A@"	
 ; lets the player choose a starter pokemon from the list defined in	StarterPokemonIdxs
 ChooseStarter:
 	push af
@@ -353,6 +357,21 @@ ChooseStarter:
 	ld b, 8
 	ld c, 20
 	call ClearScreenArea	
+	
+	push af
+	push bc
+	push de
+	ld de, SelectionInsctrutions1
+	ld b, $0
+	coord hl, 1, 10
+	call PlaceString	
+	ld de, SelectionInsctrutions2
+	ld b, $0
+	coord hl, 1, 11
+	call PlaceString
+	pop de
+	pop bc	
+	pop af
 
 	ld a, [wUnusedD08A]
 	cp 0
@@ -405,6 +424,7 @@ ChooseStarter:
 	jp z, .doneDrawingPic ; no pic for random selection
 	ld a, c
 	call DrawSelectionPokemonPic
+	call PlayCry ; play pokemon cry
 .doneDrawingPic:		
 	; process inputs
 	push de
