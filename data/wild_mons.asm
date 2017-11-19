@@ -1,3 +1,4 @@
+
 WildDataPointers:
 	dw NoMons      ; PALLET_TOWN
 	dw NoMons      ; VIRIDIAN_CITY
@@ -74,7 +75,7 @@ WildDataPointers:
 	dw NoMons
 	dw NoMons
 	dw NoMons
-	dw NoMons
+	dw CaveMons
 	dw NoMons
 	dw NoMons
 	dw NoMons

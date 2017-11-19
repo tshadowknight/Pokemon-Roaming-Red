@@ -1843,6 +1843,10 @@ INCLUDE "scripts/diglettscave.asm"
 INCLUDE "data/mapObjects/diglettscave.asm"
 DiglettsCaveBlocks: INCBIN "maps/diglettscave.blk"
 
+INCLUDE "data/mapHeaders/diglettscave2.asm"
+INCLUDE "data/mapObjects/diglettscave2.asm"
+DiglettsCave2Blocks: INCBIN "maps/diglettscave2.blk"
+
 INCLUDE "data/mapHeaders/silphco11.asm"
 INCLUDE "scripts/silphco11.asm"
 INCLUDE "data/mapObjects/silphco11.asm"

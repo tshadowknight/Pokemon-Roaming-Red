@@ -1,0 +1,1162 @@
+[Pallet Town]
+Start offset=$182FD
+X size=10
+Y size=9
+Comment=No Event support yet
+Tileset=1
+
+[Celedon City]
+Start offset=$180DF
+X size=25
+Y size=18
+Comment=No Event support yet
+Tileset=1
+
+[Viridian City]
+Start offset=$183EC
+X size=20
+Y size=18
+Comment=No Event support yet
+Tileset=1
+
+[Pewter City]
+Start offset=$185E6
+X size=20
+Y size=18
+Comment=No Event support yet
+Tileset=1
+
+[Celulean City]
+Start offset=$18830
+X size=20
+Y size=18
+Comment=No Event support yet
+Tileset=1
+
+[Lavender Town]
+Start offset=$44085
+X size=10
+Y size=9
+Comment=No Event support yet
+Tileset=1
+
+[Vermilion City]
+Start offset=$18A3F
+X size=20
+Y size=18
+Comment=No Event support yet
+Tileset=1
+
+[Fuchsia City]
+Start offset=$18C86
+X size=20
+Y size=18
+Comment=No Event support yet
+Tileset=1
+
+[Cinnabar Island]
+Start offset=$1C069
+X size=10
+Y size=9
+Comment=No Event support yet
+Tileset=1
+
+[Saffon City]
+Start offset=$50A98
+X size=20
+Y size=18
+Comment=No Event support yet
+Tileset=1
+
+[Route 1]
+Start offset=$1C0FC
+X size=10
+Y size=18
+Comment=No Event support yet
+Tileset=1
+
+[Route 2]
+Start offset=$5407E
+X size=10
+Y size=36
+Comment=No Event support yet
+Tileset=1
+
+[Route 3]
+Start offset=$54255
+X size=35
+Y size=9
+Comment=No Event support yet
+Tileset=1
+
+[Route 4]
+Start offset=$543EC
+X size=45
+Y size=9
+Comment=No Event support yet
+Tileset=1
+
+[Route 5]
+Start offset=$545D2
+X size=10
+Y size=18
+Comment=No Event support yet
+Tileset=1
+
+[Route 6]
+Start offset=$58079
+X size=10
+Y size=18
+Comment=No Event support yet
+Tileset=1
+
+[Route 7]
+Start offset=$48051
+X size=10
+Y size=9
+Comment=No Event support yet
+Tileset=1
+
+[Route 8]
+Start offset=$581C6
+X size=30
+Y size=9
+Comment=No Event support yet
+Tileset=1
+
+[Route 9]
+Start offset=$546FE
+X size=30
+Y size=9
+Comment=No Event support yet
+Tileset=1
+
+[Route 10]
+Start offset=$58356
+X size=10
+Y size=36
+Comment=No Event support yet
+Tileset=1
+
+[Route 11]
+Start offset=$5855F
+X size=30
+Y size=9
+Comment=No Event support yet
+Tileset=1
+
+[Route 12]
+Start offset=$58710
+X size=10
+Y size=54
+Comment=No Event support yet
+Tileset=1
+
+[Route 13]
+Start offset=$5488B
+X size=30
+Y size=9
+Comment=No Event support yet
+Tileset=1
+
+[Route 14]
+Start offset=$54A12
+X size=10
+Y size=18
+Comment=No Event support yet
+Tileset=1
+
+[Route 15]
+Start offset=$589CC
+X size=30
+Y size=9
+Comment=No Event support yet
+Tileset=1
+
+[Route 16]
+Start offset=$58B84
+X size=20
+Y size=9
+Comment=No Event support yet
+Tileset=1
+
+[Route 17]
+Start offset=$54BA8
+X size=10
+Y size=72
+Comment=No Event support yet
+Tileset=1
+
+[Route 18]
+Start offset=$58C9C
+X size=25
+Y size=9
+Comment=No Event support yet
+Tileset=1
+
+[Route 19]
+Start offset=$54EF1
+X size=10
+Y size=27
+Comment=No Event support yet
+Tileset=1
+
+[Route 20]
+Start offset=$5017D
+X size=50
+Y size=9
+Comment=No Event support yet
+Tileset=1
+
+[Route 21]
+Start offset=$5506D
+X size=10
+Y size=45
+Comment=No Event support yet
+Tileset=1
+
+[Route 22]
+Start offset=$5003D
+X size=20
+Y size=9
+Comment=No Event support yet
+Tileset=1
+
+[Route 24]
+Start offset=$506E7
+X size=10
+Y size=18
+Comment=No Event support yet
+Tileset=1
+
+[Route 25]
+Start offset=$50810
+X size=30
+Y size=9
+Comment=No Event support yet
+Tileset=1
+
+[Viridian GYM]
+Start offset=$74C48
+X size=10
+Y size=9
+Comment=No Event support yet
+Tileset=2
+
+[Pewter GYM]
+Start offset=$5C558
+X size=5
+Y size=7
+Comment=No Event support yet
+Tileset=2
+
+[Celulean GYM]
+Start offset=$5C866
+X size=5
+Y size=7
+Comment=No Event support yet
+Tileset=2
+
+[Celedon GYM]
+Start offset=$48B84
+X size=5
+Y size=9
+Comment=No Event support yet
+Tileset=2
+
+[Fuchsia GYM]
+Start offset=$756AA
+X size=5
+Y size=9
+Comment=No Event support yet
+Tileset=2
+
+[Vermilion GYM]
+Start offset=$5CC38
+X size=5
+Y size=9
+Comment=No Event support yet
+Tileset=2
+
+[Oak's lab]
+Start offset=$1C1C0
+X size=5
+Y size=6
+Comment=No Event support yet
+Tileset=2
+
+[Fighting Dojo]
+Start offset=$5CFE3
+X size=5
+Y size=6
+Comment=No Event support yet
+Tileset=2
+
+[Indigo Plateau Lobby]
+Start offset=$19CCF
+X size=8
+Y size=6
+Comment=Dont edit the wierd stuff on the top right
+Tileset=3
+
+[PokemonCenters1]
+Start offset=$440DF
+X size=7
+Y size=4
+Comment=Works fine
+Tileset=3
+
+[Hotel]
+Start offset=$492A7
+X size=7
+Y size=4
+Comment=Works fine
+Tileset=3
+
+[Marts1]
+Start offset=$1D530
+X size=4
+Y size=4
+Comment=Works fine
+Tileset=3
+
+[Indigo Plateau Gate]
+Start offset=$1E74A
+X size=5
+Y size=4
+Comment=Works fine
+Tileset=4
+
+[Loreli]
+Start offset=$762AC
+X size=5
+Y size=6
+Comment=Works fine
+Tileset=2
+
+[Bruno]
+Start offset=$76403
+X size=5
+Y size=6
+Comment=Works fine
+Tileset=2
+
+[Lance]
+Start offset=$5A3E9
+X size=13
+Y size=13
+Comment=Works fine
+Tileset=2
+
+[Hall of Fame Room]
+Start offset=$5A58B
+X size=5
+Y size=4
+Comment=Works fine
+Tileset=2
+
+[Marts2]
+Start offset=$1DDC1
+X size=4
+Y size=4
+Comment=Works fine
+Tileset=3
+
+[Marts3]
+Start offset=$5C000
+X size=4
+Y size=4
+Comment=Works fine
+Tileset=3
+
+[Marts4]
+Start offset=$74010
+X size=4
+Y size=4
+Comment=Works fine
+Tileset=3
+
+[PokemonCenters1]
+Start offset=$440DF
+X size=7
+Y size=4
+Comment=Works fine
+Tileset=3
+
+[PokeCenters2]
+Start offset=$480AB
+X size=7
+Y size=4
+Comment=Works fine
+Tileset=3
+
+[PokeCenters3]
+Start offset=$58D7D
+X size=7
+Y size=4
+Comment=Works fine
+Tileset=3
+
+[PokeCenters4]
+Start offset=$5C064
+X size=7
+Y size=4
+Comment=Works fine
+Tileset=3
+
+[PokeCenters5]
+Start offset=$440DF
+X size=7
+Y size=4
+Comment=Works fine
+Tileset=3
+
+[PokeCenters6]
+Start offset=$74030
+X size=7
+Y size=4
+Comment=Works fine
+Tileset=3
+
+[Cinnibar Mansion(1)]
+Start offset=$443FE
+End offset=$445C0
+X size=15
+Y size=14
+Comment=Works perfectly 
+Tileset=7
+
+[Cinnibar Mansion(2)]
+Start offset=$52110
+End offset=$53333
+X size=15
+Y size=14
+Comment=Works perfectly 
+Tileset=7
+
+[Cinnibar Mansion(3)]
+Start offset=$52326
+End offset=$53333
+X size=15
+Y size=9
+Comment=Works perfectly 
+Tileset=7
+
+[Cinnibar Mansion(4)]
+Start offset=$524DD
+End offset=$52877
+X size=15
+Y size=14
+Comment=Works perfectly 
+Tileset=7
+
+[Team Rocket Hideout(1)]
+Start offset=$44D49
+End offset=$44FFF
+X size=15
+Y size=14
+Comment=Works perfectly 
+Tileset=7
+
+[Route 23]
+Start offset=$503B2
+End offset=$50690
+X size=10
+Y size=100
+Comment=Works perfectly 
+Tileset=8
+
+[Team Rocket Hideout(2)]
+Start offset=$45147
+X size=15
+Y size=14
+Comment=Works perfectly 
+Tileset=7
+
+[Team Rocket Hideout(3)]
+Start offset=$4537F
+X size=15
+Y size=14
+Comment=Works perfectly 
+Tileset=7
+
+[Team Rocket Hideout(4)]
+Start offset=$45650
+X size=15
+Y size=12
+Comment=Works perfectly 
+Tileset=7
+
+[Saffron Gym]
+Start offset=$5D3A3
+X size=10
+Y size=9
+Comment=Works perfectly 
+Tileset=7
+
+[Silph Co(1)]
+Start offset=$5D4A2
+X size=15
+Y size=9
+Comment=Works perfectly 
+Tileset=7
+
+[Silph Co(9)]
+Start offset=$5D989
+X size=13
+Y size=9
+Comment=Works perfectly 
+Tileset=7
+
+[Silph Co(2)]
+Start offset=$59EC8
+X size=15
+Y size=9
+Comment=Works perfectly 
+Tileset=7
+
+[Silph Co(3)]
+Start offset=$5A0A6
+X size=15
+Y size=9
+Comment=Works perfectly 
+Tileset=7
+
+[Silph Co(4)]
+Start offset=$19EA4
+X size=15
+Y size=9
+Comment=Works perfectly 
+Tileset=7
+
+[Silph Co(5)]
+Start offset=$1A116
+X size=15
+Y size=9
+Comment=Works perfectly 
+Tileset=7
+
+[Silph Co(6)]
+Start offset=$1A36B
+X size=13
+Y size=9
+Comment=Works perfectly 
+Tileset=7
+
+[Silph Co(7)]
+Start offset=$51F57
+X size=13
+Y size=9
+Comment=Works perfectly 
+Tileset=7
+
+[Power Plant]
+Start offset=$1E446
+X size=20
+Y size=18
+Comment=Works perfectly 
+Tileset=7
+
+[Silph Co(10)]
+Start offset=$5A25A
+X size=7
+Y size=9
+Comment=Works perfectly 
+Tileset=7
+
+[Silph Co(8)]
+Start offset=$5666D
+X size=13
+Y size=9
+Comment=Works perfectly 
+Tileset=7
+
+
+[S.S.Anne(8)]
+Start offset=$61ADF
+X size=12
+Y size=8
+Comment=Works perfectly 
+Tileset=6
+
+[S.S.Anne(7)]
+Start offset=$6195E
+X size=3
+Y size=4
+Comment=Works perfectly 
+Tileset=6
+
+[S.S.Anne(6)]
+Start offset=$61761
+X size=10
+Y size=7
+Comment=Works perfectly 
+Tileset=6
+
+[S.S.Anne(5)]
+Start offset=$603C0
+X size=12
+Y size=8
+Comment=Works perfectly 
+Tileset=6
+
+[S.S.Anne(4)]
+Start offset=$61851
+X size=7
+Y size=8
+Comment=Works perfectly 
+Tileset=6
+
+[S.S.Anne(3)]
+Start offset=$61675
+X size=15
+Y size=3
+Comment=Works perfectly 
+Tileset=6
+
+[S.S.Anne(2)]
+Start offset=$61582
+X size=20
+Y size=8
+Comment=Works perfectly 
+Tileset=6
+
+[S.S.Anne(1)]
+Start offset=$612DF
+X size=20
+Y size=9
+Comment=Works perfectly 
+Tileset=6
+
+[Cinnibar Gym]
+Start offset=$75B26
+X size=10
+Y size=9
+Comment=Works perfectly 
+Tileset=7
+
+[Lab(1)]
+Start offset=$75BFA
+X size=9
+Y size=3
+Comment=Works perfectly 
+Tileset=5
+
+[Lab(2)]
+Start offset=$75C6B
+X size=4
+Y size=4
+Comment=Works perfectly 
+Tileset=5
+
+[Lab(3)]
+Start offset=$75D15
+X size=4
+Y size=4
+Comment=Works perfectly 
+Tileset=5
+
+[Lab(4)]
+Start offset=$75E10
+X size=4
+Y size=4
+Comment=Works perfectly 
+Tileset=5
+
+[Safari Zone Secret House]
+Start offset=$4A37F
+X size=4
+Y size=4
+Comment=Works perfectly 
+Tileset=5
+
+[Indigo Plateu]
+Start offset=$5094A
+X size=10
+Y size=9
+Comment=Works perfectly 
+Tileset=8
+
+[Route2Gate]
+Start offset=$5C090
+X size=5
+Y size=4
+Comment=Works perfectly 
+Tileset=4
+
+[Undeground Path Gates]
+Start offset=$5C048
+X size=5
+Y size=4
+Comment=Works perfectly 
+Tileset=4
+
+[Museum(1)]
+Start offset=$5C020
+X size=10
+Y size=4
+Comment=Works perfectly 
+Tileset=4
+
+[Museum(2)]
+Start offset=$5C048
+X size=7
+Y size=4
+Comment=Works perfectly 
+Tileset=4
+
+[Rock Tunnel(1)]
+Start offset=$44675
+X size=20
+Y size=18
+Comment=Works perfectly 
+Tileset=9
+
+[Victory Road(3)]
+Start offset=$44B37
+X size=15
+Y size=9
+Comment=Works perfectly 
+Tileset=9
+
+[Mt.Moon(3)]
+Start offset=$4A041
+X size=20
+Y size=18
+Comment=Works perfectly 
+Tileset=9
+
+[Mt.Moon(1)]
+Start offset=$49B97
+X size=20
+Y size=18
+Comment=Works perfectly 
+Tileset=9
+
+[Mt.Moon(2)]
+Start offset=$51A92
+X size=14
+Y size=14
+Comment=Works perfectly 
+Tileset=9
+
+[Unknown Dungeon(1)]
+Start offset=$74D76
+X size=15
+Y size=10
+Comment=Works perfectly 
+Tileset=9
+
+[Unknown Dungeon(2)]
+Start offset=$45E5D
+X size=15
+Y size=10
+Comment=Works perfectly 
+Tileset=9
+
+[Unknown Dungeon(3)]
+Start offset=$45F58
+X size=15
+Y size=9
+Comment=Works perfectly 
+Tileset=9
+
+[Digletts Cave]
+Start offset=$60258
+X size=20
+Y size=18
+Comment=Works perfectly 
+Tileset=9
+
+[Digletts Cave Entrances]
+Start offset=$1C20E
+X size=4
+Y size=4
+Comment=Works perfectly 
+Tileset=9
+
+[Rock Tunnel(2)]
+Start offset=$461A1
+X size=20
+Y size=18
+Comment=Works perfectly 
+Tileset=9
+
+[Seaform Islands(2)]
+Start offset=$468FA
+X size=15
+Y size=9
+Comment=Works perfectly 
+Tileset=9
+
+[Seaform Islands(1)]
+Start offset=$46706
+X size=15
+Y size=9
+Comment=Works perfectly 
+Tileset=9
+
+[Seaform Islands(4)]
+Start offset=$464FA
+X size=15
+Y size=9
+Comment=Works perfectly 
+Tileset=9
+
+[Seaform Islands(3)]
+Start offset=$463BE
+X size=15
+Y size=9
+Comment=Works perfectly 
+Tileset=9
+
+[Seaform Islands(5)]
+Start offset=$4489F
+X size=15
+Y size=9
+Comment=Works perfectly 
+Tileset=9
+
+[Victory Road(1)]
+Start offset=$5DB04
+X size=10
+Y size=9
+Comment=Works perfectly 
+Tileset=9
+
+[Victory Road(2)]
+Start offset=$519AF
+X size=15
+Y size=9
+Comment=Works perfectly 
+Tileset=9
+
+[Pokemon Tower(2)]
+Start offset=$60666
+X size=10
+Y size=9
+Comment=Works perfectly 
+Tileset=12
+
+[Pokemon Tower(3)]
+Start offset=$60790
+X size=10
+Y size=9
+Comment=Works perfectly 
+Tileset=12
+
+[Pokemon Tower(4)]
+Start offset=$608CC
+X size=10
+Y size=9
+Comment=Works perfectly 
+Tileset=12
+
+[Pokemon Tower(1)]
+Start offset=$6048C
+X size=10
+Y size=9
+Comment=Works perfectly 
+Tileset=12
+
+[Pokemon Tower(5)]
+Start offset=$60A89
+X size=10
+Y size=9
+Comment=Works perfectly 
+Tileset=12
+
+[Pokemon Tower(6)]
+Start offset=$60C95
+X size=10
+Y size=9
+Comment=Works perfectly 
+Tileset=12
+
+[Pokemon Tower(7)]
+Start offset=$60F20
+X size=10
+Y size=9
+Comment=Works perfectly 
+Tileset=12
+
+[Port Entrance]
+Start offset=$1DCDA
+X size=14
+Y size=6
+Comment=Works perfectly 
+Tileset=14
+
+[Celedon Mart(1)]
+Start offset=$60FDE
+X size=10
+Y size=4
+Comment=Works perfectly 
+Tileset=15
+
+[Celedon Mart(2)]
+Start offset=$490BC
+X size=10
+Y size=4
+Comment=Works perfectly 
+Tileset=15
+
+[Celedon Mart(3)]
+Start offset=$48322
+X size=10
+Y size=4
+Comment=Works perfectly 
+Tileset=15
+
+[Celedon Mart(4)]
+Start offset=$483A1
+X size=10
+Y size=4
+Comment=Works perfectly 
+Tileset=15
+
+[Celedon Mart(5)]
+Start offset=$490BC
+X size=10
+Y size=4
+Comment=Works perfectly 
+Tileset=15
+
+[Celedon Mart(6)]
+Start offset=$485CC
+X size=10
+Y size=4
+Comment=Works perfectly 
+Tileset=15
+
+[Celedon Mart(Elevator)]
+Start offset=$4585B
+X size=2
+Y size=2
+Comment=Works perfectly 
+Tileset=15
+
+[Silph Co (Elevator)]
+Start offset=$4585B
+X size=2
+Y size=2
+Comment=Works perfectly 
+Tileset=15
+
+[Celedon Prizes]
+Start offset=$49131
+X size=5
+Y size=4
+Comment=Works perfectly 
+Tileset=15
+
+[Celadon Game Corner]
+Start offset=$49017
+X size=10
+Y size=7
+Comment=Works perfectly 
+Tileset=15
+
+[Team Rocket Hideout (Elevator)]
+Start offset=$457A8
+X size=3
+Y size=4
+Comment=Works perfectly 
+Tileset=15
+
+[Underground path west/east]
+Start offset=$601F4
+X size=25
+Y size=4
+Comment=Works perfectly 
+Tileset=16
+
+[Underground path north/south]
+Start offset=$60198
+X size=4
+Y size=24
+Comment=Works perfectly 
+Tileset=16
+
+[Restraunt]
+Start offset=$491EE
+X size=5
+Y size=4
+Comment=Works perfectly 
+Tileset=15
+
+[Celedon Mansion(1)]
+Start offset=$48716
+X size=4
+Y size=6
+Comment=Works perfectly 
+Tileset=17
+
+[Celedon Mansion(2)]
+Start offset=$4876C
+X size=4
+Y size=6
+Comment=Works perfectly 
+Tileset=17
+
+[Celedon Mansion(3)]
+Start offset=$48847
+X size=4
+Y size=6
+Comment=Works perfectly 
+Tileset=17
+
+[Celedon Mansion(4)]
+Start offset=$48894
+X size=4
+Y size=6
+Comment=Works perfectly 
+Tileset=17
+
+[Celedon Mansion(2)]
+Start offset=$4876C
+X size=4
+Y size=6
+Comment=Works perfectly 
+Tileset=17
+
+[Viridian Forest]
+Start offset=$60001
+X size=20
+Y size=18
+Comment=Works perfectly 
+Tileset=10
+
+[Safari Zone(1)]
+Start offset=$45C1F
+X size=20
+Y size=18
+Comment=Works perfectly 
+Tileset=10
+
+[Ash's House (F2)]
+Start offset=$5C010
+X size=4
+Y size=4
+Comment=Works perfectly 
+Tileset=11
+
+[Ash's House (F1)]
+Start offset=$48209
+X size=4
+Y size=4
+Comment=Works perfectly 
+Tileset=11
+
+[House1]
+Start offset=$19C3F
+X size=4
+Y size=4
+Comment=Same map as many other houses
+Tileset=18
+
+[House2]
+Start offset=$1C1DE
+X size=4
+Y size=4
+Comment=Same map as many other houses
+Tileset=18
+
+[House3]
+Start offset=$5522F
+X size=4
+Y size=4
+Comment=Same map as many other houses
+Tileset=18
+
+[House4]
+Start offset=$74020
+X size=4
+Y size=4
+Comment=Same map as many other houses
+Tileset=18
+
+[Gary's House]
+Start offset=$19BF6
+X size=4
+Y size=4
+Tileset=18
+
+[School House]
+Start offset=$1C1EE
+X size=4
+Y size=4
+Tileset=18
+
+[Route2Gate]
+Start offset=$5C095
+X size=5
+Y size=4
+Tileset=4
+
+[Route5/6/Safari Zone Gate]
+Start offset=$1E025
+X size=4
+Y size=3
+Tileset=4
+
+[Route7/8 Gate]
+Start offset=$1E1AF
+X size=3
+Y size=4
+Tileset=4
+
+[Underground path gates]
+Start offset=$1C1B0
+X size=4
+Y size=4
+Tileset=4
+
+[Route12/11 Gate]
+Start offset=$480C7
+X size=4
+Y size=5
+Tileset=4
+
+[Route 16 Gate]
+Start offset=$497E3
+X size=4
+Y size=7
+Tileset=4
+
+[Route 18 Gate]
+Start offset=$480C7
+X size=4
+Y size=5
+Tileset=4
+
+[Gate Lobbys]
+Start offset=$480DB
+X size=4
+Y size=4
+Tileset=4
+
+[Gary]
+Start offset=$7615F
+X size=4
+Y size=4
+Comment=Works fine
+Tileset=2
+
+[Bike Shop]
+Start offset=$1D88C
+X size=4
+Y size=4
+Tileset=13
+
+[Trade Center]
+Start offset=$4FD91
+X size=5
+Y size=4
+Tileset=13
+
+[Battle Center]
+Start offset=$4FD5D
+X size=5
+Y size=4
+Tileset=13

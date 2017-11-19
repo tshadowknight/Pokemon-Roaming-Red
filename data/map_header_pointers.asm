@@ -75,7 +75,7 @@ MapHeaderPointers::
 	dw DayCareM_h
 	dw Route6Gate_h
 	dw UndergroundPathEntranceRoute6_h
-	dw UndergroundPathEntranceRoute6_h ; unused
+	dw DiglettsCave2_h ; unused
 	dw Route7Gate_h
 	dw UndergroundPathEntranceRoute7_h
 	dw UndergroundPathEntranceRoute7Copy_h
@@ -248,3 +248,4 @@ MapHeaderPointers::
 	dw Lorelei_h
 	dw Bruno_h
 	dw Agatha_h ;247
+	

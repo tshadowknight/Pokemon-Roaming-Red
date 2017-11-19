@@ -75,7 +75,7 @@ MapHeaderBanks:
 	db BANK(DayCareM_h)
 	db BANK(Route6Gate_h)
 	db BANK(UndergroundPathEntranceRoute6_h)
-	db BANK(UndergroundPathEntranceRoute6_h) ;FREEZE
+	db BANK(DiglettsCave2_h) ;FREEZE
 	db BANK(Route7Gate_h)
 	db BANK(UndergroundPathEntranceRoute7_h)
 	db BANK(UndergroundPathEntranceRoute7Copy_h) ;FREEZE

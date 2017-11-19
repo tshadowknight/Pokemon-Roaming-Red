@@ -1,3 +1,4 @@
+
 MapSongBanks:
 	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown) ;PALLET_TOWN
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; VIRIDIAN_CITY
@@ -74,7 +75,7 @@ MapSongBanks:
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; DayCareM
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; Route6Gate
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; UndergroundTunnelEntranceRoute6
-	db MUSIC_VERMILION, BANK(Music_Vermilion) ; FREEZE
+	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; DiglettsCave
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; Route7Gate
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; UndergroundPathEntranceRoute7
 	db MUSIC_CELADON, BANK(Music_Celadon) ;FREEZE
