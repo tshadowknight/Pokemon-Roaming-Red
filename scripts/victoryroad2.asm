@@ -171,6 +171,10 @@ VictoryRoad2Text5:
 
 MoltresText:
 	TX_ASM
+	Call DetermineReferenceLevel
+	ld hl, wMapSpriteExtraData+$B
+	ld a, [wUnusedCC5B]
+	ld [hl], a
 	ld hl, MoltresTrainerHeader
 	call TalkToTrainer
 	jp TextScriptEnd

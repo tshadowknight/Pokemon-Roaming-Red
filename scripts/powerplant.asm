@@ -169,6 +169,10 @@ VoltorbBattleText:
 ZapdosBattleText:
 	TX_FAR _ZapdosBattleText
 	TX_ASM
+	Call DetermineReferenceLevel
+	ld hl, wMapSpriteExtraData+$11
+	ld a, [wUnusedCC5B]
+	ld [hl], a
 	ld a, ZAPDOS
 	call PlayCry
 	call WaitForSoundToFinish

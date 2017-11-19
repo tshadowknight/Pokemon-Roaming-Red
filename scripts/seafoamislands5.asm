@@ -150,6 +150,11 @@ ArticunoTrainerHeader:
 
 ArticunoText:
 	TX_ASM
+	; change Articuno's level to reference level
+	Call DetermineReferenceLevel
+	ld hl, wMapSpriteExtraData+5
+	ld a, [wUnusedCC5B]
+	ld [hl], a
 	ld hl, ArticunoTrainerHeader
 	call TalkToTrainer
 	ld a, $4
