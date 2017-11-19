@@ -1,4 +1,14 @@
 CeruleanCityScript:
+	CheckEvent EVENT_9FF
+	jp nz, .regularScripts
+	ld a, HS_CERULEAN_GUARD_1
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	ld a, HS_CERULEAN_GUARD_2
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	SetEvent EVENT_9FF	
+.regularScripts	
 	call EnableAutoTextBoxDrawing
 	ld hl, CeruleanCityScriptPointers
 	ld a, [wCeruleanCityCurScript]

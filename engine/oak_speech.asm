@@ -217,6 +217,7 @@ OakSpeech:
 	ld a, HS_GYM_GUY
 	ld [wMissableObjectIndex], a
 	predef HideObject
+	
 	ld c,50
 	call DelayFrames
 	call GBFadeOutToWhite
