@@ -331,7 +331,10 @@ SilphCo7Text1:
 .givelapras
 	ld hl, .MeetLaprasGuyText
 	call PrintText
-	lb bc, LAPRAS, 15
+	ld b, LAPRAS
+	Call DetermineReferenceLevel
+	ld a, [wUnusedCC5B]
+	ld c, a	
 	call GivePokemon
 	jr nc, .done
 	ld a, [wSimulatedJoypadStatesEnd]

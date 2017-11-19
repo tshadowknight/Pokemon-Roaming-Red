@@ -11,7 +11,10 @@ CeladonMansion5Text1:
 
 CeladonMansion5Text2:
 	TX_ASM
-	lb bc, EEVEE, 25
+	ld b, EEVEE
+	Call DetermineReferenceLevel
+	ld a, [wUnusedCC5B]
+	ld c, a
 	call GivePokemon
 	jr nc, .asm_24365
 	ld a, HS_CELADON_MANSION_5_GIFT
