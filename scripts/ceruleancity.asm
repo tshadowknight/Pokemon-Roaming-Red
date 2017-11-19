@@ -7,6 +7,9 @@ CeruleanCityScript:
 	ld a, HS_CERULEAN_GUARD_2
 	ld [wMissableObjectIndex], a
 	predef HideObject
+	ld a, HS_UNKNOWN_DUNGEON_GUY
+	ld [wMissableObjectIndex], a
+	predef HideObject
 	SetEvent EVENT_9FF	
 .regularScripts	
 	call EnableAutoTextBoxDrawing
