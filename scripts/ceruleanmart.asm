@@ -2,7 +2,7 @@ CeruleanMartScript:
 	jp EnableAutoTextBoxDrawing
 
 CeruleanMartTextPointers:
-	dw CeruleanCashierText
+	dw SharedMartText
 	dw CeruleanMartText2
 	dw CeruleanMartText3
 

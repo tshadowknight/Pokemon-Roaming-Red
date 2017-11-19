@@ -5,7 +5,7 @@ PewterMartScript:
 	ret
 
 PewterMartTextPointers:
-	dw PewterCashierText
+	dw SharedMartText
 	dw PewterMartText2
 	dw PewterMartText3
 

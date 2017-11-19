@@ -2,7 +2,7 @@ LavenderMartScript:
 	jp EnableAutoTextBoxDrawing
 
 LavenderMartTextPointers:
-	dw LavenderCashierText
+	dw SharedMartText
 	dw LavenderMartText2
 	dw LavenderMartText3
 

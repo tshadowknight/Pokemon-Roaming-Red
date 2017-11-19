@@ -63,7 +63,7 @@ ViridianMartTextPointers:
 	dw ViridianMartText3
 	dw ViridianMartText4
 	dw ViridianMartText5
-	dw ViridianCashierText
+	dw SharedMartText
 	dw ViridianMartText2
 	dw ViridianMartText3
 
