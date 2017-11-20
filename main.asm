@@ -460,6 +460,9 @@ INCLUDE "data/mapHeaders/diglettscaveroute2.asm"
 INCLUDE "scripts/diglettscaveroute2.asm"
 INCLUDE "data/mapObjects/diglettscaveroute2.asm"
 
+INCLUDE "data/mapHeaders/diglettscavecinnabar.asm"
+INCLUDE "data/mapObjects/diglettscavecinnabar.asm"
+
 INCLUDE "data/mapHeaders/route2house.asm"
 INCLUDE "scripts/route2house.asm"
 INCLUDE "data/mapObjects/route2house.asm"

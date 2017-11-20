@@ -173,7 +173,7 @@ MapHeaderBanks:
 	db BANK(Lab4_h)
 	db BANK(CinnabarPokecenter_h)
 	db BANK(CinnabarMart_h)
-	db BANK(CinnabarMart_h)
+	db BANK(DiglettsCaveEntranceCinnabar_h)
 	db BANK(IndigoPlateauLobby_h)
 	db BANK(CopycatsHouse1F_h)
 	db BANK(CopycatsHouse2F_h)

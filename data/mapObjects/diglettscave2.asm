@@ -3,7 +3,7 @@ DiglettsCave2Object:
 
 	db $2 ; warps
 	db 4, 18, 3, DIGLETTS_CAVE_EXIT
-	db 50, 6, 5, CINNABAR_ISLAND
+	db 50, 6, 2, 173
 
 	db $0 ; signs
 

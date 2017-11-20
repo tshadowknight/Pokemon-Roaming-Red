@@ -7,7 +7,7 @@ CinnabarIslandObject:
 	db $9, $6, $0, CINNABAR_LAB_1
 	db $b, $b, $0, CINNABAR_POKECENTER
 	db $b, $f, $0, CINNABAR_MART
-	db 13, 2, 1, 75
+	db 13, 2, 0, 173
 
 	db $5 ; signs
 	db $5, $9, $3 ; CinnabarIslandText3

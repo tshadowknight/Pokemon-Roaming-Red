@@ -173,7 +173,7 @@ MapHeaderPointers::
 	dw Lab4_h ;id=170
 	dw CinnabarPokecenter_h
 	dw CinnabarMart_h
-	dw CinnabarMart_h ; unused
+	dw DiglettsCaveEntranceCinnabar_h ; unused
 	dw IndigoPlateauLobby_h
 	dw CopycatsHouse1F_h
 	dw CopycatsHouse2F_h
