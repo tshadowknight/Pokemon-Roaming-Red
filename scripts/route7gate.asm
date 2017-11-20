@@ -22,6 +22,7 @@ Route7GateScript_1e111:
 	ret
 
 Route7GateScript0:
+	ret
 	ld a, [wd728]
 	bit 6, a
 	ret nz

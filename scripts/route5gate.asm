@@ -16,6 +16,7 @@ Route5GateScript_1df43:
 	jp StartSimulatingJoypadStates
 
 Route5GateScript0:
+	ret
 	ld a, [wd728]
 	bit 6, a
 	ret nz
@@ -70,29 +71,10 @@ Route7GateText1:
 Route6GateText1:
 Route5GateText1:
 	TX_ASM
-	ld a, [wd728]
-	bit 6, a
-	jr nz, .asm_88856
-	callba RemoveGuardDrink
-	ld a, [$ffdb]
-	and a
-	jr nz, .asm_768a2
 	ld hl, Route5GateText2
 	call PrintText
-	call Route5GateScript_1df43
-	ld a, $1
-	ld [wRoute5GateCurScript], a
 	jp TextScriptEnd
-.asm_768a2
-	ld hl, Route5GateText3
-	call PrintText
-	ld hl, wd728
-	set 6, [hl]
-	jp TextScriptEnd
-.asm_88856
-	ld hl, SaffronGateText_1dff6
-	call PrintText
-	jp TextScriptEnd
+
 
 Route8GateText2:
 Route7GateText2:

@@ -10,6 +10,7 @@ Route6GateScriptPointers:
 	dw Route6GateScript1
 
 Route6GateScript0:
+	ret
 	ld a, [wd728]
 	bit 6, a
 	ret nz

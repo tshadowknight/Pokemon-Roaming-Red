@@ -1,4 +1,14 @@
 SaffronCityScript:
+	CheckEvent EVENT_9FE
+	jp nz, .regularScripts
+	ld a, HS_SAFFRON_CITY_E
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_SAFFRON_CITY_F
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	SetEvent EVENT_9FE	
+.regularScripts
 	jp EnableAutoTextBoxDrawing
 
 SaffronCityTextPointers:

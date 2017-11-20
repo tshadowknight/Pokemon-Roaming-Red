@@ -1,10 +1,6 @@
 _SaffronGateText_1dfe7::
-	text "I'm on guard duty."
-	line "Gee, I'm thirsty,"
-	cont "though!"
-
-	para "Oh wait there,"
-	line "the road's closed."
+	text "Welcome to"
+	line "SAFFRON CITY."
 	done
 
 _SaffronGateText_8aaa9::

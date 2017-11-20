@@ -21,6 +21,7 @@ Route8GateScript_1e1d7:
 	ret
 
 Route8GateScript0:
+	ret
 	ld a, [wd728]
 	bit 6, a
 	ret nz
