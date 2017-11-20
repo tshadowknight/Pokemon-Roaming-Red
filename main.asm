@@ -367,7 +367,7 @@ SchoolBlocks: INCBIN "maps/school.blk"
 
 CeruleanHouseTrashedBlocks: INCBIN "maps/ceruleanhousetrashed.blk"
 
-DiglettsCaveEntranceRoute11Blocks:
+DiglettsCaveEntranceRoute11Blocks: INCBIN "maps/diglettscaveentrance1.blk"
 DiglettsCaveRoute2Blocks: INCBIN "maps/diglettscaveroute2.blk"
 
 INCLUDE "text/monster_names.asm"
