@@ -13,7 +13,7 @@ dw SlowpokePicFront
 dw SlowpokePicBack
 ; attacks known at lvl 0
 db CONFUSION
-db 0
+db GROWL
 db 0
 db 0
 db 0 ; growth rate

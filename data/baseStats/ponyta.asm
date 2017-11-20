@@ -13,7 +13,7 @@ dw PonytaPicFront
 dw PonytaPicBack
 ; attacks known at lvl 0
 db EMBER
-db 0
+db GROWL
 db 0
 db 0
 db 0 ; growth rate

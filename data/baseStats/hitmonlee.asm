@@ -14,7 +14,7 @@ dw HitmonleePicBack
 ; attacks known at lvl 0
 db DOUBLE_KICK
 db MEDITATE
-db 0
+db MEGA_KICK
 db 0
 db 0 ; growth rate
 ; learnset

@@ -13,7 +13,7 @@ dw TentacoolPicFront
 dw TentacoolPicBack
 ; attacks known at lvl 0
 db ACID
-db 0
+db WATER_GUN
 db 0
 db 0
 db 5 ; growth rate

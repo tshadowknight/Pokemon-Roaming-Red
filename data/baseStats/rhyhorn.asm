@@ -13,7 +13,7 @@ dw RhyhornPicFront
 dw RhyhornPicBack
 ; attacks known at lvl 0
 db HORN_ATTACK
-db 0
+db LEER
 db 0
 db 0
 db 5 ; growth rate

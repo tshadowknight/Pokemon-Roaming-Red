@@ -13,7 +13,7 @@ dw ParasPicFront
 dw ParasPicBack
 ; attacks known at lvl 0
 db SCRATCH
-db 0
+db ABSORB
 db 0
 db 0
 db 0 ; growth rate

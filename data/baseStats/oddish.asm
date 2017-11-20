@@ -13,7 +13,7 @@ dw OddishPicFront
 dw OddishPicBack
 ; attacks known at lvl 0
 db ABSORB
-db 0
+db STUN_SPORE
 db 0
 db 0
 db 3 ; growth rate

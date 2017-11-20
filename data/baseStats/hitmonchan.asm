@@ -14,7 +14,7 @@ dw HitmonchanPicBack
 ; attacks known at lvl 0
 db COMET_PUNCH
 db AGILITY
-db 0
+db MEGA_PUNCH
 db 0
 db 0 ; growth rate
 ; learnset

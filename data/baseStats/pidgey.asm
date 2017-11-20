@@ -13,7 +13,7 @@ dw PidgeyPicFront
 dw PidgeyPicBack
 ; attacks known at lvl 0
 db GUST
-db 0
+db SAND_ATTACK
 db 0
 db 0
 db 3 ; growth rate

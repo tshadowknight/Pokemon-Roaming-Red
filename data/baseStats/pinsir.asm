@@ -13,7 +13,7 @@ dw PinsirPicFront
 dw PinsirPicBack
 ; attacks known at lvl 0
 db VICEGRIP
-db 0
+db LEER
 db 0
 db 0
 db 5 ; growth rate

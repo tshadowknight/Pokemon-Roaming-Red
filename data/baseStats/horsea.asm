@@ -13,7 +13,7 @@ dw HorseaPicFront
 dw HorseaPicBack
 ; attacks known at lvl 0
 db BUBBLE
-db 0
+db SMOKESCREEN
 db 0
 db 0
 db 0 ; growth rate

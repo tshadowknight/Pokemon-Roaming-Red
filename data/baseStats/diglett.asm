@@ -13,7 +13,7 @@ dw DiglettPicFront
 dw DiglettPicBack
 ; attacks known at lvl 0
 db SCRATCH
-db 0
+db GROWL
 db 0
 db 0
 db 0 ; growth rate

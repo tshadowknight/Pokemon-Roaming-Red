@@ -13,7 +13,7 @@ dw MagnemitePicFront
 dw MagnemitePicBack
 ; attacks known at lvl 0
 db TACKLE
-db 0
+db THUNDERSHOCK
 db 0
 db 0
 db 0 ; growth rate

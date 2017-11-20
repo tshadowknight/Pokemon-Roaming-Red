@@ -13,7 +13,7 @@ dw JigglypuffPicFront
 dw JigglypuffPicBack
 ; attacks known at lvl 0
 db SING
-db 0
+db POUND
 db 0
 db 0
 db 4 ; growth rate

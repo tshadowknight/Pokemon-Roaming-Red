@@ -14,7 +14,7 @@ dw ChanseyPicBack
 ; attacks known at lvl 0
 db POUND
 db DOUBLESLAP
-db 0
+db SOFTBOILED
 db 0
 db 4 ; growth rate
 ; learnset

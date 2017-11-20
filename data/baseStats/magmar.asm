@@ -13,7 +13,7 @@ dw MagmarPicFront
 dw MagmarPicBack
 ; attacks known at lvl 0
 db EMBER
-db 0
+db SMOKESCREEN
 db 0
 db 0
 db 0 ; growth rate

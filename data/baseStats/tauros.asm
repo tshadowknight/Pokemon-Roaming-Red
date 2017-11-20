@@ -13,7 +13,7 @@ dw TaurosPicFront
 dw TaurosPicBack
 ; attacks known at lvl 0
 db TACKLE
-db 0
+db TAIL_WHIP
 db 0
 db 0
 db 5 ; growth rate
