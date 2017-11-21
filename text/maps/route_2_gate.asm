@@ -18,7 +18,7 @@ _Route2GateAideText1::
 	para "I'm supposed to"
 	line "give you a reward"
 	cont "once you've earned"
-	cont "6 GYM badges."
+	cont "6 GYM BADGEs."
 	prompt	
 
 _Route2GateAideText3::
