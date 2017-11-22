@@ -1043,6 +1043,11 @@ INCLUDE "scripts/unknowndungeon3.asm"
 INCLUDE "data/mapObjects/unknowndungeon3.asm"
 UnknownDungeon3Blocks: INCBIN "maps/unknowndungeon3.blk"
 
+INCLUDE "data/mapHeaders/unknowndungeon4.asm"
+INCLUDE "scripts/unknowndungeon4.asm"
+INCLUDE "data/mapObjects/unknowndungeon4.asm"
+UnknownDungeon4Blocks: INCBIN "maps/unknowndungeon4.blk"
+
 INCLUDE "data/mapHeaders/rocktunnel2.asm"
 INCLUDE "scripts/rocktunnel2.asm"
 INCLUDE "data/mapObjects/rocktunnel2.asm"

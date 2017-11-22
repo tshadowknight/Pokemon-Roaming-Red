@@ -1,7 +1,7 @@
 UnknownDungeon1Object:
 	db $7d ; border block
 
-	db $9 ; warps
+	db 15 ; warps
 	db $11, $18, $6, $ff
 	db $11, $19, $6, $ff
 	db $1, $1b, $0, UNKNOWN_DUNGEON_2
@@ -11,6 +11,12 @@ UnknownDungeon1Object:
 	db $3, $1, $4, UNKNOWN_DUNGEON_2
 	db $b, $3, $5, UNKNOWN_DUNGEON_2
 	db $6, $0, $0, UNKNOWN_DUNGEON_3
+	db 15, 24, $0, 105
+	db 14, 22, $0, 105
+	db 14, 21, $0, 105
+	db 12, 22, $0, 105
+	db 5, 4, $0, 105
+	db 16, 3, $0, 105
 
 	db $0 ; signs
 

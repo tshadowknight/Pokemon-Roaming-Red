@@ -1,11 +1,12 @@
 Route4Object:
 	db $2c ; border block
 
-	db $3 ; warps
+	db $4 ; warps
 	db $5, $b, $0, MT_MOON_POKECENTER
 	db $5, $12, $0, MT_MOON_1
 	db $5, $18, $7, MT_MOON_2
-
+	db 1, 70, 1, 105
+	
 	db $3 ; signs
 	db $5, $c, $4 ; PokeCenterSignText
 	db $7, $11, $5 ; Route4Text5
@@ -20,3 +21,4 @@ Route4Object:
 	EVENT_DISP ROUTE_4_WIDTH, $5, $b ; MT_MOON_POKECENTER
 	EVENT_DISP ROUTE_4_WIDTH, $5, $12 ; MT_MOON_1
 	EVENT_DISP ROUTE_4_WIDTH, $5, $18 ; MT_MOON_2
+	EVENT_DISP ROUTE_4_WIDTH, 1, 70 ; unknown dungeon 4

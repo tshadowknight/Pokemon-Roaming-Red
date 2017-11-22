@@ -495,14 +495,24 @@ WarpFound2::
 	ld a,[hWarpDestinationMap]
 	ld [wCurMap],a
 	cp ROCK_TUNNEL_1
-	jr nz,.notRockTunnel
-	ld a,$06
-	ld [wMapPalOffset],a
-	call GBFadeOutToBlack
-.notRockTunnel
+	jr z, .applyDarkEffect
+	; cp 228 ; unknown dungeon 1
+	; jr z, .applyDarkEffect
+	; cp 226 ; unknown dungeon 2
+	; jr z, .applyDarkEffect
+	; cp 227 ; unknown dungeon 3
+	; jr z, .applyDarkEffect
+	; cp 105 ; unknown dungeon 4
+	; jr z, .applyDarkEffect
+.effectApplied
 	call PlayMapChangeSound
 	jr .done
-
+	
+.applyDarkEffect
+	ld a,$06
+	ld [wMapPalOffset],a
+	call GBFadeOutToBlack	
+	jr .effectApplied
 ; for maps that can have the 0xFF destination map, which means to return to the outside map
 ; not all these maps are necessarily indoors, though
 .indoorMaps

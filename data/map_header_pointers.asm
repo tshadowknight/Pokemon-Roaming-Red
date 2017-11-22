@@ -75,7 +75,7 @@ MapHeaderPointers::
 	dw DayCareM_h
 	dw Route6Gate_h
 	dw UndergroundPathEntranceRoute6_h
-	dw DiglettsCave2_h ; unused
+	dw DiglettsCave2_h 
 	dw Route7Gate_h
 	dw UndergroundPathEntranceRoute7_h
 	dw UndergroundPathEntranceRoute7Copy_h
@@ -105,7 +105,7 @@ MapHeaderPointers::
 	dw SSAnne8_h
 	dw SSAnne9_h
 	dw SSAnne10_h
-	dw Lance_h ; unused
+	dw UnknownDungeon4_h ; unused
 	dw Lance_h ; unused
 	dw Lance_h ; unused
 	dw VictoryRoad1_h
@@ -173,7 +173,7 @@ MapHeaderPointers::
 	dw Lab4_h ;id=170
 	dw CinnabarPokecenter_h
 	dw CinnabarMart_h
-	dw DiglettsCaveEntranceCinnabar_h ; unused
+	dw DiglettsCaveEntranceCinnabar_h
 	dw IndigoPlateauLobby_h
 	dw CopycatsHouse1F_h
 	dw CopycatsHouse2F_h

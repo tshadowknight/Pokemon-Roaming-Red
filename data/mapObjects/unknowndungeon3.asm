@@ -1,9 +1,9 @@
 UnknownDungeon3Object:
 	db $7d ; border block
 
-	db $1 ; warps
 	db $6, $3, $8, UNKNOWN_DUNGEON_1
 
+	
 	db $0 ; signs
 
 	db $3 ; objects
