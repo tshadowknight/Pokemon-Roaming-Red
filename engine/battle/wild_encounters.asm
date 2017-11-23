@@ -164,12 +164,7 @@ TryDoWildEncounter:
 	
 	ld a, [wRepelRemainingSteps]
 	and a
-	jr z, .willEncounter
-	ld a, [wPartyMon1Level]
-	ld b, a
-	ld a, [wCurEnemyLVL]
-	cp b
-	jr c, .CantEncounter2 ; repel prevents encounters if the leading party mon's level is higher than the wild mon
+	jr nz, .CantEncounter2 ; due to level scaling repels were made ineffective, repels now do not have the level check
 	jr .willEncounter
 .lastRepelStep
 	ld [wRepelRemainingSteps], a
