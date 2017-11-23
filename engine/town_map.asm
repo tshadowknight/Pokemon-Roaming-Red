@@ -242,7 +242,7 @@ LoadTownMap_Fly:
 	jp .townMapFlyLoop
 .wrapToStartOfList
 	ld hl, wFlyLocationsList
-	jr z, .pressedUp ;
+	jp z, .determineStartPosition ;
 .pressedDown
 	coord de, 19, 0
 	dec hl
