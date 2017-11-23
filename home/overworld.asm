@@ -496,14 +496,14 @@ WarpFound2::
 	ld [wCurMap],a
 	cp ROCK_TUNNEL_1
 	jr z, .applyDarkEffect
-	; cp 228 ; unknown dungeon 1
-	; jr z, .applyDarkEffect
-	; cp 226 ; unknown dungeon 2
-	; jr z, .applyDarkEffect
-	; cp 227 ; unknown dungeon 3
-	; jr z, .applyDarkEffect
-	; cp 105 ; unknown dungeon 4
-	; jr z, .applyDarkEffect
+	cp 228 ; unknown dungeon 1
+	jr z, .applyDarkEffect
+	cp 226 ; unknown dungeon 2
+	jr z, .applyDarkEffect
+	cp 227 ; unknown dungeon 3
+	jr z, .applyDarkEffect
+	cp 105 ; unknown dungeon 4
+	jr z, .applyDarkEffect	
 .effectApplied
 	call PlayMapChangeSound
 	jr .done
@@ -519,6 +519,15 @@ WarpFound2::
 	ld a,[hWarpDestinationMap] ; destination map
 	cp $ff
 	jr z,.goBackOutside
+	ld a,[hWarpDestinationMap]
+	; additional check for route 4 dark map exit, which doesn't use an FF exit
+	cp ROUTE_4
+	jr nz, .regularMaps
+	ld a, [wWarpedFromWhichMap]
+	cp 105 ; unknown dungeon 4
+	jr nz, .regularMaps
+	jr .exitsForDarkMaps
+.regularMaps	
 ; if not going back to the previous map
 	ld [wCurMap],a
 	callba IsPlayerStandingOnWarpPadOrHole
@@ -540,15 +549,23 @@ WarpFound2::
 .goBackOutside
 	ld a,[wLastMap]
 	ld [wCurMap],a
-	call PlayMapChangeSound
+	call PlayMapChangeSound	
 	xor a
 	ld [wMapPalOffset],a
-.done
+.done	
 	ld hl,wd736
 	set 0,[hl] ; have the player's sprite step out from the door (if there is one)
 	call IgnoreInputForHalfSecond
 	jp EnterMap
 
+.exitsForDarkMaps
+	ld a,[hWarpDestinationMap]
+	ld [wCurMap],a
+	call PlayMapChangeSound	
+	xor a
+	ld [wMapPalOffset],a
+	jr .done	
+	
 ContinueCheckWarpsNoCollisionLoop::
 	inc b ; increment warp number
 	dec c ; decrement number of warps
