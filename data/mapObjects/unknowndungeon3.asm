@@ -1,12 +1,8 @@
 UnknownDungeon3Object:
 	db $7d ; border block
-	db 6
+	db 1
 	db $6, $3, $8, UNKNOWN_DUNGEON_1
-	db 4, 10, $0, 105
-	db 6, 6, $0, 105
-	db 11, 1, $0, 105
-	db 16, 4, $0, 105
-	db 15, 7, $0, 105
+	
 
 	
 	db $0 ; signs
