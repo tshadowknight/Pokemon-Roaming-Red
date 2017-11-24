@@ -31,7 +31,7 @@ INCLUDE "engine/load_mon_data.asm"
 
 INCLUDE "data/item_prices.asm"
 INCLUDE "text/item_names.asm"
-INCLUDE "text/unused_names.asm"
+; INCLUDE "text/unused_names.asm"
 
 INCLUDE "engine/overworld/oam.asm"
 INCLUDE "engine/oam_dma.asm"
@@ -40,7 +40,7 @@ INCLUDE "engine/print_waiting_text.asm"
 
 INCLUDE "engine/overworld/map_sprite_functions1.asm"
 
-INCLUDE "engine/test_battle.asm"
+; INCLUDE "engine/test_battle.asm"
 
 INCLUDE "engine/overworld/item.asm"
 INCLUDE "engine/overworld/movement.asm"
