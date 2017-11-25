@@ -2106,3 +2106,8 @@ INCLUDE "engine/evolution.asm"
 INCLUDE "engine/overworld/elevator.asm"
 
 INCLUDE "engine/items/tm_prices.asm"
+
+SECTION "ScalingFunctions",ROMX,BANK[$2D]
+
+INCLUDE "engine/modify_evo_stage.asm"
+
