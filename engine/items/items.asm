@@ -1871,7 +1871,10 @@ CoinCaseNumCoinsText:
 ItemUseOldRod:
 	call FishingInit
 	jp c, ItemUseNotTime
-	lb bc, 5, MAGIKARP
+	ld a, 5
+	ld b, a
+	ld a, MAGIKARP
+	ld c, a
 	ld a, $1 ; set bite
 	jr RodResponse
 
@@ -1916,9 +1919,17 @@ RodResponse:
 	; if yes, store level and species data
 	ld a, 1
 	ld [wMoveMissed], a
-	ld a, b ; level
+	Call DetermineReferenceLevel
+	ld a, [wReferenceLevel]
 	ld [wCurEnemyLVL], a
 	ld a, c ; species
+	ld [wcf91], a
+	call Random
+	and 1
+	jr nz, .noRodEvoScaling
+	call ModifyEvoStageItems
+.noRodEvoScaling	
+	ld a, [wcf91]
 	ld [wCurOpponent], a
 
 .next
@@ -2986,4 +2997,16 @@ CheckMapForMon:
 	dec b
 	jr nz, .loop
 	dec hl
+	ret
+
+ModifyEvoStageItems:
+	ld hl, .doneModifyingEvoStage	
+	push hl
+	ld a, BANK(.doneModifyingEvoStage)	
+	push af
+	ld a, BANK(ModifyEvoStage)
+	ld hl, ModifyEvoStage
+	push hl
+	jp BankSwitchCall
+.doneModifyingEvoStage		
 	ret
