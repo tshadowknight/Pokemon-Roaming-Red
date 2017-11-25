@@ -35,7 +35,7 @@ MewtwoText:
 	TX_ASM
 	Call DetermineReferenceLevel
 	ld hl, wMapSpriteExtraData+$1
-	ld a, [wUnusedCC5B]
+	ld a, [wReferenceLevel]
 	ld [hl], a
 	ld hl, MewtwoTrainerHeader
 	call TalkToTrainer

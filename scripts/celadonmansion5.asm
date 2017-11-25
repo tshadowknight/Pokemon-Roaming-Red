@@ -13,7 +13,7 @@ CeladonMansion5Text2:
 	TX_ASM
 	ld b, EEVEE
 	Call DetermineReferenceLevel
-	ld a, [wUnusedCC5B]
+	ld a, [wReferenceLevel]
 	ld c, a
 	call GivePokemon
 	jr nc, .asm_24365

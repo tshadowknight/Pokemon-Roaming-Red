@@ -215,7 +215,7 @@ ENDC
 	ld [wNewSoundID], a
 	call PlaySound
 	xor a
-	ld [wUnusedCC5B], a
+	ld [wReferenceLevel], a
 
 ; Keep scrolling in new mons indefinitely until the user performs input.
 .awaitUserInterruptionLoop

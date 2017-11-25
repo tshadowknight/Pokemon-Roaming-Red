@@ -4753,9 +4753,14 @@ DetermineReferenceLevel::
 	jp nz, .searchLevel
 .levelFound
 	ld a, d
-	ld [wUnusedCC5B], a
+	ld [wReferenceLevel], a
 	pop hl
 	pop de
 	pop bc
 	pop af
 	ret
+	
+BankSwitchCall:
+	ld [H_LOADEDROMBANK],a
+	ld [MBC1RomBank],a
+	ret	

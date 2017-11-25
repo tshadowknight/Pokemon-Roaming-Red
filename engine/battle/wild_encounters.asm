@@ -4,7 +4,7 @@ ModifyLevelWild:
 	push de
 	push hl
 	Call DetermineReferenceLevel
-	ld a, [wUnusedCC5B]
+	ld a, [wReferenceLevel]
 	ld d, a
 	call Random
 	and %0011

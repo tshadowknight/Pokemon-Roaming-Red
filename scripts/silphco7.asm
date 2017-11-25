@@ -333,7 +333,7 @@ SilphCo7Text1:
 	call PrintText
 	ld b, LAPRAS
 	Call DetermineReferenceLevel
-	ld a, [wUnusedCC5B]
+	ld a, [wReferenceLevel]
 	ld c, a	
 	call GivePokemon
 	jr nc, .done

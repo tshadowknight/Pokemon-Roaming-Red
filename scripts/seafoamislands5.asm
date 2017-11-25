@@ -153,7 +153,7 @@ ArticunoText:
 	; change Articuno's level to reference level
 	Call DetermineReferenceLevel
 	ld hl, wMapSpriteExtraData+5
-	ld a, [wUnusedCC5B]
+	ld a, [wReferenceLevel]
 	ld [hl], a
 	ld hl, ArticunoTrainerHeader
 	call TalkToTrainer

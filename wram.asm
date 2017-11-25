@@ -542,7 +542,7 @@ wNPCMovementScriptBank:: ; cc58
 
 	ds 2
 
-wUnusedCC5B:: ; cc5b
+wReferenceLevel:: ; cc5b
 
 wVermilionDockTileMapBuffer:: ; cc5b
 ; 180 bytes
