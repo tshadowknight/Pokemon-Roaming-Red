@@ -4760,6 +4760,8 @@ DetermineReferenceLevel::
 	pop af
 	ret
 	
+
+	
 BankSwitchCall:
 	ld [H_LOADEDROMBANK],a
 	ld [MBC1RomBank],a

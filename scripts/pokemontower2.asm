@@ -146,20 +146,7 @@ PokemonTower2Text1:
 	ld [wCurOpponent], a
 
 	; select which team to use during the encounter
-	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .NotSquirtle
-	ld a, $4
-	jr .done
-.NotSquirtle
-	cp STARTER3
-	jr nz, .Charmander
-	ld a, $5
-	jr .done
-.Charmander
-	ld a, $6
-.done
-	ld [wTrainerNo], a
+	call DetermineRivalClassAndRosterTower
 
 	ld a, $1
 	ld [wPokemonTower2CurScript], a
@@ -186,3 +173,15 @@ PokemonTower2Text_6063c:
 PokemonTower2Text2:
 	TX_FAR _PokemonTower2Text2
 	db "@"
+
+DetermineRivalClassAndRosterTower:
+	ld hl, .doneDeterminingRival	
+	push hl
+	ld a, BANK(.doneDeterminingRival)	
+	push af
+	ld a, BANK(DetermineRivalClassAndRoster)
+	ld hl, DetermineRivalClassAndRoster
+	push hl
+	jp BankSwitchCall
+.doneDeterminingRival		
+	ret	

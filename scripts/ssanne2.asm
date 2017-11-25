@@ -101,20 +101,7 @@ SSAnne2Script1:
 	ld [wCurOpponent], a
 
 	; select which team to use during the encounter
-	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .NotSquirtle
-	ld a, $1
-	jr .done
-.NotSquirtle
-	cp STARTER3
-	jr nz, .Charmander
-	ld a, $2
-	jr .done
-.Charmander
-	ld a, $3
-.done
-	ld [wTrainerNo], a
+	call DetermineRivalClassAndRosterSSAnne
 
 	call SSAnne2Script_61416
 	ld a, $2
@@ -174,6 +161,7 @@ SSAnne2Script3:
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	call PlayDefaultMusic
+	SetEvent EVENT_BEAT_SSANNE_RIVAL
 	ld a, $4
 	ld [wSSAnne2CurScript], a
 	ret
@@ -214,3 +202,15 @@ SSAnneRivalWonText:
 SSAnne2Text3:
 	TX_FAR _SSAnneRivalCaptainText
 	db "@"
+	
+DetermineRivalClassAndRosterSSAnne:
+	ld hl, .doneDeterminingRival	
+	push hl
+	ld a, BANK(.doneDeterminingRival)	
+	push af
+	ld a, BANK(DetermineRivalClassAndRoster)
+	ld hl, DetermineRivalClassAndRoster
+	push hl
+	jp BankSwitchCall
+.doneDeterminingRival		
+	ret	

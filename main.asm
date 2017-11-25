@@ -2111,3 +2111,4 @@ SECTION "ScalingFunctions",ROMX,BANK[$2D]
 
 INCLUDE "engine/modify_evo_stage.asm"
 
+INCLUDE "engine/determine_rival_battle.asm"

@@ -68,10 +68,7 @@ Route22Script0:
 	ld [wJoyIgnore], a
 	ld a, PLAYER_DIR_LEFT
 	ld [wPlayerMovingDirection], a
-	CheckEvent EVENT_1ST_ROUTE22_RIVAL_BATTLE
-	jr nz, .firstRivalBattle
-	CheckEventReuseA EVENT_2ND_ROUTE22_RIVAL_BATTLE ; is this the rival at the end of the game?
-	jp nz, Route22Script_5104e
+	jp Route22Script_5104e
 	ret
 
 .Route22RivalBattleCoords
@@ -233,6 +230,9 @@ Route22Script3:
 	ret
 
 Route22Script_5104e:
+	ld a, HS_ROUTE_22_RIVAL_2
+	ld [wMissableObjectIndex], a
+	predef ShowObject
 	ld a, $2
 	ld [wEmotionBubbleSpriteIndex], a
 	xor a ; EXCLAMATION_BUBBLE
@@ -287,10 +287,7 @@ Route22Script4:
 	ld hl, Route22RivalDefeatedText2
 	ld de, Route22Text_511d0
 	call SaveEndBattleTextPointers
-	ld a, OPP_SONY2
-	ld [wCurOpponent], a
-	ld hl, StarterMons_510d9
-	call Route22Script_50ed6
+	call DetermineRivalClassAndRosterR22
 	ld a, $5
 	ld [wRoute22CurScript], a
 	ret
@@ -443,3 +440,16 @@ Route22Text_511d0:
 Route22FrontGateText:
 	TX_FAR _Route22FrontGateText
 	db "@"
+
+		
+DetermineRivalClassAndRosterR22:
+	ld hl, .doneDeterminingRival	
+	push hl
+	ld a, BANK(.doneDeterminingRival)	
+	push af
+	ld a, BANK(DetermineRivalClassAndRoster)
+	ld hl, DetermineRivalClassAndRoster
+	push hl
+	jp BankSwitchCall
+.doneDeterminingRival		
+	ret	

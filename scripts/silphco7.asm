@@ -183,22 +183,7 @@ SilphCo7Script3:
 	ld hl, SilphCo7Text14
 	ld de, SilphCo7Text_51ecd
 	call SaveEndBattleTextPointers
-	ld a, OPP_SONY2
-	ld [wCurOpponent], a
-	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .asm_51cb6
-	ld a, $7
-	jr .asm_51cc0
-.asm_51cb6
-	cp STARTER3
-	jr nz, .asm_51cbe
-	ld a, $8
-	jr .asm_51cc0
-.asm_51cbe
-	ld a, $9
-.asm_51cc0
-	ld [wTrainerNo], a
+	call DetermineRivalClassAndRosterSilph
 	ld a, $4
 	jp SilphCo7Text_51c10
 
@@ -528,3 +513,15 @@ SilphCo7Text_51ecd:
 SilphCo7Text15:
 	TX_FAR _SilphCo7Text_51ed2
 	db "@"
+	
+DetermineRivalClassAndRosterSilph:
+	ld hl, .doneDeterminingRival	
+	push hl
+	ld a, BANK(.doneDeterminingRival)	
+	push af
+	ld a, BANK(DetermineRivalClassAndRoster)
+	ld hl, DetermineRivalClassAndRoster
+	push hl
+	jp BankSwitchCall
+.doneDeterminingRival		
+	ret		
