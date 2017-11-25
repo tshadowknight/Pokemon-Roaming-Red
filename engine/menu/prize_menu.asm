@@ -289,17 +289,8 @@ OhFineThenTextPtr:
 	db "@"
 
 GetPrizeMonLevel:
-	ld a,[wcf91]
-	ld b,a
-	ld hl,PrizeMonLevelDictionary
-.loop
-	ld a,[hli]
-	cp b
-	jr z,.matchFound
-	inc hl
-	jr .loop
-.matchFound
-	ld a,[hl]
+	Call DetermineReferenceLevel
+	ld a, [wReferenceLevel]
 	ld [wCurEnemyLVL],a
 	ret
 
