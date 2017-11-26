@@ -2121,6 +2121,7 @@ Mon121_EvosMoves:
 	db 44,ICE_BEAM
 	db 47,PSYCHIC_M
 	db 50,HYDRO_PUMP
+	db 0
 
 Mon001_EvosMoves:
 ;BULBASAUR
