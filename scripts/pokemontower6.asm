@@ -34,7 +34,8 @@ PokemonTower6Script0:
 	call DisplayTextID
 	ld a, MAROWAK
 	ld [wCurOpponent], a
-	ld a, 30
+	call DetermineReferenceLevel
+	ld a, [wReferenceLevel]
 	ld [wCurEnemyLVL], a
 	ld a, $4
 	ld [wPokemonTower6CurScript], a
