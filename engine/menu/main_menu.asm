@@ -670,7 +670,7 @@ TextSpeedOptionData:
 	db 9,3 ; Medium
 	db 5,1 ; Fast
 	db 1,0 ; Instant
-	db 7 ; default X coordinate (Medium)
+	db 9 ; default X coordinate (Medium)
 	db $ff ; terminator
 
 CheckForPlayerNameInSRAM:
