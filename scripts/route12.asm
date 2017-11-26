@@ -31,7 +31,8 @@ Route12Script0:
 	call DisplayTextID
 	ld a, SNORLAX
 	ld [wCurOpponent], a
-	ld a, 30
+	call DetermineReferenceLevel
+	ld a, [wReferenceLevel]
 	ld [wCurEnemyLVL], a
 	ld a, HS_ROUTE_12_SNORLAX
 	ld [wMissableObjectIndex], a
