@@ -446,10 +446,11 @@ DetermineRivalClassAndRosterR22:
 	ld hl, .doneDeterminingRival	
 	push hl
 	ld a, BANK(.doneDeterminingRival)	
-	push af
-	ld a, BANK(DetermineRivalClassAndRoster)
+	push af	
 	ld hl, DetermineRivalClassAndRoster
 	push hl
+	ld a, BANK(DetermineRivalClassAndRoster)
+	push af
 	jp BankSwitchCall
 .doneDeterminingRival		
 	ret	

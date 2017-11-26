@@ -3004,9 +3004,10 @@ ModifyEvoStageItems:
 	push hl
 	ld a, BANK(.doneModifyingEvoStage)	
 	push af
-	ld a, BANK(ModifyEvoStage)
 	ld hl, ModifyEvoStage
 	push hl
+	ld a, BANK(ModifyEvoStage)
+	push af
 	jp BankSwitchCall
 .doneModifyingEvoStage		
 	ret

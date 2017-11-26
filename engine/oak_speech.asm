@@ -675,7 +675,7 @@ StarterPokemonIdxs:
 	db 88
 StarterPokemonIdxs_end:		
 
-; can't be bothered to implement a module right now
+; can't be bothered to implement a modulo right now
 RandomStarterLookupTable:
 	db 1
 	db 2

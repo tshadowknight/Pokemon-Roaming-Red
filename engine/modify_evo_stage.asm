@@ -35,8 +35,7 @@ ModifyEvoStage:
 	pop de
 	pop bc
 	pop af
-	
-	pop af
+
 	jp BankSwitchCall
 
 ApplyStageChange:

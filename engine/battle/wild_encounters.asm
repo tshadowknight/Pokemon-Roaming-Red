@@ -114,10 +114,11 @@ TryDoWildEncounter:
 	ld hl, .doneModifyingEvoStage	
 	push hl
 	ld a, BANK(.doneModifyingEvoStage)	
-	push af
-	ld a, BANK(ModifyEvoStage)
+	push af	
 	ld hl, ModifyEvoStage
 	push hl
+	ld a, BANK(ModifyEvoStage)
+	push af
 	jp BankSwitchCall
 .doneModifyingEvoStage	
 	ld a, [wcf91]
