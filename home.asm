@@ -1141,6 +1141,10 @@ DisplayTextID::
 	jr nz,HoldTextDisplayOpen
 
 AfterDisplayingTextID::
+	ld a,[wOptions]
+	and $f
+	cp 0
+	jr z, CloseTextDisplay
 	ld a,[wEnteringCableClub]
 	and a
 	jr nz,HoldTextDisplayOpen
@@ -1148,6 +1152,10 @@ AfterDisplayingTextID::
 
 ; loop to hold the dialogue box open as long as the player keeps holding down the A button
 HoldTextDisplayOpen::
+	ld a,[wOptions]
+	and $f
+	cp 0
+	jr z, CloseTextDisplay
 	call Joypad
 	ld a,[hJoyHeld]
 	bit 0,a ; is the A button being pressed?
@@ -3475,7 +3483,12 @@ ManualTextScroll::
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	jr z, .inLinkBattle
+	ld a,[wOptions]
+	and $f
+	cp 0
+	jr z, .noInputWait
 	call WaitForTextScrollButtonPress
+.noInputWait	
 	ld a, SFX_PRESS_AB
 	jp PlaySound
 .inLinkBattle
@@ -3543,6 +3556,8 @@ PrintLetterDelay::
 	ld a,[wOptions]
 	and $f
 	ld [H_FRAMECOUNTER],a
+	cp 0
+	jr z, .buttonsNotPressed
 	jr .checkButtons
 .waitOneFrame
 	ld a,1

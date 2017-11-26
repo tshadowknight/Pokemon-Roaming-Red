@@ -557,30 +557,21 @@ DisplayOptionMenu:
 	ld a,[wOptionsTextSpeedCursorX] ; text speed cursor X coordinate
 	cp a,1
 	jr z,.updateTextSpeedXCoord
-	cp a,7
-	jr nz,.fromSlowToMedium
-	sub a,6
-	jr .updateTextSpeedXCoord
-.fromSlowToMedium
-	sub a,7
+	sub 4
 	jr .updateTextSpeedXCoord
 .pressedRightInTextSpeed
 	ld a,[wOptionsTextSpeedCursorX] ; text speed cursor X coordinate
-	cp a,14
+	cp a,13
 	jr z,.updateTextSpeedXCoord
-	cp a,7
-	jr nz,.fromFastToMedium
-	add a,7
+	add 4
 	jr .updateTextSpeedXCoord
-.fromFastToMedium
-	add a,6
 .updateTextSpeedXCoord
 	ld [wOptionsTextSpeedCursorX],a ; text speed cursor X coordinate
 	jp .eraseOldMenuCursor
 
 TextSpeedOptionText:
 	db   "TEXT SPEED"
-	next " FAST  MEDIUM SLOW@"
+	next " INS FST MED SLW@"
 
 BattleAnimationOptionText:
 	db   "BATTLE ANIMATION"
@@ -675,9 +666,10 @@ SetCursorPositionsFromOptions:
 ; 00: X coordinate of menu cursor
 ; 01: delay after printing a letter (in frames)
 TextSpeedOptionData:
-	db 14,5 ; Slow
-	db  7,3 ; Medium
-	db  1,1 ; Fast
+	db 13,5 ; Slow
+	db 9,3 ; Medium
+	db 5,1 ; Fast
+	db 1,0 ; Instant
 	db 7 ; default X coordinate (Medium)
 	db $ff ; terminator
 
