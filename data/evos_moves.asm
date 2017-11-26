@@ -228,7 +228,9 @@ Mon032_EvosMoves:
 ;Learnset
 	db 8,HORN_ATTACK
 	db 14,POISON_STING
+	db 19,DOUBLE_KICK
 	db 23,THRASH
+	db 27,FURY_ATTACK
 	db 29,HORN_DRILL
 	db 35,BODY_SLAM
 	db 40,THUNDERBOLT
@@ -288,7 +290,9 @@ Mon034_EvosMoves:
 ;Learnset
 	db 8,HORN_ATTACK
 	db 14,POISON_STING
+	db 19,DOUBLE_KICK
 	db 23,THRASH
+	db 27,FURY_ATTACK
 	db 29,HORN_DRILL
 	db 35,BODY_SLAM
 	db 40,THUNDERBOLT
@@ -417,9 +421,11 @@ Mon031_EvosMoves:
 ;Evolutions
 	db 0
 ;Learnset
-	db 8,HORN_ATTACK
+	db 8,BITE
 	db 14,POISON_STING
+	sb 19,DOUBLE_KICK
 	db 23,THRASH
+	db 27,FURY_SWIPES
 	db 29,HORN_DRILL
 	db 35,BODY_SLAM
 	db 40,ICE_BEAM
@@ -857,7 +863,7 @@ Mon054_EvosMoves:
 	db 23,BUBBLEBEAM
 	db 29,ICE_PUNCH	
 	db 35,HYDRO_PUMP
-	db 41,PSYCHIC
+	db 41,PSYCHIC_M
 	db 0
 
 Mon096_EvosMoves:
@@ -1021,6 +1027,7 @@ Mon128_EvosMoves:
 	db 19,TAIL_WHIP
 	db 24,LEER
 	db 29,RAGE
+	db 33,TAKE_DOWN
 	db 35,HORN_DRILL
 	db 39,BODY_SLAM
 	db 44,EARTHQUAKE
@@ -1147,7 +1154,7 @@ Mon124_EvosMoves:
 	db 22,ICE_PUNCH
 	db 27,BODY_SLAM
 	db 31,THRASH
-	db 34,ICE_PUNCH
+	db 34,ICE_BEAM
 	db 37,LOVELY_KISS
 	db 42,PSYCHIC_M
 	db 49,BLIZZARD
@@ -1790,7 +1797,7 @@ Mon012_EvosMoves:
 	db 22,PSYBEAM
 	db 29,STUN_SPORE
 	db 30,SLEEP_POWDER	
-	db 35,PSYCHIC
+	db 35,PSYCHIC_M
 	db 0
 
 Mon068_EvosMoves:
@@ -1825,7 +1832,7 @@ Mon055_EvosMoves:
 	db 23,BUBBLEBEAM
 	db 29,ICE_PUNCH	
 	db 35,HYDRO_PUMP
-	db 41,PSYCHIC
+	db 41,PSYCHIC_M
 	db 0
 
 Mon097_EvosMoves:
@@ -1860,10 +1867,10 @@ Mon150_EvosMoves:
 ;Evolutions
 	db 0
 ;Learnset
-	db 12,BARRIER
+	db 12,MIST
 	db 24,PSYCHIC_M
 	db 28,RECOVER
-	db 34,MIST
+	db 34,BARRIER
 	db 40,AMNESIA
 	db 0
 
@@ -2295,7 +2302,9 @@ Mon033_EvosMoves:
 ;Learnset
 	db 8,HORN_ATTACK
 	db 14,POISON_STING
+	db 19,DOUBLE_KICK
 	db 23,THRASH
+	db 27,FURY_ATTACK
 	db 29,HORN_DRILL
 	db 35,BODY_SLAM
 	db 40,THUNDERBOLT
