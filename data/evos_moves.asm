@@ -1125,10 +1125,10 @@ Mon084_EvosMoves:
 ;Learnset
 	db 12,GROWL
 	db 16,FURY_ATTACK
-	db 19,RAGE
+	db 19,AGILITY
 	db 22,DRILL_PECK
 	db 27,TRI_ATTACK
-	db 33,AGILITY
+	db 33,JUMP_KICK
 	db 44,HYPER_BEAM
 	db 0
 
@@ -1697,10 +1697,10 @@ Mon085_EvosMoves:
 ;Learnset
 	db 12,GROWL
 	db 16,FURY_ATTACK
-	db 19,RAGE
+	db 19,AGILITY
 	db 22,DRILL_PECK
 	db 27,TRI_ATTACK
-	db 33,AGILITY
+	db 33,JUMP_KICK
 	db 44,HYPER_BEAM
 	db 0
 
