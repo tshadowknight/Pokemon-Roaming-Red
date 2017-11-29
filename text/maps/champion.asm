@@ -94,10 +94,8 @@ _GaryText_76120::
 
 	para "You've grown up so"
 	line "much since you"
-	cont "first left with"
-	cont "@"
-	TX_RAM wcd6d
-	text "!"
+	cont "first set out on"
+	cont "your adventure!"
 
 	para "<PLAYER>, you have"
 	line "come of age!"
