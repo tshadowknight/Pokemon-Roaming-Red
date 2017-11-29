@@ -12,67 +12,73 @@ ModifyLevel:
 	call Random
 	and %0001
 	cp 0
-	jp z, .subtract	
+	jr z, .subtract	
 	ld a, d	
 	add b		
-	jp .doneApplyingVariance	
+	jr .doneApplyingVariance	
 .subtract
 	ld a, d		
 	sub b	
-	jp nc, .doneApplyingVariance
+	jr nc, .doneApplyingVariance
 	ld a, 1	
 .doneApplyingVariance	
 	cp 0
-	jp nz, .notZero
+	jr nz, .notZero
 	add 1
 .notZero	
 	ld b, a 
 	ld a, [wCurOpponent]
 	cp $E5 ; Giovanni
-	jp z, .applyPlusFive
+	jr z, .applyPlusFive
 	cp $E6 ; ROCKET
-	jp z, .applyPlusThree
-	cp $E7; Cooltrainer male
-	jp z, .applyPlusThree
+	jr z, .applyPlusThree
+	cp $E7 ; Cooltrainer male
+	jr z, .applyPlusThree
 	cp $E8 ; Cooltrainer female
-	jp z, .applyPlusThree
+	jr z, .applyPlusThree
 	cp $E9 ; Bruno
-	jp z, .applyPlusFive
+	jr z, .applyPlusFive
 	cp $EA ; Brock
-	jp z, .applyPlusFive
+	jr z, .applyPlusFive
 	cp $EB ; Misty
-	jp z, .applyPlusFive
+	jr z, .applyPlusFive
 	cp $EC ; Lt. Surge
-	jp z, .applyPlusFive
+	jr z, .applyPlusFive
 	cp $ED ; Erika
-	jp z, .applyPlusFive
+	jr z, .applyPlusFive
 	cp $EE ; Koga
-	jp z, .applyPlusFive
+	jr z, .applyPlusFive
 	cp $EF ; Blaine
-	jp z, .applyPlusFive
+	jr z, .applyPlusFive
 	cp $F0 ; Sabrina
-	jp z, .applyPlusFive
+	jr z, .applyPlusFive
+	cp SONY2 ; Rival Final
+	jr z, .applyPlusThree
 	cp $F3 ; Rival Final
-	jp z, .applyPlusFive
+	jr z, .applyPlusEight
 	cp $F4 ; Lorelei
-	jp z, .applyPlusFive
+	jr z, .applyPlusFive
 	cp $F6 ; Agatha
-	jp z, .applyPlusFive
+	jr z, .applyPlusFive
 	cp $F7 ; Lance
-	jp z, .applyPlusFive
+	jr z, .applyPlusFive
 	ld a, b
-	jp .doneApplyingBoost
+	jr .doneApplyingBoost
 .applyPlusThree
 	ld a, b
 	add 3
-	jp .doneApplyingBoost
+	jr .doneApplyingBoost
 .applyPlusFive	
 	ld a, b
 	add 5
+	jr .doneApplyingBoost
+.applyPlusEight
+	ld a, b
+	add 8	
 .doneApplyingBoost	
 	cp 100
-	jp c, .notAbove100
-	jp z, .notAbove100
+	jr c, .notAbove100
+	jr z, .notAbove100
 	ld a, 100
 .notAbove100	
 	ld [wCurEnemyLVL],a
