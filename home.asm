@@ -1144,7 +1144,7 @@ AfterDisplayingTextID::
 	ld a,[wOptions]
 	and $f
 	cp 0
-	jr z, CloseTextDisplay
+	jr z, CloseTextDisplayAfterDelay
 	ld a,[wEnteringCableClub]
 	and a
 	jr nz,HoldTextDisplayOpen
@@ -1161,6 +1161,12 @@ HoldTextDisplayOpen::
 	bit 0,a ; is the A button being pressed?
 	jr nz,HoldTextDisplayOpen
 
+CloseTextDisplayAfterDelay::
+	call DelayFrame
+	call DelayFrame
+	call DelayFrame	
+	call DelayFrame	
+	call DelayFrame		
 CloseTextDisplay::
 	ld a,[wCurMap]
 	call SwitchToMapRomBank
