@@ -183,6 +183,7 @@ ReadTrainer:
 	pop hl
 	jr .SpecialTrainer
 .AddLoneMove
+	jr .FinishUp ; disable special moves	
 ; does the trainer have a single monster with a different move
 	ld a,[wLoneAttackNo] ; Brock is 01, Misty is 02, Erika is 04, etc
 	and a
@@ -199,7 +200,7 @@ ReadTrainer:
 	ld bc,wEnemyMon2 - wEnemyMon1
 	call AddNTimes
 	ld [hl],d
-	jr .FinishUp
+	
 .AddTeamMove
 ; check if our trainer's team has special moves
 
