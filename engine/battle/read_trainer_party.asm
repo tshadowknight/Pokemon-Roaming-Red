@@ -27,7 +27,7 @@ ModifyLevel:
 	add 1
 .notZero	
 	ld b, a 
-	ld a, [wEngagedTrainerClass]
+	ld a, [wCurOpponent]
 	cp $E5 ; Giovanni
 	jp z, .applyPlusFive
 	cp $E6 ; ROCKET
