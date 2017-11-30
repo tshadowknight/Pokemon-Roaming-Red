@@ -19,8 +19,9 @@ AdvanceRNG:
 	ret
 	
 RandomizeTrainerMon:
-	ld a, 1
+	ld a, [wSeedLow]
 	ld [wRNGSub], a
+	ld a, [wSeedHigh]
 	ld [wRNGAdd], a	
 	ld a, [wCurOpponent]
 .countClass
@@ -48,8 +49,9 @@ RandomizeTrainerMon:
 	jr IterateUntilValid
 	
 RandomizeWildMon:
-	ld a, 1
+	ld a, [wSeedLow]
 	ld [wRNGSub], a
+	ld a, [wSeedHigh]
 	ld [wRNGAdd], a	
 	ld a, [wCurMap]
 .countMap

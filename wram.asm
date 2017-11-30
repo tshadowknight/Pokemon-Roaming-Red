@@ -2421,7 +2421,7 @@ wXBlockCoord:: ; d364
 wLastMap:: ; d365
 	ds 1
 
-wUnusedD366:: ; d366
+wSeedLow:: ; d366
 	ds 1
 
 wCurMapTileset:: ; d367
@@ -2674,7 +2674,7 @@ wNumHoFTeams:: ; d5a2
 ; number of HOF teams
 	ds 1
 
-wUnusedD5A3:: ; d5a3
+wSeedHigh:: ; d5a3
 	ds 1
 
 wPlayerCoins:: ; d5a4

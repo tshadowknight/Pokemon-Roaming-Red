@@ -506,7 +506,6 @@ WarpFound2::
 	ld a,[wCurMap]
 	ld [wLastMap],a
 	ld a,[wCurMapWidth]
-	ld [wUnusedD366],a ; not read
 	ld a,[hWarpDestinationMap]
 	ld [wCurMap],a
 	cp ROCK_TUNNEL_1
