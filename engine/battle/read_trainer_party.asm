@@ -202,6 +202,11 @@ ReadTrainer:
 	ld a,[hli]
 	ld [wcf91],a
 	push hl
+	push bc
+	; call RandomizeTrainerMonLocal
+	pop bc	
+	pop hl
+	push hl
 	call ModifyEvoStageLocal
 	pop hl
 	ld a,ENEMY_PARTY_DATA

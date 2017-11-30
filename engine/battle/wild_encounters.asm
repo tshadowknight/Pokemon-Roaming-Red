@@ -25,7 +25,18 @@ ModifyLevelWild:
 	pop af	
 	ret
 
-
+RandomizeWildMonLocal:
+	ld hl, .doneRandomizingMon	
+	push hl
+	ld a, BANK(.doneRandomizingMon)	
+	push af	
+	ld hl, RandomizeWildMon
+	push hl
+	ld a, BANK(RandomizeWildMon)
+	push af
+	jp BankSwitchCall
+.doneRandomizingMon	
+	ret
 	
 ; try to initiate a wild pokemon encounter
 ; returns success in Z
@@ -69,7 +80,7 @@ TryDoWildEncounter:
 ; ...as long as it's not Viridian Forest or Safari Zone.
 	ld a, [wCurMap]
 	cp REDS_HOUSE_1F ; is this an indoor map?
-	jr c, .CantEncounter2
+	jp c, .CantEncounter2
 	ld a, [wCurMapTileset]
 	cp FOREST ; Viridian Forest/Safari Zone
 	jr z, .CantEncounter2
@@ -83,14 +94,21 @@ TryDoWildEncounter:
 	ld a, [hRandomSub]
 	ld b, a
 	ld hl, WildMonEncounterSlotChances
-.determineEncounterSlot
+	xor a 
+	ld c, a
+.determineEncounterSlot	
 	ld a, [hli]
 	cp b
 	jr nc, .gotEncounterSlot
+	ld a, c 
+	add 1
+	ld c, a
 	inc hl
 	jr .determineEncounterSlot
 .gotEncounterSlot
 ; determine which wild pokemon (grass or water) can appear in the half-block we're standing in
+	ld a, c 
+	ld [wUnusedC000], a
 	ld c, [hl]
 	ld hl, wGrassMons
 	aCoord 8, 9
@@ -107,6 +125,9 @@ TryDoWildEncounter:
 	call ModifyLevelWild
 	ld a, [hl]
 	ld [wcf91], a
+	ld [wEnemyMonSpecies2], a
+	; call RandomizeWildMonLocal
+	ld a, [wcf91]
 	ld [wEnemyMonSpecies2], a
 	call Random
 	and 1

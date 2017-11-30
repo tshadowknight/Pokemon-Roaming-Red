@@ -45,13 +45,38 @@ RandomizeTrainerMon:
 	pop af
 	sub 1
 	jr nc, .countPartyMon
-	jr .iterateUntilValid
-.done	
+	jr IterateUntilValid
+	
+RandomizeWildMon:
+	ld a, 1
+	ld [wRNGSub], a
+	ld [wRNGAdd], a	
+	ld a, [wCurMap]
+.countMap
+	push af
+	call AdvanceRNG	
+	pop af
+	sub 1
+	jr nc, .countMap
+	ld a, [wUnusedC000]
+.countSlot	
+	push af
+	ld a, [wRNGAdd]
+	rra
+	ld [wRNGAdd], a
+	pop af
+	sub 1
+	jr nc, .countSlot
+	ld a, [wUnusedC000]
+	jr IterateUntilValid
+	
+	
+Done:	
 	ld a, [wRNGAdd]
 	ld [wcf91], a
 	jp BankSwitchCall
 
-.iterateUntilValid
+IterateUntilValid:
 	ld a, [wRNGAdd]
 	ld hl, .validMonIdxs
 	ld b, 0
@@ -59,12 +84,13 @@ RandomizeTrainerMon:
 	add hl, bc
 	ld a, [hl]
 	cp 0
-	jr nz, .done
+	jr nz, Done
 	ld a, [wRNGAdd]
 	rra
 	ld [wRNGAdd], a
 	call AdvanceRNG	
-	jr .iterateUntilValid
+	jr IterateUntilValid
+	jp BankSwitchCall	
 		
 .validMonIdxs:		
 	db 0
