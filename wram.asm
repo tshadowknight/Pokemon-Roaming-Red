@@ -3167,7 +3167,11 @@ wOpponentAfterWrongAnswer:: ; da38
 ; the trainer the player must face after getting a wrong answer in the Cinnabar
 ; gym quiz
 
-wUnusedDA38:: ; da38
+wRandomizerOptions:: ; da38
+; bit 3 - enable tm randomizer
+; bit 2 - enable learnset randomizer
+; bit 1 - enable trainer mon randomizer
+; bit 0 - enable wild encounter randomizer
 	ds 1
 
 wCurMapScript:: ; da39
