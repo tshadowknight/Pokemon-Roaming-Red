@@ -2972,7 +2972,7 @@ wDestinationMap:: ; d71a
 ; destination map (for certain types of special warps, not ordinary walking)
 	ds 1
 
-wUnusedD71B:: ; d71b
+wRNGAdd:: ; d71b
 	ds 1
 
 wTileInFrontOfBoulderAndBoulderCollisionResult:: ; d71c
@@ -2988,7 +2988,7 @@ wWhichDungeonWarp:: ; d71e
 ; which dungeon warp within the source map was used
 	ds 1
 
-wUnusedD71F:: ; d71f
+wRNGSub:: ; d71f
 	ds 1
 
 	ds 8

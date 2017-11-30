@@ -1552,8 +1552,6 @@ ItemUseXAccuracy:
 ; This function is bugged and never works. It always jumps to ItemUseNotTime.
 ; The Card Key is handled in a different way.
 ItemUseCardKey:
-	xor a
-	ld [wUnusedD71F],a
 	call GetTileAndCoordsInFrontOfPlayer
 	ld a,[GetTileAndCoordsInFrontOfPlayer]
 	cp a,$18
@@ -1585,7 +1583,6 @@ ItemUseCardKey:
 	cp e
 	jr nz,.nextEntry3
 	ld a,[hl]
-	ld [wUnusedD71F],a
 	jr .done
 .nextEntry1
 	inc hl

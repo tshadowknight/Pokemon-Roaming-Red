@@ -100,7 +100,19 @@ ModifyEvoStageLocal:
 	jp BankSwitchCall
 .doneModifyingEvoStage		
 	ret
-	
+
+RandomizeTrainerMonLocal:
+	ld hl, .doneRandomizingMon	
+	push hl
+	ld a, BANK(.doneRandomizingMon)	
+	push af	
+	ld hl, RandomizeTrainerMon
+	push hl
+	ld a, BANK(RandomizeTrainerMon)
+	push af
+	jp BankSwitchCall
+.doneRandomizingMon	
+	ret
 ReadTrainer:
 
 ; don't change any moves in a link battle
@@ -152,13 +164,20 @@ ReadTrainer:
 	ld a,[hli]
 	cp $FF ; is the trainer special?
 	jr z,.SpecialTrainer ; if so, check for special moves
-	
+	ld a, 1
+	ld [wUnusedC000], a
 .LoopTrainerData
+	
 	call ModifyLevel	
 	ld a,[hli]
 	and a ; have we reached the end of the trainer data?
 	jp z,.FinishUp
-	ld [wcf91],a ; write species somewhere (XXX why?)	
+	ld [wcf91],a ; write species somewhere (XXX why?)
+	push hl
+	push bc
+	; call RandomizeTrainerMonLocal
+	pop bc	
+	pop hl
 	push hl
 	call ModifyEvoStageLocal
 	pop hl
@@ -167,6 +186,9 @@ ReadTrainer:
 	push hl
 	call AddPartyMon
 	pop hl
+	ld a, [wUnusedC000]
+	add 1
+	ld [wUnusedC000], a
 	jr .LoopTrainerData
 .SpecialTrainer
 ; if this code is being run:
@@ -276,3 +298,5 @@ ReadTrainer:
 	jr nz,.LastLoop ; repeat wCurEnemyLVL times
 	ret
 
+
+	

@@ -9,9 +9,6 @@ InitPlayerData2:
 	ld a, [hRandomAdd]
 	ld [wPlayerID + 1], a
 
-	ld a, $ff
-	ld [wUnusedD71B], a
-
 	ld hl, wPartyCount
 	call InitializeEmptyList
 	ld hl, wNumInBox

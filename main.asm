@@ -2114,3 +2114,5 @@ INCLUDE "engine/modify_evo_stage.asm"
 INCLUDE "engine/determine_rival_battle.asm"
 
 INCLUDE "engine/overworld/player_movement.asm"
+
+INCLUDE "engine/randomization.asm"
