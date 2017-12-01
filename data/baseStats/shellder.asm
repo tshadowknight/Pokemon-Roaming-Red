@@ -13,7 +13,7 @@ dw ShellderPicFront
 dw ShellderPicBack
 ; attacks known at lvl 0
 db TACKLE
-db WITHDRAW
+db WATER_GUN
 db 0
 db 0
 db 5 ; growth rate

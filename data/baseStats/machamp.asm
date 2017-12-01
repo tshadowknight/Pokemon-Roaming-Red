@@ -12,9 +12,9 @@ INCBIN "pic/bmon/machamp.pic",0,1 ; 77, sprite dimensions
 dw MachampPicFront
 dw MachampPicBack
 ; attacks known at lvl 0
-db KARATE_CHOP
 db LOW_KICK
 db LEER
+db 0
 db 0
 db 3 ; growth rate
 ; learnset

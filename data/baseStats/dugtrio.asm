@@ -13,8 +13,8 @@ dw DugtrioPicFront
 dw DugtrioPicBack
 ; attacks known at lvl 0
 db SCRATCH
-db GROWL
-db DIG
+db 0
+db 0
 db 0
 db 0 ; growth rate
 ; learnset
