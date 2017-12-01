@@ -529,7 +529,8 @@ Mon090_EvosMoves:
 	db 16, LEER
 	db 20, TAKE_DOWN
 	db 24, BARRIER
-	db 29, CLAMP
+	db 28, AURORA_BEAM
+	db 31, CLAMP
 	db 35, SCREECH	
 	db 41, ICE_BEAM
 	db 45, HYDRO_PUMP
@@ -754,9 +755,10 @@ Mon075_EvosMoves:
 	db 11,DEFENSE_CURL
 	db 16,ROCK_THROW
 	db 21,SELFDESTRUCT
-	db 29,HARDEN
-	db 36,EARTHQUAKE
-	db 43,EXPLOSION
+	db 27,BODY_SLAM
+	db 34,ROCK_SLIDE
+	db 39,EARTHQUAKE
+	db 47,EXPLOSION
 	db 0
 
 Mon113_EvosMoves:
@@ -2520,9 +2522,7 @@ Mon008_EvosMoves:
 	db 28, ICE_PUNCH
 	db 31, SKULL_BASH
 	db 34, BODY_SLAM
-	db 37, ICE_BEAM
-	db 40, EARTHQUAKE
-	db 43, HYDRO_PUMP
+	db 40, HYDRO_PUMP
 	db 0
 
 Mon006_EvosMoves:
