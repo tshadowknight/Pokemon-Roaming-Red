@@ -304,9 +304,23 @@ LinkCanceledText:
 	TX_FAR _LinkCanceledText
 	db "@"
 
+ShowRandomizerMenuLocal:
+	ld hl, .doneSettingRandomizerOptions	
+	push hl
+	ld a, BANK(.doneSettingRandomizerOptions)	
+	push af	
+	ld hl, ShowRandomizerMenu
+	push hl
+	ld a, BANK(ShowRandomizerMenu)
+	push af
+	jp BankSwitchCall
+.doneSettingRandomizerOptions
+	ret	
+	
 StartNewGame:
 	ld hl, wd732
 	res 1, [hl]
+	call ShowRandomizerMenuLocal
 	call OakSpeech
 	ld c, 20
 	call DelayFrames

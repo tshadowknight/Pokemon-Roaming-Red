@@ -2116,3 +2116,5 @@ INCLUDE "engine/determine_rival_battle.asm"
 INCLUDE "engine/overworld/player_movement.asm"
 
 INCLUDE "engine/randomization.asm"
+
+INCLUDE "engine/menu/randomizer.asm"
