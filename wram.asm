@@ -3168,6 +3168,7 @@ wOpponentAfterWrongAnswer:: ; da38
 ; gym quiz
 
 wRandomizerOptions:: ; da38
+; bit 4 - enable item randomizer
 ; bit 3 - enable tm randomizer
 ; bit 2 - enable learnset randomizer
 ; bit 1 - enable trainer mon randomizer

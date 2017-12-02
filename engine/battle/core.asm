@@ -1,3 +1,20 @@
+RandomizeMoveCore:
+	push hl 
+	push de
+	ld hl, .doneRandomizingMove	
+	push hl
+	ld a, BANK(.doneRandomizingMove)	
+	push af	
+	ld hl, RandomizeMove
+	push hl
+	ld a, BANK(RandomizeMove)
+	push af
+	jp BankSwitchCall
+.doneRandomizingMove	
+	pop de
+	pop hl
+	ret
+
 BattleCore:
 
 ; These are move effects (second value from the Moves table in bank $E).
@@ -6292,15 +6309,30 @@ LoadEnemyMonData:
 ; for a wild mon, first copy default moves from the mon header
 	ld hl, wMonHMoves
 	ld a, [hli]
+	ld [wUnusedC000], a
+	call RandomizeMoveCore
+	ld a, [wUnusedC000]
 	ld [de], a
 	inc de
 	ld a, [hli]
+	add 1
+	ld [wUnusedC000], a
+	call RandomizeMoveCore
+	ld a, [wUnusedC000]
 	ld [de], a
 	inc de
 	ld a, [hli]
+	add 2
+	ld [wUnusedC000], a
+	call RandomizeMoveCore
+	ld a, [wUnusedC000]
 	ld [de], a
 	inc de
 	ld a, [hl]
+	add 3
+	ld [wUnusedC000], a
+	call RandomizeMoveCore
+	ld a, [wUnusedC000]
 	ld [de], a
 	dec de
 	dec de

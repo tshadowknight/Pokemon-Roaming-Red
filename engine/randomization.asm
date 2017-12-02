@@ -36,6 +36,7 @@ RandomizeTrainerMon:
 	ld a, [wRNGAdd]
 	rra
 	ld [wRNGAdd], a
+	call AdvanceRNG	
 	pop af
 	sub 1
 	jr nc, .countRoster
@@ -66,6 +67,7 @@ RandomizeWildMon:
 	ld a, [wRNGAdd]
 	rra
 	ld [wRNGAdd], a
+	call AdvanceRNG	
 	pop af
 	sub 1
 	jr nc, .countSlot
@@ -80,7 +82,7 @@ Done:
 
 IterateUntilValid:
 	ld a, [wRNGAdd]
-	ld hl, .validMonIdxs
+	ld hl, ValidMonIdxs
 	ld b, 0
 	ld c, a
 	add hl, bc
@@ -93,8 +95,53 @@ IterateUntilValid:
 	call AdvanceRNG	
 	jr IterateUntilValid
 	jp BankSwitchCall	
-		
-.validMonIdxs:		
+
+RandomizeMove:
+	ld a, [wSeedLow]
+	ld [wRNGSub], a
+	ld a, [wSeedHigh]
+	ld [wRNGAdd], a	
+	ld a, [wcf91]
+.countMon
+	push af
+	call AdvanceRNG	
+	pop af
+	sub 1
+	jr nc, .countMon
+	ld a, [wUnusedC000]
+.countLevel	
+	push af
+	ld a, [wRNGAdd]
+	rra
+	ld [wRNGAdd], a
+	call AdvanceRNG	
+	pop af
+	sub 1
+	jr nc, .countLevel
+	ld a, [wUnusedC000]
+	jr IterateUntilValidMove		
+
+MoveDone:	
+	ld a, [wRNGAdd]
+	ld [wUnusedC000], a
+	jp BankSwitchCall
+
+IterateUntilValidMove:
+	ld a, [wRNGAdd]
+	cp 0
+	jr z, .invalid
+	cp 166
+	jr nc, .invalid
+	jr nz, MoveDone
+.invalid	
+	ld a, [wRNGAdd]
+	rra
+	ld [wRNGAdd], a
+	call AdvanceRNG	
+	jr IterateUntilValidMove
+	jp BankSwitchCall	
+	
+ValidMonIdxs:		
 	db 0
 	db 1
 	db 1
@@ -351,3 +398,4 @@ IterateUntilValid:
 	db 0
 	db 0
 	db 0
+

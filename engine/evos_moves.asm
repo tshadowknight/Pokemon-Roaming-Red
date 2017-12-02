@@ -1,3 +1,24 @@
+RandomizeMoveLocal:
+	push af
+	push bc
+	push de
+	push hl
+	ld hl, .doneRandomizingMove	
+	push hl
+	ld a, BANK(.doneRandomizingMove)	
+	push af	
+	ld hl, RandomizeMove
+	push hl
+	ld a, BANK(RandomizeMove)
+	push af
+	jp BankSwitchCall
+.doneRandomizingMove	
+	pop hl
+	pop de
+	pop bc
+	pop af
+	ret
+
 ; try to evolve the mon in [wWhichPokemon]
 TryEvolvingMon:
 	ld hl, wCanEvolveFlags
@@ -357,6 +378,11 @@ LearnMoveFromLevelUp:
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
 .next
+	ld a, [wCurEnemyLVL]
+	ld [wUnusedC000], a
+	call RandomizeMoveLocal
+	ld a, [wUnusedC000]
+	ld d, a
 	ld b, NUM_MOVES
 .checkCurrentMovesLoop ; check if the move to learn is already known
 	ld a, [hli]
@@ -417,15 +443,19 @@ WriteMonMoves:
 	cp b
 	jr nc, .nextMove2 ; min level >= move level
 
-.skipMinLevelCheck
-
+.skipMinLevelCheck	
+	ld a, [hl]
+	ld [wUnusedC000], a
+	call RandomizeMoveLocal
+	ld a, [wUnusedC000]
+	ld b, a 
 ; check if the move is already known
 	push de
 	ld c, NUM_MOVES
 .alreadyKnowsCheckLoop
 	ld a, [de]
 	inc de
-	cp [hl]
+	cp b
 	jr z, .nextMove
 	dec c
 	jr nz, .alreadyKnowsCheckLoop
@@ -465,7 +495,7 @@ WriteMonMoves:
 .writeMoveToSlot
 	pop hl
 .writeMoveToSlot2
-	ld a, [hl]
+	ld a, [wUnusedC000]
 	ld [de], a
 	ld a, [wLearningMovesFromDayCare]
 	and a
@@ -488,7 +518,7 @@ WriteMonMoves:
 	pop hl
 	ld [hl], a
 	pop hl
-	jr .nextMove
+	jp .nextMove
 
 .done
 	pop bc

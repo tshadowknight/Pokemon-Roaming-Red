@@ -1,3 +1,20 @@
+RandomizeMoveAddmon:
+	push hl 
+	push de
+	ld hl, .doneRandomizingMove	
+	push hl
+	ld a, BANK(.doneRandomizingMove)	
+	push af	
+	ld hl, RandomizeMove
+	push hl
+	ld a, BANK(RandomizeMove)
+	push af
+	jp BankSwitchCall
+.doneRandomizingMove	
+	pop de
+	pop hl
+	ret
+
 _AddPartyMon:
 ; Adds a new mon to the player's or enemy's party.
 ; [wMonDataLocation] is used in an unusual way in this function.
@@ -174,14 +191,29 @@ _AddPartyMon:
 	ld a, [hli]
 	inc de
 	push de
+	ld [wUnusedC000], a
+	call RandomizeMoveAddmon
+	ld a, [wUnusedC000]
 	ld [de], a
 	ld a, [hli]
+	add 1
+	ld [wUnusedC000], a
+	call RandomizeMoveAddmon
+	ld a, [wUnusedC000]
 	inc de
 	ld [de], a
 	ld a, [hli]
+	add 2
+	ld [wUnusedC000], a
+	call RandomizeMoveAddmon
+	ld a, [wUnusedC000]
 	inc de
 	ld [de], a
 	ld a, [hli]
+	add 3
+	ld [wUnusedC000], a
+	call RandomizeMoveAddmon
+	ld a, [wUnusedC000]
 	inc de
 	ld [de], a
 	push de

@@ -126,7 +126,7 @@ TryDoWildEncounter:
 	ld a, [hl]
 	ld [wcf91], a
 	ld [wEnemyMonSpecies2], a
-	; call RandomizeWildMonLocal
+	call RandomizeWildMonLocal
 	ld a, [wcf91]
 	ld [wEnemyMonSpecies2], a
 	call Random

@@ -175,7 +175,7 @@ ReadTrainer:
 	ld [wcf91],a ; write species somewhere (XXX why?)
 	push hl
 	push bc
-	; call RandomizeTrainerMonLocal
+	call RandomizeTrainerMonLocal
 	pop bc	
 	pop hl
 	push hl
@@ -203,7 +203,7 @@ ReadTrainer:
 	ld [wcf91],a
 	push hl
 	push bc
-	; call RandomizeTrainerMonLocal
+	call RandomizeTrainerMonLocal
 	pop bc	
 	pop hl
 	push hl
