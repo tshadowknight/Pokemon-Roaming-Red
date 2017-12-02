@@ -19,6 +19,13 @@ AdvanceRNG:
 	ret
 	
 RandomizeTrainerMon:
+	ld a, [wRandomizerOptions]
+	bit 1, a	
+	jr nz, .apply
+	ld a, [wcf91]
+	ld [wRNGAdd], a
+	jp Done
+.apply
 	ld a, [wSeedLow]
 	ld [wRNGSub], a
 	ld a, [wSeedHigh]
@@ -50,6 +57,13 @@ RandomizeTrainerMon:
 	jr IterateUntilValid
 	
 RandomizeWildMon:
+	ld a, [wRandomizerOptions]
+	bit 0, a	
+	jr nz, .apply
+	ld a, [wcf91]
+	ld [wRNGAdd], a
+	jp Done
+.apply	
 	ld a, [wSeedLow]
 	ld [wRNGSub], a
 	ld a, [wSeedHigh]
@@ -97,6 +111,13 @@ IterateUntilValid:
 	jp BankSwitchCall	
 
 RandomizeMove:
+	ld a, [wRandomizerOptions]
+	bit 2, a	
+	jr nz, .apply
+	ld a, [wUnusedC000]
+	ld [wRNGAdd], a
+	jp MoveDone
+.apply
 	ld a, [wSeedLow]
 	ld [wRNGSub], a
 	ld a, [wSeedHigh]
@@ -118,7 +139,13 @@ RandomizeMove:
 	pop af
 	sub 1
 	jr nc, .countLevel
-	ld a, [wUnusedC000]
+	ld a, [wUnusedCD37]
+.countAdditional
+	push af
+	call AdvanceRNG	
+	pop af
+	sub 1
+	jr nc, .countAdditional	
 	jr IterateUntilValidMove		
 
 MoveDone:	
@@ -130,7 +157,7 @@ IterateUntilValidMove:
 	ld a, [wRNGAdd]
 	cp 0
 	jr z, .invalid
-	cp 166
+	cp 167
 	jr nc, .invalid
 	jr nz, MoveDone
 .invalid	
@@ -142,6 +169,13 @@ IterateUntilValidMove:
 	jp BankSwitchCall	
 
 RandomizeItem:
+	ld a, [wRandomizerOptions]
+	bit 4, a	
+	jr nz, .apply
+	ld a, [wUnusedC000]
+	ld c, a
+	jr .done
+.apply
 	ld a, [wUnusedC000]
 	ld b, 0
 	ld c, a	
@@ -164,6 +198,13 @@ RandomizeItem:
 	jp BankSwitchCall	
 	
 RandomizeTM:
+	ld a, [wRandomizerOptions]
+	bit 3, a	
+	jr nz, .apply
+	ld a, [wUnusedC000]
+	ld [wRNGAdd], a
+	jp MoveDone
+.apply
 	ld a, [wSeedLow]
 	ld [wRNGSub], a
 	ld a, [wSeedHigh]

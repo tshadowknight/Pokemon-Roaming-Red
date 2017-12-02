@@ -195,23 +195,26 @@ _AddPartyMon:
 	call RandomizeMoveAddmon
 	ld a, [wUnusedC000]
 	ld [de], a
-	ld a, [hli]
-	add 1
+	ld a, [hli]	
 	ld [wUnusedC000], a
+	ld a, 1
+	ld [wUnusedCD37], a
 	call RandomizeMoveAddmon
 	ld a, [wUnusedC000]
 	inc de
 	ld [de], a
-	ld a, [hli]
-	add 2
+	ld a, [hli]	
 	ld [wUnusedC000], a
+	ld a, 2
+	ld [wUnusedCD37], a
 	call RandomizeMoveAddmon
 	ld a, [wUnusedC000]
 	inc de
 	ld [de], a
-	ld a, [hli]
-	add 3
+	ld a, [hli]	
 	ld [wUnusedC000], a
+	ld a, 3
+	ld [wUnusedCD37], a
 	call RandomizeMoveAddmon
 	ld a, [wUnusedC000]
 	inc de
