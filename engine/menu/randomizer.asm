@@ -25,6 +25,9 @@ RandTitleText:
 UnfilledCursor:	
 	db $ec
 	db "@"
+FilledCursor:	
+	db $ed
+	db "@"	
 RandoEmpty:	
 	db " @"	
 ShowRandomizerMenu:
@@ -39,7 +42,9 @@ ShowRandomizerMenu:
 	ld [wSeedLow], a
 	ld a, 0
 	ld [wRandomizerOptions], a
-	call ClearScreen
+	ld a, 1
+	ld [wUnusedC000], a ; current selected row
+	call ClearScreen	
 .drawMenu
 	; borders
 	coord hl, 0, 1
@@ -155,29 +160,46 @@ ShowRandomizerMenu:
 .drawCursors	
 	
 	ld a, [wRandomizerOptions]
-	and %00000001
+	ld d, %00000001
+	and d
 	ld b, 6
 	call .drawCursorsForRow
 	
 	ld a, [wRandomizerOptions]
-	and %00000010
+	ld d, %00000010
+	and d
 	ld b, 7
 	call .drawCursorsForRow
 	
 	ld a, [wRandomizerOptions]
-	and %00000100
+	ld d, %00000100
+	and d
 	ld b, 11
 	call .drawCursorsForRow
 	
 	ld a, [wRandomizerOptions]
-	and %00001000
+	ld d, %00001000
+	and d
 	ld b, 12
 	call .drawCursorsForRow
 	
 	ld a, [wRandomizerOptions]
-	and %00010000
+	ld d, %00010000
+	and d
 	ld b, 15
 	call .drawCursorsForRow
+	
+	coord hl, 0, 17
+	ld b, 1
+	ld c, 1
+	call ClearScreenArea
+	ld a, [wUnusedC000]
+	cp %00100000
+	jr nz, .inputLoop	
+	ld de, FilledCursor
+	ld b, $0
+	coord hl, 0, 17
+	call PlaceString
 .inputLoop
 	; process inputs
 	push de
@@ -186,6 +208,16 @@ ShowRandomizerMenu:
 	ld a, [hJoy5]
 	ld b, a
 	and A_BUTTON | B_BUTTON | D_LEFT | D_RIGHT | D_UP | D_DOWN
+	bit 5, b ; Left pressed?
+	jp nz, .pressedLeft
+	bit 4, b ; Right pressed?
+	jp nz, .pressedRight
+	bit 6, b ; Up pressed?
+	jp nz, .pressedUp
+	bit 7, b ; Down pressed?
+	jp nz, .pressedDown
+	bit 0, b ; A pressed?
+	jp nz, .pressedA
 	jr z, .inputLoop
 .done	
 	pop hl
@@ -193,16 +225,93 @@ ShowRandomizerMenu:
 	pop bc
 	pop af
 	jp BankSwitchCall
+
+.pressedA
+	ld a, [wUnusedC000]
+	cp %00100000
+	jr nz, .notOnOkRow	
+	jp .done
+.notOnOkRow	
+	jp .inputLoop	
+	
+.pressedUp
+	ld a, [wUnusedC000]
+	cp 0
+	jr nz, .noUnderFlow
+	ld a, %00100000
+	jr .pressedUpDone
+.noUnderFlow
+	rra
+	and %01111111
+.pressedUpDone
+	ld [wUnusedC000], a
+	jp .drawCursors	
+	
+.pressedDown
+	ld a, [wUnusedC000]
+	cp %00100000
+	jr nz, .noOverFlow
+	ld a, 0
+	jr .pressedDownDone
+.noOverFlow
+	cp 0
+	jr z, .isZero
+	rla
+	and %11111110
+	jr .pressedDownDone
+.isZero
+	ld a, 1	
+.pressedDownDone
+	ld [wUnusedC000], a
+	jp .drawCursors		
+	
+.pressedLeft
+	ld a, [wUnusedC000]
+	cp 0
+	jr z, .seedRowLeftPress
+	cp %00100000
+	jr z, .OKRowLeftPress
+	ld b, a 
+	ld a, [wRandomizerOptions]
+	xor b 
+  	ld [wRandomizerOptions], a	
+.seedRowLeftPress
+.OKRowLeftPress	
+	jp .drawCursors
+
+.pressedRight
+	ld a, [wUnusedC000]
+	cp 0
+	jr z, .seedRowRightPress
+	cp %00100000
+	jr z, .OKRowRightPress
+	ld b, a 
+	ld a, [wRandomizerOptions]
+	xor b 
+  	ld [wRandomizerOptions], a
+.seedRowRightPress	
+.OKRowRightPress
+	jp .drawCursors
 	
 .drawCursorsForRow
+	push de
 	push af	
-	cp 1
+	cp 0
 	ld c, 11
-	jr z, .ON	
+	jr nz, .ON	
 	ld de, RandoEmpty
 	jr .firstCursorTypeDone
-.ON
+.ON	
+	push af
+	ld a, [wUnusedC000]
+	cp d
+	jr z, .ONFilled
 	ld de, UnfilledCursor	
+	jr .ONDone	
+.ONFilled	
+	ld de, FilledCursor
+.ONDone	
+	pop af
 .firstCursorTypeDone
 	push de
 	call .calculateTilePtr	
@@ -213,12 +322,22 @@ ShowRandomizerMenu:
 	ld b, 0
 	add hl, bc
 	pop af
-	cp 1
-	jr nz, .OFF	
+	pop de
+	cp 0
+	jr z, .OFF	
 	ld de, RandoEmpty
 	jr .secondCursorTypeDone
 .OFF
+	push af
+	ld a, [wUnusedC000]
+	cp d
+	jr z, .OFFilled
 	ld de, UnfilledCursor	
+	jr .OFFDone	
+.OFFilled	
+	ld de, FilledCursor
+.OFFDone	
+	pop af	
 .secondCursorTypeDone
 	call PlaceString
 	ret	
