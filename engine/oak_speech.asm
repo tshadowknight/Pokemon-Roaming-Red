@@ -30,6 +30,19 @@ SetDefaultNames:
 	ld de, wRivalName
 	ld bc, NAME_LENGTH
 	jp CopyData
+	
+ShowRandomizerMenuLocal:
+	ld hl, .doneSettingRandomizerOptions	
+	push hl
+	ld a, BANK(.doneSettingRandomizerOptions)	
+	push af	
+	ld hl, ShowRandomizerMenu
+	push hl
+	ld a, BANK(ShowRandomizerMenu)
+	push af
+	jp BankSwitchCall
+.doneSettingRandomizerOptions
+	ret		
 
 OakSpeech:
 	ld a,$FF
@@ -37,8 +50,7 @@ OakSpeech:
 	ld a, BANK(Music_Routes2)
 	ld c,a
 	ld a, MUSIC_ROUTES2
-	call PlayMusic
-	call ClearScreen
+	call PlayMusic	
 	call LoadTextBoxTilePatterns
 	call SetDefaultNames
 	predef InitPlayerData2
@@ -49,8 +61,8 @@ OakSpeech:
 	ld [wItemQuantity],a
 	call AddItemToInventory  ; give one potion
 	
-	
-	
+	call ShowRandomizerMenuLocal
+	call ClearScreen
 	xor a
 	ld [hTilesetType],a
 	ld a,[wd732]

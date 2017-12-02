@@ -8,8 +8,10 @@ TMsOptionText:
 	db "TM:@"
 ItemsOptionText:
 	db "Items:@"
-RandOKText:
+RandGoText:
 	db "GO!@"	
+RandOKText:
+	db "OK@"	
 PokeCategoryText:
 	db "#MON@"	
 MovesCategoryText:
@@ -74,7 +76,12 @@ ShowRandomizerMenu:
 	ld de, SeedText
 	ld b, $0
 	coord hl, 1, 2
-	call PlaceString
+	call PlaceString	
+	
+	ld de, RandOKText
+	ld b, $0
+	coord hl, 17, 2
+	call PlaceString	
 	
 	ld de, PokeCategoryText
 	ld b, $0
@@ -106,7 +113,7 @@ ShowRandomizerMenu:
 	ld b, $0
 	coord hl, 1, 15
 	call PlaceString
-	ld de, RandOKText
+	ld de, RandGoText
 	ld b, $0
 	coord hl, 1, 17
 	call PlaceString	
@@ -195,10 +202,92 @@ ShowRandomizerMenu:
 	call ClearScreenArea
 	ld a, [wUnusedC000]
 	cp %00100000
-	jr nz, .inputLoop	
+	jr nz, .notBottomRow	
 	ld de, FilledCursor
 	ld b, $0
 	coord hl, 0, 17
+	call PlaceString
+
+.notBottomRow	
+	coord hl, 16, 2
+	ld b, 1
+	ld c, 1
+	call ClearScreenArea
+	ld a, [wUnusedC000]
+	cp 0
+	jr nz, .doneDrawingCusors	
+	ld de, FilledCursor
+	ld b, $0
+	coord hl, 16, 2
+	call PlaceString
+	
+.doneDrawingCusors	
+	
+.drawSeedDisplay
+	ld hl, wBuffer
+	push hl
+	
+	ld hl, NibbleToHEXDigit
+	ld a, [wSeedHigh]	
+	rra
+	rra
+	rra
+	rra
+	and $F
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld a, [hl]
+	pop hl
+	ld [hl], a 
+	inc hl  
+	push hl
+	
+	ld hl, NibbleToHEXDigit
+	ld a, [wSeedHigh]
+	and $F
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld a, [hl]
+	pop hl
+	ld [hl], a 
+	inc hl  
+	push hl
+	
+	ld hl, NibbleToHEXDigit
+	ld a, [wSeedLow]
+	rra
+	rra
+	rra
+	rra
+	and $F
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld a, [hl]
+	pop hl
+	ld [hl], a 
+	inc hl  
+	push hl
+	
+	ld hl, NibbleToHEXDigit
+	ld a, [wSeedLow]
+	and $F
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld a, [hl]
+	pop hl
+	ld [hl], a 
+	inc hl  
+	
+	ld a, $50
+	ld [hl], a
+	
+	ld de, wBuffer
+	ld b, $0
+	coord hl, 7, 2
 	call PlaceString
 .inputLoop
 	; process inputs
@@ -363,3 +452,21 @@ ShowRandomizerMenu:
 	ld b, 0
 	add hl, bc
 	ret
+	
+NibbleToHEXDigit:
+	db "0"
+	db "1"
+	db "2"
+	db "3"
+	db "4"
+	db "5"
+	db "6"
+	db "7"
+	db "8"
+	db "9"
+	db "A"
+	db "B"
+	db "C"
+	db "D"
+	db "E"
+	db "F"		
