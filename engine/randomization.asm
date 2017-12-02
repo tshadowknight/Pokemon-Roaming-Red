@@ -163,6 +163,20 @@ RandomizeItem:
 	ld [wUnusedC000], a	
 	jp BankSwitchCall	
 	
+RandomizeTM:
+	ld a, [wSeedLow]
+	ld [wRNGSub], a
+	ld a, [wSeedHigh]
+	ld [wRNGAdd], a	
+	ld a, [wUnusedC000]
+.countTMIdx	
+	push af
+	call AdvanceRNG	
+	pop af
+	sub 1
+	jr nc, .countTMIdx
+	jr IterateUntilValidMove
+		
 ValidMonIdxs:		
 	db 0
 	db 1

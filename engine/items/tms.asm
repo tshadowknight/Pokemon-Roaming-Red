@@ -1,3 +1,20 @@
+RandomizeTMLocal:
+	push hl 
+	push de
+	ld hl, .doneRandomizingTM	
+	push hl
+	ld a, BANK(.doneRandomizingTM)	
+	push af	
+	ld hl, RandomizeTM
+	push hl
+	ld a, BANK(RandomizeTM)
+	push af
+	jp BankSwitchCall
+.doneRandomizingTM
+	pop de
+	pop hl
+	ret
+
 ; tests if mon [wcf91] can learn move [wMoveNum]
 CanLearnTM:
 	ld a, [wcf91]
@@ -25,6 +42,12 @@ CanLearnTM:
 TMToMove:
 	ld a, [wd11e]
 	dec a
+	cp 51
+	jr nc, .keepHMs
+	ld [wUnusedC000], a 
+	call RandomizeTMLocal
+	ld a, [wUnusedC000]
+.keepHMs
 	ld hl, TechnicalMachines
 	ld b, $0
 	ld c, a
