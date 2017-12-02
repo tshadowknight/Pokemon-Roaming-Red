@@ -15,6 +15,15 @@ HiddenItems:
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld a, [wHiddenObjectFunctionArgument] ; item ID
 	ld [wd11e], a
+	ld b, a
+	ld c, 1
+	call GiveItem
+	jp nc, BagFull
+	ld hl, wObtainedHiddenItemsFlags
+	ld a, [wHiddenItemOrCoinsIndex]
+	ld c, a
+	ld b, FLAG_SET
+	predef FlagActionPredef	
 	call GetItemName
 	tx_pre_jump FoundHiddenItemText
 
@@ -23,21 +32,13 @@ INCLUDE "data/hidden_item_coords.asm"
 FoundHiddenItemText:
 	TX_FAR _FoundHiddenItemText
 	TX_ASM
-	ld a, [wHiddenObjectFunctionArgument] ; item ID
-	ld b, a
-	ld c, 1
-	call GiveItem
-	jr nc, .bagFull
-	ld hl, wObtainedHiddenItemsFlags
-	ld a, [wHiddenItemOrCoinsIndex]
-	ld c, a
-	ld b, FLAG_SET
-	predef FlagActionPredef
 	ld a, SFX_GET_ITEM_2
 	call PlaySoundWaitForCurrent
 	call WaitForSoundToFinish
 	jp TextScriptEnd
-.bagFull
+
+BagFull:
+	TX_ASM
 	call WaitForTextScrollButtonPress ; wait for button press
 	xor a
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a

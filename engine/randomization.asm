@@ -140,6 +140,28 @@ IterateUntilValidMove:
 	call AdvanceRNG	
 	jr IterateUntilValidMove
 	jp BankSwitchCall	
+
+RandomizeItem:
+	ld a, [wUnusedC000]
+	ld b, 0
+	ld c, a	
+	ld hl, ValidItemIdxs
+	add hl, bc
+	ld a, [hl] 
+	cp 2 ; do not randomize key items, tms and hms
+	jr z, .done
+.rollItem	
+	call Random 	
+	ld c, a	
+	ld hl, ValidItemIdxs
+	add hl, bc
+	ld a, [hl]
+	cp 1
+	jr nz, .rollItem
+.done
+	ld a, c
+	ld [wUnusedC000], a	
+	jp BankSwitchCall	
 	
 ValidMonIdxs:		
 	db 0
@@ -399,3 +421,260 @@ ValidMonIdxs:
 	db 0
 	db 0
 
+ValidItemIdxs:	
+	db 0
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 0
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 2
+	db 0
+	db 2
+	db 1
+	db 1
+	db 2
+	db 1
+	db 0
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 2
+	db 1
+	db 1
+	db 1
+	db 2
+	db 2
+	db 1
+	db 1
+	db 1
+	db 1
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 1
+	db 2
+	db 2
+	db 2
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 2
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0

@@ -4565,12 +4565,35 @@ ReloadMapSpriteTilePatterns::
 	call LoadFontTilePatterns
 	jp UpdateSprites
 
+RandomizeItem_:	
+	push af
+	push bc
+	push de
+	push hl
+	ld hl, .doneRandomizingItem	
+	push hl
+	ld a, [H_LOADEDROMBANK]
+	push af	
+	ld hl, RandomizeItem
+	push hl
+	ld a, BANK(RandomizeItem)
+	push af
+	jp BankSwitchCall
+.doneRandomizingItem
+	pop hl
+	pop de
+	pop bc
+	pop af
+	ret	
 
 GiveItem::
 ; Give player quantity c of item b,
 ; and copy the item's name to wcf4b.
 ; Return carry on success.
 	ld a, b
+	ld [wUnusedC000], a 
+	call RandomizeItem_	
+	ld a, [wUnusedC000]
 	ld [wd11e], a
 	ld [wcf91], a
 	ld a, c
