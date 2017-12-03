@@ -23,7 +23,7 @@ RandOnText:
 RandOffText:
 	db "OFF@"	
 RandTitleText:
-	db "Randomizer Settings@"		
+	db "Randomizer  Settings@"		
 UnfilledCursor:	
 	db $ec
 	db "@"
@@ -332,6 +332,15 @@ ShowRandomizerMenu:
 	jp nz, .pressedA
 	jr z, .inputLoop
 .done	
+	ld a, [wSeedHigh]
+	cp 0
+	jr nz, .nonZeroSeed
+	ld a, [wSeedLow]
+	cp 0
+	jr nz, .nonZeroSeed
+	ld a, 1
+	ld [wSeedLow], a
+.nonZeroSeed	
 	pop hl
 	pop de 
 	pop bc
