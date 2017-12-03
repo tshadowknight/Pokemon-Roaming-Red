@@ -29,7 +29,10 @@ UnfilledCursor:
 	db "@"
 FilledCursor:	
 	db $ed
-	db "@"	
+	db "@"
+DownCursor:	
+	db $ee
+	db "@"		
 RandoEmpty:	
 	db " @"	
 ShowRandomizerMenu:
@@ -46,6 +49,8 @@ ShowRandomizerMenu:
 	ld [wRandomizerOptions], a
 	ld a, 1
 	ld [wUnusedC000], a ; current selected row
+	ld a, 4
+	ld [wUnusedCD37], a ; current position in seed row
 	call ClearScreen	
 .drawMenu
 	; borders
@@ -165,6 +170,17 @@ ShowRandomizerMenu:
 	coord hl, 16, 15
 	call PlaceString
 .drawCursors	
+
+	ld a, "┌"
+	inc a	
+	coord hl, 7, 1
+	ld [hl], a
+	coord hl, 8, 1
+	ld [hl], a
+	coord hl, 9, 1
+	ld [hl], a
+	coord hl, 10, 1
+	ld [hl], a
 	
 	ld a, [wRandomizerOptions]
 	ld d, %00000001
@@ -216,10 +232,17 @@ ShowRandomizerMenu:
 	ld a, [wUnusedC000]
 	cp 0
 	jr nz, .doneDrawingCusors	
-	ld de, FilledCursor
-	ld b, $0
-	coord hl, 16, 2
-	call PlaceString
+	ld a, [wUnusedCD37]
+	cp 0
+	jp z, .drawNybble0Cursor
+	cp 1
+	jp z, .drawNybble1Cursor
+	cp 2
+	jp z, .drawNybble2Cursor
+	cp 3
+	jp z, .drawNybble3Cursor
+	cp 4
+	jp z, .drawOKCursor	
 	
 .doneDrawingCusors	
 	
@@ -227,7 +250,7 @@ ShowRandomizerMenu:
 	ld hl, wBuffer
 	push hl
 	
-	ld hl, NibbleToHEXDigit
+	ld hl, NybbleToHEXDigit
 	ld a, [wSeedHigh]	
 	rra
 	rra
@@ -243,7 +266,7 @@ ShowRandomizerMenu:
 	inc hl  
 	push hl
 	
-	ld hl, NibbleToHEXDigit
+	ld hl, NybbleToHEXDigit
 	ld a, [wSeedHigh]
 	and $F
 	ld b, 0
@@ -255,7 +278,7 @@ ShowRandomizerMenu:
 	inc hl  
 	push hl
 	
-	ld hl, NibbleToHEXDigit
+	ld hl, NybbleToHEXDigit
 	ld a, [wSeedLow]
 	rra
 	rra
@@ -271,7 +294,7 @@ ShowRandomizerMenu:
 	inc hl  
 	push hl
 	
-	ld hl, NibbleToHEXDigit
+	ld hl, NybbleToHEXDigit
 	ld a, [wSeedLow]
 	and $F
 	ld b, 0
@@ -315,6 +338,41 @@ ShowRandomizerMenu:
 	pop af
 	jp BankSwitchCall
 
+.drawOKCursor	
+	ld de, FilledCursor
+	ld b, $0
+	coord hl, 16, 2
+	call PlaceString
+	jp .doneDrawingCusors
+
+.drawNybble0Cursor	
+	ld de, DownCursor
+	ld b, $0
+	coord hl, 7, 1
+	call PlaceString
+	jp .doneDrawingCusors
+
+.drawNybble1Cursor	
+	ld de, DownCursor
+	ld b, $0
+	coord hl, 8, 1
+	call PlaceString
+	jp .doneDrawingCusors	
+
+.drawNybble2Cursor	
+	ld de, DownCursor
+	ld b, $0
+	coord hl, 9, 1
+	call PlaceString
+	jp .doneDrawingCusors	
+
+.drawNybble3Cursor	
+	ld de, DownCursor
+	ld b, $0
+	coord hl, 10, 1
+	call PlaceString
+	jp .doneDrawingCusors		
+
 .pressedA
 	ld a, [wUnusedC000]
 	cp %00100000
@@ -324,6 +382,9 @@ ShowRandomizerMenu:
 	jp .inputLoop	
 	
 .pressedUp
+	ld a, [wUnusedCD37]
+	cp 4
+	jr nz, .pressedUpOnSeedVal
 	ld a, [wUnusedC000]
 	cp 0
 	jr nz, .noUnderFlow
@@ -335,8 +396,125 @@ ShowRandomizerMenu:
 .pressedUpDone
 	ld [wUnusedC000], a
 	jp .drawCursors	
+
+.pressedUpOnSeedVal
+	ld a, 1	
+	jr .handleSeedModification
+	
+.pressedDownOnSeedVal
+	ld a, 0
+	jr .handleSeedModification	
+	
+.handleSeedModification
+	ld b, a 
+	ld a, [wUnusedCD37]
+	cp 0
+	jr z, .getHighHigh
+	cp 1
+	jr z, .getHighLow
+	cp 2
+	jr z, .getLowHigh
+	cp 3
+	jr z, .getLowLow
+.gotNybble
+	ld c, a	
+	ld a, b 
+	cp 1
+	ld a, c
+	jr z, .addToNybble
+	dec a 
+	jr .updatedNybble
+.addToNybble
+	inc a	
+.updatedNybble	
+	and $F
+	ld b, a
+	ld a, [wUnusedCD37]
+	cp 0
+	jr z, .storeHighHigh
+	cp 1
+	jr z, .storeHighLow
+	cp 2
+	jr z, .storeLowHigh
+	cp 3
+	jr z, .storeLowLow
+.storedNybble	
+	jp .drawSeedDisplay	
+	
+.getHighHigh
+	ld a, [wSeedHigh]
+	rra
+	rra
+	rra
+	rra
+	and $F 
+	jr .gotNybble
+	
+.getHighLow
+	ld a, [wSeedHigh]
+	and $F 
+	jr .gotNybble	
+	
+.getLowHigh
+	ld a, [wSeedLow]
+	rra
+	rra
+	rra
+	rra
+	and $F 
+	jr .gotNybble
+
+.getLowLow
+	ld a, [wSeedLow]
+	and $F 
+	jr .gotNybble	
+	
+.storeHighHigh
+	ld a, b
+	rla 
+	rla
+	rla
+	rla
+	and $F0
+	ld b, a 
+	ld a, [wSeedHigh]
+	and $F
+	or b
+	ld [wSeedHigh], a
+	jr .storedNybble
+	
+.storeHighLow
+	ld a, [wSeedHigh]
+	and $F0
+    or b	
+	ld [wSeedHigh], a
+	jr .storedNybble	
+	
+.storeLowHigh
+	ld a, b
+	rla 
+	rla
+	rla
+	rla
+	and $F0
+	ld b, a 
+	ld a, [wSeedLow]
+	and $F
+	or b
+	ld [wSeedLow], a
+	jr .storedNybble
+	
+.storeLowLow
+	ld a, [wSeedLow]
+	and $F0
+    or b	
+	ld [wSeedLow], a
+	jr .storedNybble		
 	
 .pressedDown
+	ld a, [wUnusedCD37]
+	cp 4
+	jp nz, .pressedDownOnSeedVal
 	ld a, [wUnusedC000]
 	cp %00100000
 	jr nz, .noOverFlow
@@ -364,10 +542,21 @@ ShowRandomizerMenu:
 	ld a, [wRandomizerOptions]
 	xor b 
   	ld [wRandomizerOptions], a	
-.seedRowLeftPress
 .OKRowLeftPress	
 	jp .drawCursors
-
+	
+.seedRowLeftPress
+	ld a, [wUnusedCD37]
+	cp 0
+	jr z, .leftEndOfSeedRow
+	dec a
+	jr .seedRowLeftPressDone
+.leftEndOfSeedRow
+	ld a, 4		
+.seedRowLeftPressDone
+	ld [wUnusedCD37], a
+	jp .drawCursors
+	
 .pressedRight
 	ld a, [wUnusedC000]
 	cp 0
@@ -378,8 +567,19 @@ ShowRandomizerMenu:
 	ld a, [wRandomizerOptions]
 	xor b 
   	ld [wRandomizerOptions], a
-.seedRowRightPress	
 .OKRowRightPress
+	jp .drawCursors
+	
+.seedRowRightPress	
+	ld a, [wUnusedCD37]
+	cp 4
+	jr z, .rightEndOfSeedRow
+	inc a
+	jr .seedRowRightPressDone
+.rightEndOfSeedRow
+	ld a, 0	
+.seedRowRightPressDone
+	ld [wUnusedCD37], a	
 	jp .drawCursors
 	
 .drawCursorsForRow
@@ -453,7 +653,7 @@ ShowRandomizerMenu:
 	add hl, bc
 	ret
 	
-NibbleToHEXDigit:
+NybbleToHEXDigit:
 	db "0"
 	db "1"
 	db "2"
