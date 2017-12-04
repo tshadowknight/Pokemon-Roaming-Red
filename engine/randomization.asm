@@ -47,7 +47,7 @@ RandomizeTrainerMon:
 	pop af
 	sub 1
 	jr nc, .countRoster
-	ld a, [wUnusedC000]
+	ld a, [wUnusedCD3D]
 .countPartyMon	
 	push af
 	call AdvanceRNG	
@@ -75,7 +75,7 @@ RandomizeWildMon:
 	pop af
 	sub 1
 	jr nc, .countMap
-	ld a, [wUnusedC000]
+	ld a, [wUnusedCD3D]
 .countSlot	
 	push af
 	ld a, [wRNGAdd]
@@ -85,9 +85,7 @@ RandomizeWildMon:
 	pop af
 	sub 1
 	jr nc, .countSlot
-	ld a, [wUnusedC000]
-	jr IterateUntilValid
-	
+	jr IterateUntilValid	
 	
 Done:	
 	ld a, [wRNGAdd]

@@ -163,9 +163,9 @@ ReadTrainer:
 .IterateTrainer
 	ld a,[hli]
 	cp $FF ; is the trainer special?
-	jr z,.SpecialTrainer ; if so, check for special moves
 	ld a, 1
-	ld [wUnusedC000], a
+	ld [wUnusedCD3D], a
+	jr z,.SpecialTrainer ; if so, check for special moves	
 .LoopTrainerData
 	
 	call ModifyLevel	
@@ -186,9 +186,9 @@ ReadTrainer:
 	push hl
 	call AddPartyMon
 	pop hl
-	ld a, [wUnusedC000]
+	ld a, [wUnusedCD3D]
 	add 1
-	ld [wUnusedC000], a
+	ld [wUnusedCD3D], a
 	jr .LoopTrainerData
 .SpecialTrainer
 ; if this code is being run:
@@ -214,6 +214,9 @@ ReadTrainer:
 	push hl
 	call AddPartyMon
 	pop hl
+	ld a, [wUnusedCD3D]
+	add 1
+	ld [wUnusedCD3D], a
 	jr .SpecialTrainer
 .AddLoneMove
 	jr .FinishUp ; disable special moves	

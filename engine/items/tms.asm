@@ -42,17 +42,21 @@ CanLearnTM:
 TMToMove:
 	ld a, [wd11e]
 	dec a
-	cp 51
-	jr nc, .keepHMs
-	ld [wUnusedC000], a 
-	call RandomizeTMLocal
-	ld a, [wUnusedC000]
-.keepHMs
+	ld e, a
 	ld hl, TechnicalMachines
 	ld b, $0
 	ld c, a
 	add hl, bc
 	ld a, [hl]
+	ld d, a 
+	ld a, e
+	cp 51
+	ld a, d	
+	jr nc, .keepHMs
+	ld [wUnusedC000], a 
+	call RandomizeTMLocal
+	ld a, [wUnusedC000]
+.keepHMs
 	ld [wd11e], a
 	ret
 

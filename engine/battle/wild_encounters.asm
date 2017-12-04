@@ -108,7 +108,7 @@ TryDoWildEncounter:
 .gotEncounterSlot
 ; determine which wild pokemon (grass or water) can appear in the half-block we're standing in
 	ld a, c 
-	ld [wUnusedC000], a
+	ld [wUnusedCD3D], a
 	ld c, [hl]
 	ld hl, wGrassMons
 	aCoord 8, 9
