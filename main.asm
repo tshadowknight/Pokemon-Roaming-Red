@@ -926,6 +926,17 @@ INCLUDE "engine/intro.asm"
 INCLUDE "engine/trade2.asm"
 
 
+INCLUDE "engine/modify_evo_stage.asm"
+
+INCLUDE "engine/determine_rival_battle.asm"
+
+INCLUDE "engine/overworld/player_movement.asm"
+
+INCLUDE "engine/randomization.asm"
+
+INCLUDE "engine/menu/randomizer.asm"
+
+
 SECTION "bank11",ROMX,BANK[$11]
 
 INCLUDE "data/mapHeaders/lavendertown.asm"
@@ -2108,13 +2119,3 @@ INCLUDE "engine/overworld/elevator.asm"
 INCLUDE "engine/items/tm_prices.asm"
 
 SECTION "ScalingFunctions",ROMX,BANK[$2D]
-
-INCLUDE "engine/modify_evo_stage.asm"
-
-INCLUDE "engine/determine_rival_battle.asm"
-
-INCLUDE "engine/overworld/player_movement.asm"
-
-INCLUDE "engine/randomization.asm"
-
-INCLUDE "engine/menu/randomizer.asm"
