@@ -2224,6 +2224,7 @@ ItemUseTMHM:
 .skipAdding
 	inc a
 	ld [wd11e],a
+	ld [wUnusedCD37], a
 	predef TMToMove ; get move ID from TM/HM ID
 	ld a,[wd11e]
 	ld [wMoveNum],a
@@ -2278,6 +2279,16 @@ ItemUseTMHM:
 	call RunDefaultPaletteCommand
 	jp LoadScreenTilesFromBuffer1 ; restore saved screen
 .checkIfAbleToLearnMove
+	; enable 100% HM compatibility when moves are randomized
+	ld a, [wRandomizerOptions]
+	bit 3, a	
+	jr z, .regularCompatCheck
+	ld a, [wUnusedCD37]
+	dec a
+	cp 51
+	jr c, .regularCompatCheck
+	jr .checkIfAlreadyLearnedMove
+.regularCompatCheck	
 	predef CanLearnTM ; check if the pokemon can learn the move
 	push bc
 	ld a,[wWhichPokemon]

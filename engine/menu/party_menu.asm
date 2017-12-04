@@ -101,7 +101,19 @@ RedrawPartyMenu_:
 	jr .printLevel
 .teachMoveMenu
 	push hl
+	; enable 100% HM compatibility when moves are randomized
+	ld a, [wRandomizerOptions]
+	bit 3, a	
+	jr z, .regularCompatCheck
+	ld a, [wUnusedCD37]
+	dec a
+	cp 51
+	jr c, .regularCompatCheck
+	ld c, 1
+	jr .skipCompatCheck
+.regularCompatCheck
 	predef CanLearnTM ; check if the pokemon can learn the move
+.skipCompatCheck		
 	pop hl
 	ld de,.ableToLearnMoveText
 	ld a,c
