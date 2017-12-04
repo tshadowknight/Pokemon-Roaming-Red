@@ -107,7 +107,7 @@ RedrawPartyMenu_:
 	jr z, .regularCompatCheck
 	ld a, [wUnusedCD37]
 	dec a
-	cp 51
+	cp 50
 	jr c, .regularCompatCheck
 	ld c, 1
 	jr .skipCompatCheck

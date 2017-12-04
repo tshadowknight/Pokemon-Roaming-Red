@@ -75,7 +75,7 @@ TMToMove:
 	ld a, [hl]
 	ld d, a 
 	ld a, e
-	cp 51
+	cp 50
 	ld a, d	
 	jr nc, .keepHMs
 	ld [wUnusedC000], a 
