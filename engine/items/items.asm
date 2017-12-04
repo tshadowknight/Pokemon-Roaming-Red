@@ -235,8 +235,16 @@ ItemUseBall:
 	ld b,a
 
 .skipAilmentValueSubtraction
+	; enforce minimum catch rate when wild mons are randomized(85/255)
+	ld a, [wRandomizerOptions]
+	bit 0, a	
+	jr z, .notRandomizingWildMon
+	ld a,b 
+	cp 85
+	jr c, .captured
+.notRandomizingWildMon
 	push bc ; save (Rand1 - Status)
-
+	
 ; Calculate MaxHP * 255.
 	xor a
 	ld [H_MULTIPLICAND],a
