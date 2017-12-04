@@ -215,6 +215,40 @@ RandomizeTM:
 	sub 1
 	jr nc, .countTMIdx
 	jr IterateUntilValidMove
+	
+RandomizeCanLearnTM:
+	ld a, [wRandomizerOptions]
+	bit 3, a	
+	jr nz, .apply
+	ld a, 1
+	ld [wRNGAdd], a
+	jp MoveDone
+.apply
+	ld a, [wSeedLow]
+	ld [wRNGSub], a
+	ld a, [wSeedHigh]
+	ld [wRNGAdd], a	
+	ld a, [wcf91]
+.countMon	
+	push af
+	call AdvanceRNG	
+	pop af
+	sub 1
+	jr nc, .countMon
+	ld a, [wMoveNum]
+.countTM	
+	push af
+	ld a, [wRNGAdd]
+	rra
+	ld [wRNGAdd], a
+	call AdvanceRNG	
+	pop af
+	sub 1
+	jr nc, .countTM	
+	ld a, [wRNGAdd]
+	and 1
+	ld [wRNGAdd], a
+	jp MoveDone
 		
 ValidMonIdxs:		
 	db 0
