@@ -157,7 +157,7 @@ IterateUntilValidMove:
 	ld a, [wRNGAdd]
 	cp 0
 	jr z, .invalid
-	cp 167
+	cp 165
 	jr nc, .invalid
 	jr nz, MoveDone
 .invalid	
