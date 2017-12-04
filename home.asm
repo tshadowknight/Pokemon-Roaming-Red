@@ -1162,11 +1162,8 @@ HoldTextDisplayOpen::
 	jr nz,HoldTextDisplayOpen
 
 CloseTextDisplayAfterDelay::
-	call DelayFrame
-	call DelayFrame
-	call DelayFrame	
-	call DelayFrame	
-	call DelayFrame		
+	ld c, 5
+	call DelayFrames	
 CloseTextDisplay::
 	ld a,[wCurMap]
 	call SwitchToMapRomBank
@@ -3485,21 +3482,32 @@ WaitForTextScrollButtonPress::
 	ret
 
 ; (unless in link battle) waits for A or B being pressed and outputs the scrolling sound effect
-ManualTextScroll::
+ManualTextScroll:: ; 3898 (0:3898)
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	jr z, .inLinkBattle
-	ld a,[wOptions]
-	and $f
-	cp 0
-	jr z, .noInputWait
-	call WaitForTextScrollButtonPress
-.noInputWait	
+	call WaitForTextScrollButtonHold
 	ld a, SFX_PRESS_AB
 	jp PlaySound
 .inLinkBattle
 	ld c, 65
 	jp DelayFrames
+
+WaitForTextScrollButtonHold:
+	ld a, [hJoy7]
+	push af
+	ld a, [hJoy6]
+	push af
+	ld a, $1
+	ld [hJoy7], a
+	ld a, $ff
+	ld [hJoy6], a
+	call WaitForTextScrollButtonPress
+	pop af
+	ld [hJoy6], a
+	pop af
+	ld [hJoy7], a
+	ret
 
 ; function to do multiplication
 ; all values are big endian
