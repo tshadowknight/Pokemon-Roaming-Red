@@ -30,6 +30,10 @@ Route16Script0:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	ld a, SNORLAX
+	ld [wcf91], a
+	ld [wUnusedCD3D], a
+	call RandomizeMon
+	ld a, [wcf91]
 	ld [wCurOpponent], a
 	call DetermineReferenceLevel
 	ld a, [wReferenceLevel]

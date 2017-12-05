@@ -75,6 +75,10 @@ Lab4Text1:
 	call PrintText
 	SetEvent EVENT_LAB_HANDING_OVER_FOSSIL_MON
 	ld a, [wFossilMon]
+	ld [wcf91], a
+	ld [wUnusedCD3D], a
+	call RandomizeMon
+	ld a, [wcf91]
 	ld b, a
 	call DetermineReferenceLevel
 	ld a, [wReferenceLevel]

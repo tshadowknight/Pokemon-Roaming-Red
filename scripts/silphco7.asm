@@ -316,7 +316,12 @@ SilphCo7Text1:
 .givelapras
 	ld hl, .MeetLaprasGuyText
 	call PrintText
-	ld b, LAPRAS
+	ld a, LAPRAS
+	ld [wcf91], a
+	ld [wUnusedCD3D], a
+	call RandomizeMon
+	ld a, [wcf91]
+	ld b, a
 	Call DetermineReferenceLevel
 	ld a, [wReferenceLevel]
 	ld c, a	

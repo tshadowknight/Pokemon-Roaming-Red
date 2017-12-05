@@ -4812,6 +4812,26 @@ DetermineReferenceLevel::
 	pop af
 	ret
 	
+RandomizeMon:	
+	push af
+	push bc
+	push de
+	push hl
+	ld hl, .doneRandomizingMon	
+	push hl
+	ld a, [H_LOADEDROMBANK]
+	push af	
+	ld hl, RandomizeWildMon
+	push hl
+	ld a, BANK(RandomizeWildMon)
+	push af
+	jp BankSwitchCall
+.doneRandomizingMon
+	pop hl
+	pop de
+	pop bc
+	pop af
+	ret	
 
 	
 BankSwitchCall:

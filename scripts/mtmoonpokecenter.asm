@@ -42,8 +42,16 @@ MagikarpSalesmanText:
 	jr nc, .enoughMoney
 	ld hl, .NoMoneyText
 	jr .printText
-.enoughMoney
-	lb bc, MAGIKARP, 5
+.enoughMoney	
+	ld a, MAGIKARP
+	ld [wcf91], a
+	ld [wUnusedCD3D], a
+	call RandomizeMon
+	ld a, [wcf91]
+	ld b, a
+	Call DetermineReferenceLevel
+	ld a, [wReferenceLevel]
+	ld c, a	
 	call GivePokemon
 	jr nc, .done
 	xor a

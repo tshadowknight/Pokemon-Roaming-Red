@@ -11,7 +11,12 @@ CeladonMansion5Text1:
 
 CeladonMansion5Text2:
 	TX_ASM
-	ld b, EEVEE
+	ld a, EEVEE
+	ld [wcf91], a
+	ld [wUnusedCD3D], a
+	call RandomizeMon
+	ld a, [wcf91]
+	ld b, a
 	Call DetermineReferenceLevel
 	ld a, [wReferenceLevel]
 	ld c, a

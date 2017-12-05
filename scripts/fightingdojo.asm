@@ -256,9 +256,12 @@ FightingDojoText6:
 	ld hl, OtherHitmonText
 	call PrintText
 	jr .done
-.GetMon
+.GetMon	
 	ld a, HITMONLEE
-	call DisplayPokedex
+	ld [wcf91], a
+	ld [wUnusedCD3D], a
+	call RandomizeMon
+	ld a, [wcf91]	
 	ld hl, WantHitmonleeText
 	call PrintText
 	call YesNoChoice
@@ -295,6 +298,10 @@ FightingDojoText7:
 	jr .done
 .GetMon
 	ld a, HITMONCHAN
+	ld [wcf91], a
+	ld [wUnusedCD3D], a
+	call RandomizeMon
+	ld a, [wcf91]
 	call DisplayPokedex
 	ld hl, WantHitmonchanText
 	call PrintText
