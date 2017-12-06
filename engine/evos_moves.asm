@@ -445,9 +445,10 @@ WriteMonMoves:
 	cp b
 	jr nc, .nextMove2 ; min level >= move level
 
-.skipMinLevelCheck	
-	ld a, [hl]
+.skipMinLevelCheck
+	ld a, b
 	ld [wUnusedC000], a
+	ld a, [hl]
 	ld [wUnusedCD40], a
 	call RandomizeMoveLocal
 	ld a, [wUnusedC000]
