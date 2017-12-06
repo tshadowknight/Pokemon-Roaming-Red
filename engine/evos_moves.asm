@@ -448,6 +448,7 @@ WriteMonMoves:
 .skipMinLevelCheck	
 	ld a, [hl]
 	ld [wUnusedC000], a
+	ld [wUnusedCD40], a
 	call RandomizeMoveLocal
 	ld a, [wUnusedC000]
 	ld b, a 
