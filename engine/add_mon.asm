@@ -192,11 +192,13 @@ _AddPartyMon:
 	inc de
 	push de
 	ld [wUnusedC000], a
+	ld [wUnusedCD40], a
 	call RandomizeMoveAddmon
 	ld a, [wUnusedC000]
 	ld [de], a
 	ld a, [hli]	
 	ld [wUnusedC000], a
+	ld [wUnusedCD40], a
 	ld a, 1
 	ld [wUnusedCD37], a
 	call RandomizeMoveAddmon
@@ -205,6 +207,7 @@ _AddPartyMon:
 	ld [de], a
 	ld a, [hli]	
 	ld [wUnusedC000], a
+	ld [wUnusedCD40], a
 	ld a, 2
 	ld [wUnusedCD37], a
 	call RandomizeMoveAddmon
@@ -213,6 +216,7 @@ _AddPartyMon:
 	ld [de], a
 	ld a, [hli]	
 	ld [wUnusedC000], a
+	ld [wUnusedCD40], a
 	ld a, 3
 	ld [wUnusedCD37], a
 	call RandomizeMoveAddmon

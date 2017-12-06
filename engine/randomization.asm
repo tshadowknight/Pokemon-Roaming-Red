@@ -112,7 +112,7 @@ RandomizeMove:
 	ld a, [wRandomizerOptions]
 	bit 2, a	
 	jr nz, .apply
-	ld a, [wUnusedC000]
+	ld a, [wUnusedCD40]
 	ld [wRNGAdd], a
 	jp MoveDone
 .apply

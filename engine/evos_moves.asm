@@ -380,6 +380,8 @@ LearnMoveFromLevelUp:
 .next
 	ld a, [wCurEnemyLVL]
 	ld [wUnusedC000], a
+	ld a, d
+	ld [wUnusedCD40], a
 	call RandomizeMoveLocal
 	ld a, [wUnusedC000]
 	ld d, a

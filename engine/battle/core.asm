@@ -6310,12 +6310,14 @@ LoadEnemyMonData:
 	ld hl, wMonHMoves
 	ld a, [hli]
 	ld [wUnusedC000], a
+	ld [wUnusedCD40], a
 	call RandomizeMoveCore
 	ld a, [wUnusedC000]
 	ld [de], a
 	inc de
 	ld a, [hli]
 	ld [wUnusedC000], a
+	ld [wUnusedCD40], a
 	ld a, 1
 	ld [wUnusedCD37], a
 	call RandomizeMoveCore
@@ -6324,6 +6326,7 @@ LoadEnemyMonData:
 	inc de
 	ld a, [hli]	
 	ld [wUnusedC000], a
+	ld [wUnusedCD40], a
 	ld a, 2
 	ld [wUnusedCD37], a
 	call RandomizeMoveCore
@@ -6332,6 +6335,7 @@ LoadEnemyMonData:
 	inc de
 	ld a, [hl]	
 	ld [wUnusedC000], a
+	ld [wUnusedCD40], a
 	ld a, 3
 	ld [wUnusedCD37], a
 	call RandomizeMoveCore
