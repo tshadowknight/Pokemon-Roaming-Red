@@ -57,7 +57,7 @@ ModifyLevel:
 .applyTrainerPartySizeScaling
 	push bc
 	ld hl, .partySizeFactors
-	ld a, [wUnusedC000]
+	ld a, [wUnusedD08A]
 	ld b, 0
 	dec a 
 	ld c, a 
@@ -93,12 +93,12 @@ ModifyLevel:
 	ret
 	
 .partySizeFactors
-	db "4"
-	db "2"
-	db "2"
-	db "1"
-	db "1"
-	db "0"	
+	db 4
+	db 2
+	db 2
+	db 1
+	db 1
+	db 0	
 	
 ModifyEvoStageLocal:
 	ld hl, .doneModifyingEvoStage	
@@ -178,6 +178,19 @@ ReadTrainer:
 	ld a, 1
 	ld [wUnusedCD3D], a
 	jr z,.SpecialTrainer ; if so, check for special moves	
+	push hl
+	ld b, 0
+.CountRegularTrainerMon
+	ld a, [hl]	
+	and a
+	jr z, .trainerMonCounted
+	inc hl
+	inc b
+	jr .CountRegularTrainerMon
+.trainerMonCounted	
+	pop hl
+	ld a, b 
+	ld [wUnusedD08A], a ; store trainer mon count
 .LoopTrainerData
 	call ModifyLevel	
 	ld a,[hli]
