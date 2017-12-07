@@ -9,14 +9,6 @@ ModifyLevel:
 	call Random
 	and %0011
 	ld b, a
-	call Random
-	and %0001
-	cp 0
-	jr z, .subtract	
-	ld a, d	
-	add b		
-	jr .doneApplyingVariance	
-.subtract
 	ld a, d		
 	sub b	
 	jr nc, .doneApplyingVariance
@@ -62,7 +54,19 @@ ModifyLevel:
 	jr z, .applyPlusFive
 	cp $F7 ; Lance
 	jr z, .applyPlusFive
+.applyTrainerPartySizeScaling
+	push bc
+	ld hl, .partySizeFactors
+	ld a, [wUnusedC000]
+	ld b, 0
+	dec a 
+	ld c, a 
+	add hl, bc 
+	ld a, [hl] 
+	ld d, a
+	pop bc
 	ld a, b
+	add d
 	jr .doneApplyingBoost
 .applyPlusThree
 	ld a, b
@@ -87,6 +91,14 @@ ModifyLevel:
 	pop bc
 	pop af	
 	ret
+	
+.partySizeFactors
+	db "4"
+	db "2"
+	db "2"
+	db "1"
+	db "1"
+	db "0"	
 	
 ModifyEvoStageLocal:
 	ld hl, .doneModifyingEvoStage	
@@ -167,7 +179,6 @@ ReadTrainer:
 	ld [wUnusedCD3D], a
 	jr z,.SpecialTrainer ; if so, check for special moves	
 .LoopTrainerData
-	
 	call ModifyLevel	
 	ld a,[hli]
 	and a ; have we reached the end of the trainer data?
