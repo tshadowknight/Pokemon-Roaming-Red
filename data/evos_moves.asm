@@ -1305,9 +1305,12 @@ Mon146_EvosMoves:
 ;Evolutions
 	db 0
 ;Learnset
-	db 51,LEER
-	db 55,AGILITY
-	db 60,SKY_ATTACK
+	db 25,FIRE_SPIN
+	db 30,WING_ATTACK
+	db 35,FLAMETHROWER
+	db 40,AGILITY
+	db 45,SKY_ATTACK
+	db 50,FIRE_BLAST
 	db 0
 
 Mon144_EvosMoves:
@@ -1315,9 +1318,12 @@ Mon144_EvosMoves:
 ;Evolutions
 	db 0
 ;Learnset
-	db 51,BLIZZARD
-	db 55,AGILITY
-	db 60,MIST
+	db 25,BUBBLEBEAM
+	db 30,MIST
+	db 35,ICE_BEAM
+	db 40,AGILITY
+	db 45,REFLECT
+	db 50,BLIZZARD	
 	db 0
 
 Mon145_EvosMoves:
@@ -1325,9 +1331,12 @@ Mon145_EvosMoves:
 ;Evolutions
 	db 0
 ;Learnset
-	db 51,THUNDER
-	db 55,AGILITY
-	db 60,LIGHT_SCREEN
+	db 25,THUNDER_WAVE
+	db 30,THUNDERBOLT
+	db 35,DRILL_PECK
+	db 40,AGILITY
+	db 45,LIGHT_SCREEN
+	db 50,THUNDER	
 	db 0
 
 Mon132_EvosMoves:

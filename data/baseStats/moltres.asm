@@ -13,7 +13,7 @@ dw MoltresPicFront
 dw MoltresPicBack
 ; attacks known at lvl 0
 db PECK
-db FIRE_SPIN
+db EMBER
 db 0
 db 0
 db 5 ; growth rate
