@@ -214,7 +214,23 @@ ReadTrainer:
 	add 1
 	ld [wUnusedCD3D], a
 	jr .LoopTrainerData
-.SpecialTrainer
+
+.SpecialTrainer	
+	push hl
+	ld b, 0
+.CountSpecialTrainerMon
+	ld a, [hl]	
+	and a
+	jr z, .specialTrainerMonCounted
+	inc hl
+	inc hl
+	inc b
+	jr .CountSpecialTrainerMon
+.specialTrainerMonCounted	
+	pop hl
+	ld a, b 
+	ld [wUnusedD08A], a ; store trainer mon count
+.SpecialTrainerLoop
 ; if this code is being run:
 ; - each pokemon has a specific level
 ;      (as opposed to the whole team being of the same level)
@@ -241,7 +257,7 @@ ReadTrainer:
 	ld a, [wUnusedCD3D]
 	add 1
 	ld [wUnusedCD3D], a
-	jr .SpecialTrainer
+	jr .SpecialTrainerLoop
 .AddLoneMove
 	jr .FinishUp ; disable special moves	
 ; does the trainer have a single monster with a different move
