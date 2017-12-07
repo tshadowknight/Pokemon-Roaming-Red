@@ -14,7 +14,7 @@ dw MagikarpPicBack
 ; attacks known at lvl 0
 db SPLASH
 db TACKLE
-db 0
+db BUBBLE
 db 0
 db 5 ; growth rate
 ; learnset
