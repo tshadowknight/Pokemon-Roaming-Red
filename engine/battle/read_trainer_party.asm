@@ -6,7 +6,8 @@ ModifyLevel:
 	Call DetermineReferenceLevel
 	ld a, [wReferenceLevel]
 	ld d, a
-	call Random
+	call RandomizeTrainerMonVarianceLocal
+	ld a, [wReferenceLevel]
 	and %0011
 	ld b, a
 	ld a, d		
@@ -98,7 +99,20 @@ ModifyLevel:
 	db 2
 	db 1
 	db 1
-	db 0	
+	db 0
+
+RandomizeTrainerMonVarianceLocal:
+	ld hl, .doneRandomizingMonVariance	
+	push hl
+	ld a, BANK(.doneRandomizingMonVariance)	
+	push af	
+	ld hl, RandomizeTrainerMonVariance
+	push hl
+	ld a, BANK(RandomizeTrainerMonVariance)
+	push af
+	jp BankSwitchCall
+.doneRandomizingMonVariance
+	ret	
 	
 ModifyEvoStageLocal:
 	ld hl, .doneModifyingEvoStage	
@@ -191,11 +205,11 @@ ReadTrainer:
 	pop hl
 	ld a, b 
 	ld [wUnusedD08A], a ; store trainer mon count
-.LoopTrainerData
-	call ModifyLevel	
+.LoopTrainerData		
 	ld a,[hli]
 	and a ; have we reached the end of the trainer data?
 	jp z,.FinishUp
+	call ModifyLevel
 	ld [wcf91],a ; write species somewhere (XXX why?)
 	push hl
 	push bc

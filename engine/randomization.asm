@@ -18,6 +18,39 @@ AdvanceRNG:
 	ld [wRNGAdd],a
 	ret
 	
+RandomizeTrainerMonVariance:
+	ld a, [wSeedLow]
+	ld [wRNGSub], a
+	ld a, [wSeedHigh]
+	ld [wRNGAdd], a	
+	ld a, [wCurOpponent]
+.countClass
+	push af
+	call AdvanceRNG	
+	pop af
+	sub 1
+	jr nc, .countClass
+	ld a, [wTrainerNo]
+.countRoster	
+	push af
+	ld a, [wRNGAdd]
+	rra
+	ld [wRNGAdd], a
+	call AdvanceRNG	
+	pop af
+	sub 1
+	jr nc, .countRoster
+	ld a, [wUnusedCD3D]
+.countPartyMon	
+	push af
+	call AdvanceRNG	
+	pop af
+	sub 1
+	jr nc, .countPartyMon
+	ld a, [wRNGAdd]
+	ld [wReferenceLevel], a
+	jp BankSwitchCall	
+	
 RandomizeTrainerMon:
 	ld a, [wRandomizerOptions]
 	bit 1, a	
