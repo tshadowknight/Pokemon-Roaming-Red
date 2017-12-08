@@ -274,7 +274,7 @@ Mon021_EvosMoves:
 Mon100_EvosMoves:
 ;VOLTORB
 ;Evolutions
-	db EV_LEVEL,30,ELECTRODE
+	db EV_LEVEL,20,ELECTRODE
 	db 0
 ;Learnset
 	db 4, SONICBOOM
@@ -389,7 +389,7 @@ Mon102_EvosMoves:
 Mon088_EvosMoves:
 ;GRIMER
 ;Evolutions
-	db EV_LEVEL,38,MUK
+	db EV_LEVEL,22,MUK
 	db 0
 ;Learnset
 	db 12,POISON_GAS
@@ -450,7 +450,7 @@ Mon031_EvosMoves:
 Mon104_EvosMoves:
 ;CUBONE
 ;Evolutions
-	db EV_LEVEL,28,MAROWAK
+	db EV_LEVEL,21,MAROWAK
 	db 0
 ;Learnset
 	db 12,LEER	
@@ -463,7 +463,7 @@ Mon104_EvosMoves:
 Mon111_EvosMoves:
 ;RHYHORN
 ;Evolutions
-	db EV_LEVEL,42,RHYDON
+	db EV_LEVEL,37,RHYDON
 	db 0
 ;Learnset
 	db 11,FURY_ATTACK 
@@ -567,7 +567,7 @@ Mon090_EvosMoves:
 Mon072_EvosMoves:
 ;TENTACOOL
 ;Evolutions
-	db EV_LEVEL,30,TENTACRUEL
+	db EV_LEVEL,22,TENTACRUEL
 	db 0
 ;Learnset
 	db 4, SUPERSONIC
@@ -591,7 +591,7 @@ Mon072_EvosMoves:
 Mon092_EvosMoves:
 ;GASTLY
 ;Evolutions
-	db EV_LEVEL,25,HAUNTER
+	db EV_LEVEL,20,HAUNTER
 	db 0
 ;Learnset
 	db 12,HYPNOSIS
@@ -934,7 +934,7 @@ Mon047_EvosMoves:
 Mon054_EvosMoves:
 ;PSYDUCK
 ;Evolutions
-	db EV_LEVEL,33,GOLDUCK
+	db EV_LEVEL,20,GOLDUCK
 	db 0
 ;Learnset
 	db 4, TAIL_WHIP
@@ -955,7 +955,7 @@ Mon054_EvosMoves:
 Mon096_EvosMoves:
 ;DROWZEE
 ;Evolutions
-	db EV_LEVEL,26,HYPNO
+	db EV_LEVEL,21,HYPNO
 	db 0
 ;Learnset
 	db 5, DISABLE
@@ -1083,7 +1083,7 @@ Mon156_EvosMoves:
 Mon056_EvosMoves:
 ;MANKEY
 ;Evolutions
-	db EV_LEVEL,28,PRIMEAPE
+	db EV_LEVEL,20,PRIMEAPE
 	db 0
 ;Learnset
 	db 5, FURY_SWIPES
@@ -1104,7 +1104,7 @@ Mon056_EvosMoves:
 Mon086_EvosMoves:
 ;SEEL
 ;Evolutions
-	db EV_LEVEL,34,DEWGONG
+	db EV_LEVEL,21,DEWGONG
 	db 0
 ;Learnset
 	db 12,GROWL
@@ -1121,7 +1121,7 @@ Mon086_EvosMoves:
 Mon050_EvosMoves:
 ;DIGLETT
 ;Evolutions
-	db EV_LEVEL,26,DUGTRIO
+	db EV_LEVEL,20,DUGTRIO
 	db 0
 ;Learnset
 	db 12, GROWL
@@ -1188,7 +1188,7 @@ Mon083_EvosMoves:
 Mon048_EvosMoves:
 ;VENONAT
 ;Evolutions
-	db EV_LEVEL,31,VENOMOTH
+	db EV_LEVEL,20,VENOMOTH
 	db 0
 ;Learnset
 	db 5, SUPERSONIC
@@ -1239,7 +1239,7 @@ Mon162_EvosMoves:
 Mon084_EvosMoves:
 ;DODUO
 ;Evolutions
-	db EV_LEVEL,31,DODRIO
+	db EV_LEVEL,20,DODRIO
 	db 0
 ;Learnset
 	db 5, QUICK_ATTACK
@@ -1261,7 +1261,7 @@ Mon084_EvosMoves:
 Mon060_EvosMoves:
 ;POLIWAG
 ;Evolutions
-	db EV_LEVEL,25,POLIWHIRL
+	db EV_LEVEL,20,POLIWHIRL
 	db 0
 ;Learnset
 	db 5, DISABLE
@@ -1349,7 +1349,7 @@ Mon132_EvosMoves:
 Mon052_EvosMoves:
 ;MEOWTH
 ;Evolutions
-	db EV_LEVEL,28,PERSIAN
+	db EV_LEVEL,20,PERSIAN
 	db 0
 ;Learnset
 	db 5, BITE
@@ -1366,7 +1366,7 @@ Mon052_EvosMoves:
 Mon098_EvosMoves:
 ;KRABBY
 ;Evolutions
-	db EV_LEVEL,28,KINGLER
+	db EV_LEVEL,20,KINGLER
 	db 0
 ;Learnset
 	db 12,VICEGRIP
@@ -1480,7 +1480,7 @@ Mon167_EvosMoves:
 Mon147_EvosMoves:
 ;DRATINI
 ;Evolutions
-	db EV_LEVEL,30,DRAGONAIR
+	db EV_LEVEL,20,DRAGONAIR
 	db 0
 ;Learnset
 	db 10,THUNDER_WAVE
@@ -1494,7 +1494,7 @@ Mon147_EvosMoves:
 Mon148_EvosMoves:
 ;DRAGONAIR
 ;Evolutions
-	db EV_LEVEL,55,DRAGONITE
+	db EV_LEVEL,40,DRAGONITE
 	db 0
 ;Learnset
 	db 10,THUNDER_WAVE
@@ -1508,7 +1508,7 @@ Mon148_EvosMoves:
 Mon140_EvosMoves:
 ;KABUTO
 ;Evolutions
-	db EV_LEVEL,40,KABUTOPS
+	db EV_LEVEL,20,KABUTOPS
 	db 0
 ;Learnset
 	db 14,ABSORB
@@ -1537,7 +1537,7 @@ Mon141_EvosMoves:
 Mon116_EvosMoves:
 ;HORSEA
 ;Evolutions
-	db EV_LEVEL,32,SEADRA
+	db EV_LEVEL,20,SEADRA
 	db 0
 ;Learnset
 	db 12,WATER_GUN
@@ -1609,7 +1609,7 @@ Mon028_EvosMoves:
 Mon138_EvosMoves:
 ;OMANYTE
 ;Evolutions
-	db EV_LEVEL,40,OMASTAR
+	db EV_LEVEL,20,OMASTAR
 	db 0
 ;Learnset
 	db 12,HORN_ATTACK
@@ -1761,7 +1761,7 @@ Mon134_EvosMoves:
 Mon066_EvosMoves:
 ;MACHOP
 ;Evolutions
-	db EV_LEVEL,28,MACHOKE
+	db EV_LEVEL,21,MACHOKE
 	db 0
 ;Learnset
 	db 3, FOCUS_ENERGY
@@ -1811,7 +1811,7 @@ Mon023_EvosMoves:
 Mon046_EvosMoves:
 ;PARAS
 ;Evolutions
-	db EV_LEVEL,24,PARASECT
+	db EV_LEVEL,20,PARASECT
 	db 0
 ;Learnset
 	db 13,STUN_SPORE
@@ -2440,7 +2440,7 @@ Mon179_EvosMoves:
 Mon118_EvosMoves:
 ;GOLDEEN
 ;Evolutions
-	db EV_LEVEL,33,SEAKING
+	db EV_LEVEL,20,SEAKING
 	db 0
 ;Learnset
 	db 11,SUPERSONIC
@@ -2495,7 +2495,7 @@ Mon183_EvosMoves:
 Mon077_EvosMoves:
 ;PONYTA
 ;Evolutions
-	db EV_LEVEL,40,RAPIDASH
+	db EV_LEVEL,20,RAPIDASH
 	db 0
 ;Learnset
 	db 4, TAIL_WHIP
@@ -2596,7 +2596,7 @@ Mon030_EvosMoves:
 Mon074_EvosMoves:
 ;GEODUDE
 ;Evolutions
-	db EV_LEVEL,25,GRAVELER
+	db EV_LEVEL,20,GRAVELER
 	db 0
 ;Learnset
 	db 11, ROCK_THROW
@@ -2649,7 +2649,7 @@ Mon184_EvosMoves:
 Mon081_EvosMoves:
 ;MAGNEMITE
 ;Evolutions
-	db EV_LEVEL,30,MAGNETON
+	db EV_LEVEL,20,MAGNETON
 	db 0
 ;Learnset
 	db 14,SONICBOOM
