@@ -193,6 +193,8 @@ _AddPartyMon:
 	push de
 	ld [wUnusedC000], a
 	ld [wUnusedCD40], a
+	xor a
+	ld [wUnusedCD37], a
 	call RandomizeMoveAddmon
 	ld a, [wUnusedC000]
 	ld [de], a

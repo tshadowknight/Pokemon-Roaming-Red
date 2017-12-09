@@ -6312,6 +6312,8 @@ LoadEnemyMonData:
 	ld a, [hli]
 	ld [wUnusedC000], a
 	ld [wUnusedCD40], a
+	xor a
+	ld [wUnusedCD37], a
 	call RandomizeMoveCore
 	ld a, [wUnusedC000]
 	ld [de], a

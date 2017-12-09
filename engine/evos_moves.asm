@@ -372,6 +372,8 @@ LearnMoveFromLevelUp:
 	ld [wUnusedC000], a
 	ld a, d
 	ld [wUnusedCD40], a
+	xor a
+	ld [wUnusedCD37], a
 	call RandomizeMoveLocal
 	ld a, [wUnusedC000]
 	ld d, a
@@ -440,6 +442,8 @@ WriteMonMoves:
 	ld [wUnusedC000], a
 	ld a, [hl]
 	ld [wUnusedCD40], a
+	xor a
+	ld [wUnusedCD37], a
 	call RandomizeMoveLocal
 	ld a, [wUnusedC000]
 	ld b, a 
