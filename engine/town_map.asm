@@ -631,13 +631,13 @@ TownMapSpriteBlinkingAnimation:
 	ld [wAnimCounter], a
 	jp DelayFrame
 	
-DisplayTownSelectionMap:
+DisplayTownSelectionMap:	
+	call LoadTownMap
 	call ClearSprites
 	ld hl, wOAMBuffer
 	ld de, wTileMapBackup
 	ld bc, 40 * 4
 	call CopyData
-	call LoadTownMap
 	ld hl, wUpdateSpritesEnabled
 	ld a, [hl]
 	push af
