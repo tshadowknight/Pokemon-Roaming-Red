@@ -741,7 +741,19 @@ UncompressMonSprite::
 ; $99 ≤ index,       bank $D
 	ld a,[wcf91] ; XXX name for this ram location
 	ld [wd11e], a
-	ld b,a
+	ld b,a	
+	ld a, b	
+	cp MEW
+	ld a,BANK(MewPicFront)
+	jr z,.GotBank
+	ld a,b
+	cp MON_GHOST
+	ld a,BANK(GhostPic)
+	jr z,.GotBank
+	ld a,b
+	cp FOSSIL_KABUTOPS
+	ld a,BANK(FossilKabutopsPic)
+	jr z,.GotBank
 	push af
 	push bc
 	push de
@@ -752,14 +764,6 @@ UncompressMonSprite::
 	ld a,[wd11e]
 	cp 0
 	ld a, BANK(MissingnoFrontPicBlob)
-	jr z,.GotBank
-	ld a, b	
-	cp MEW
-	ld a,BANK(MewPicFront)
-	jr z,.GotBank
-	ld a,b
-	cp FOSSIL_KABUTOPS
-	ld a,BANK(FossilKabutopsPic)
 	jr z,.GotBank
 	ld a,b
 	cp TANGELA + 1
@@ -777,6 +781,7 @@ UncompressMonSprite::
 	cp STARMIE + 1
 	ld a,BANK(StarmiePicFront)
 	jr c,.GotBank  
+	
 	ld a,BANK(VictreebelPicFront)
 .GotBank
 	jp UncompressSpriteData
