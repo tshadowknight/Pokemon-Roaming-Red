@@ -285,9 +285,9 @@ LoadFrontSpriteByMonIndex::
 	cp NUM_POKEMON + 1
 	jr c, .validDexNumber   ; dex >#151 invalid
 .invalidDexNumber
-	ld a, RHYDON ; $1
-	ld [wcf91], a
-	ret
+;	ld a, RHYDON ; $1
+;	ld [wcf91], a
+;	ret
 .validDexNumber
 	push hl
 	ld de, vFrontPic
@@ -577,9 +577,11 @@ GetMonHeader::
 	cp FOSSIL_AERODACTYL ; Aerodactyl fossil
 	jr z,.specialID
 	cp a,MEW
-	jr z,.mew
+	jr z,.mew	
 	predef IndexToPokedex   ; convert pokemon ID in [wd11e] to pokedex number
 	ld a,[wd11e]
+	cp a,0
+	jr z,.missingno
 	dec a
 	ld bc, MonBaseStatsEnd - MonBaseStats
 	ld hl,BaseStats
@@ -602,6 +604,13 @@ GetMonHeader::
 	ld bc,MonBaseStatsEnd - MonBaseStats
 	ld a,BANK(MewBaseStats)
 	call FarCopyData
+	jr .done 
+.missingno
+	ld hl, MissingnoBaseStats
+	ld de,wMonHeader
+	ld bc,MonBaseStatsEnd - MonBaseStats
+	ld a,BANK(MissingnoBaseStats)
+	call FarCopyData	
 .done
 	ld a,[wd0b5]
 	ld [wMonHIndex],a
@@ -731,7 +740,20 @@ UncompressMonSprite::
 ; $74 ≤ index < $99, bank $C
 ; $99 ≤ index,       bank $D
 	ld a,[wcf91] ; XXX name for this ram location
+	ld [wd11e], a
 	ld b,a
+	push af
+	push bc
+	push de
+	predef IndexToPokedex   ; convert pokemon ID in [wd11e] to pokedex number
+	pop de
+	pop bc
+	pop af
+	ld a,[wd11e]
+	cp 0
+	ld a, BANK(MissingnoFrontPicBlob)
+	jr z,.GotBank
+	ld a, b	
 	cp MEW
 	ld a,BANK(MewPicFront)
 	jr z,.GotBank
@@ -754,7 +776,7 @@ UncompressMonSprite::
 	ld a,b
 	cp STARMIE + 1
 	ld a,BANK(StarmiePicFront)
-	jr c,.GotBank
+	jr c,.GotBank  
 	ld a,BANK(VictreebelPicFront)
 .GotBank
 	jp UncompressSpriteData

@@ -936,6 +936,7 @@ INCLUDE "engine/randomization.asm"
 
 INCLUDE "engine/menu/randomizer.asm"
 
+INCLUDE "data/baseStats/missingno.asm"
 
 SECTION "bank11",ROMX,BANK[$11]
 
@@ -2121,3 +2122,6 @@ INCLUDE "engine/items/tm_prices.asm"
 SECTION "Bank2D",ROMX,BANK[$2D]
 
 INCLUDE "engine/evos_moves.asm"
+
+SECTION "Bank2E",ROMX,BANK[$2E]
+
