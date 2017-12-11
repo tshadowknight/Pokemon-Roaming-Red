@@ -18,8 +18,12 @@ ModifyLevel:
 	cp 0
 	jr nz, .notZero
 	add 1
-.notZero	
+.notZero		
 	ld b, a 
+	ld a, [wObtainedBadges]
+	and a
+	ld a, b
+	jr z, .doneApplyingBoost 
 	ld a, [wCurOpponent]
 	cp $E5 ; Giovanni
 	jr z, .applyPlusFive
