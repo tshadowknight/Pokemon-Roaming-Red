@@ -518,7 +518,7 @@ Stage2ToStage1:
 	db 0
 	db 82
 	db 0
-	db 0
+	db 84
 	db 0
 	db 0
 	db 0
