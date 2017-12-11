@@ -62,7 +62,8 @@ ENDM
 
 SECTION "WRAM Bank 0", WRAM0
 
-wUnusedC000:: ; c000
+
+wUnusedC000:: ; c000, general purpose temp buffer
 	ds 1
 
 wSoundID:: ; c001
@@ -2299,6 +2300,7 @@ wPseudoItemID:: ; d152
 ; that case, this would be ESCAPE_ROPE.
 	ds 1
 
+wOpponentAfterWrongAnswer::	
 wUnusedD153:: ; d153
 	ds 1
 
@@ -3163,7 +3165,7 @@ wTrainerHeaderPtr:: ; da30
 
 	ds 6
 
-wOpponentAfterWrongAnswer:: ; da38
+ ; da38
 ; the trainer the player must face after getting a wrong answer in the Cinnabar
 ; gym quiz
 

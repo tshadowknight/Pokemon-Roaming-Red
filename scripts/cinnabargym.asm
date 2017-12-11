@@ -4,7 +4,7 @@ CinnabarGymScript:
 	ld hl, CinnabarGymScriptPointers
 	ld a, [wCinnabarGymCurScript]
 	jp CallFunctionInTable
-
+	ret
 CinnabarGymScript_75759:
 	ld hl, wCurrentMapScriptFlags
 	bit 6, [hl]
