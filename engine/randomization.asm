@@ -459,11 +459,11 @@ ValidItemIdxs:
 	db 1
 	db 1
 	db 1
-	db 1
-	db 1
+	db 2
+	db 2
 	db 0
 	db 1
-	db 1
+	db 2
 	db 1
 	db 1
 	db 1
@@ -485,6 +485,7 @@ ValidItemIdxs:
 	db 2
 	db 1
 	db 1
+	db 2
 	db 1
 	db 1
 	db 1
@@ -494,9 +495,8 @@ ValidItemIdxs:
 	db 1
 	db 1
 	db 1
-	db 1
-	db 1
-	db 1
+	db 2
+	db 2
 	db 2
 	db 0
 	db 2
