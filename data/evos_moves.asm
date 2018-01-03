@@ -248,7 +248,7 @@ Mon035_EvosMoves:
 	db 19, MIMIC
 	db 25, MINIMIZE
 	db 31, METRONOME
-	db 34, AMNESIA
+	db 34, THUNDER_WAVE
 	db 40, BODY_SLAM
 	db 43, SOFTBOILED
 	db 46, PSYCHIC_M
@@ -455,9 +455,10 @@ Mon104_EvosMoves:
 ;Learnset
 	db 12,LEER	
 	db 18,THRASH
-	db 23,BONEMERANG
-	db 27,BODY_SLAM
-	db 31,EARTHQUAKE
+	db 23,SWORDS_DANCE
+	db 27,BONEMERANG
+	db 31,BODY_SLAM
+	db 35,EARTHQUAKE
 	db 0
 
 Mon111_EvosMoves:
@@ -831,12 +832,15 @@ Mon113_EvosMoves:
 ;Evolutions
 	db 0
 ;Learnset
-	db 24,SING
-	db 30,GROWL
-	db 38,MINIMIZE
-	db 44,DEFENSE_CURL
-	db 48,LIGHT_SCREEN
-	db 54,DOUBLE_EDGE
+	db 9,SING
+	db 12,HEADBUTT
+	db 17,MINIMIZE
+	db 21,DEFENSE_CURL
+	db 28,LIGHT_SCREEN
+	db 33,THUNDERBOLT
+	db 37,SOFTBOILED
+	db 42,THUNDER_WAVE
+	db 47,ICE_BEAM
 	db 0
 
 Mon067_EvosMoves:
@@ -925,8 +929,8 @@ Mon047_EvosMoves:
 ;Learnset
 	db 13,STUN_SPORE
 	db 18,GROWTH
-	db 21,LEECH_LIFE
-	db 26,BODY_SLAM
+	db 21,BODY_SLAM
+	db 26,LEECH_LIFE
 	db 30,SPORE
 	db 34,SLASH
 	db 0
@@ -1183,6 +1187,7 @@ Mon083_EvosMoves:
 	db 23,SWORDS_DANCE
 	db 31,AGILITY
 	db 39,SLASH
+	db 43,DRILL_PECK
 	db 0
 
 Mon048_EvosMoves:
@@ -1816,8 +1821,8 @@ Mon046_EvosMoves:
 ;Learnset
 	db 13,STUN_SPORE
 	db 18,GROWTH
-	db 21,LEECH_LIFE
-	db 26,BODY_SLAM
+	db 21,BODY_SLAM
+	db 26,LEECH_LIFE
 	db 30,SPORE
 	db 34,SLASH
 	db 0
@@ -2071,12 +2076,19 @@ Mon097_EvosMoves:
 ;Evolutions
 	db 0
 ;Learnset
-	db 12,DISABLE
-	db 17,CONFUSION
-	db 24,HEADBUTT
-	db 33,POISON_GAS
-	db 37,PSYCHIC_M
-	db 43,MEDITATE
+	db 5, DISABLE
+	db 9, CONFUSION
+	db 13, HEADBUTT
+	db 17, POISON_GAS
+	db 21, MEDITATE
+	db 25, PSYBEAM
+	db 29, SUBMISSION
+	db 33, MIMIC
+	db 37, PSYWAVE
+	db 41, REFLECT
+	db 45, THUNDER_WAVE
+	db 49, PSYCHIC_M
+	db 53, AMNESIA
 	db 0
 
 Mon042_EvosMoves:
@@ -2232,7 +2244,7 @@ Mon036_EvosMoves:
 	db 19, MIMIC
 	db 25, MINIMIZE
 	db 31, METRONOME
-	db 34, AMNESIA
+	db 34, THUNDER_WAVE
 	db 40, BODY_SLAM
 	db 43, SOFTBOILED
 	db 46, PSYCHIC_M
@@ -2276,9 +2288,10 @@ Mon105_EvosMoves:
 ;Learnset
 	db 12,LEER	
 	db 18,THRASH
-	db 23,BONEMERANG
-	db 27,BODY_SLAM
-	db 31,EARTHQUAKE
+	db 23,SWORDS_DANCE
+	db 27,BONEMERANG
+	db 31,BODY_SLAM
+	db 35,EARTHQUAKE
 	db 0
 
 Mon178_EvosMoves:
