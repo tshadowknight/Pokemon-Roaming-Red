@@ -204,6 +204,10 @@ RandomizeItem:
 	ld c, a
 	jr .done
 .apply
+	ld a, [wSeedLow]
+	ld [wRNGSub], a
+	ld a, [wSeedHigh]
+	ld [wRNGAdd], a	
 	ld a, [wUnusedC000]
 	ld b, 0
 	ld c, a	
@@ -212,14 +216,30 @@ RandomizeItem:
 	ld a, [hl] 
 	cp 2 ; do not randomize key items, tms and hms
 	jr z, .done
-.rollItem	
-	call Random 	
+	ld a, [wUnusedC000]
+.countItem	
+	push af
+	call AdvanceRNG	
+	pop af
+	sub 1
+	jr nc, .countItem	
+	ld a, [wCurMap]
+.countMap	
+	push af
+	call AdvanceRNG	
+	pop af
+	sub 1
+	jr nc, .countMap
+.rollUntilValid
+	call AdvanceRNG	
+	ld b, 0
+	ld a, [wRNGAdd]		
 	ld c, a	
 	ld hl, ValidItemIdxs
 	add hl, bc
 	ld a, [hl]
 	cp 1
-	jr nz, .rollItem
+	jr nz, .rollUntilValid
 .done
 	ld a, c
 	ld [wUnusedC000], a	
@@ -244,7 +264,7 @@ RandomizeTM:
 	pop af
 	sub 1
 	jr nc, .countTMIdx
-	jr IterateUntilValidMove
+	jp IterateUntilValidMove
 	
 RandomizeCanLearnTM:
 	ld a, [wRandomizerOptions]
