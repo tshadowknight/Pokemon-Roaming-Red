@@ -6,15 +6,23 @@ ModifyEvoStage:
 	ld a, [wcf91]
 	ld b, 0
 	ld c, a
+	ld d, 20
+	ld hl, IsTwoStageMon
+	add hl, bc
+	ld a, [hl]
+	and a 
+	jr z, .notTwoStage
+	ld d, 25
+.notTwoStage		
 	ld a, [wCurEnemyLVL]
-	cp 20
-	jr nc, .higherThan20
+	cp d
+	jr nc, .isNotFirstStage
 	ld hl, Stage3ToStage2
 	call ApplyStageChange
 	ld hl, Stage2ToStage1
 	call ApplyStageChange
 	jr .evoScalingDone
-.higherThan20
+.isNotFirstStage
 	ld a, [wCurEnemyLVL]
 	cp 35
 	jr nc, .higherThan35
@@ -818,4 +826,195 @@ Stage3ToStage2:
 	db 0
 	db 189
 	
-		
+IsTwoStageMon:
+	db 0
+	db 1
+	db 0
+	db 0
+	db 1
+	db 1
+	db 1
+	db 0
+	db 1
+	db 0
+	db 1
+	db 0
+	db 1
+	db 1
+	db 0
+	db 0
+	db 0
+	db 1
+	db 1
+	db 0
+	db 1
+	db 0
+	db 0
+	db 1
+	db 1
+	db 0
+	db 0
+	db 1
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 1
+	db 0
+	db 1
+	db 0
+	db 1
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 1
+	db 1
+	db 1
+	db 1
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 1
+	db 1
+	db 0
+	db 1
+	db 1
+	db 1
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 1
+	db 0
+	db 0
+	db 0
+	db 0
+	db 1
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 1
+	db 1
+	db 0
+	db 0
+	db 0
+	db 1
+	db 1
+	db 1
+	db 1
+	db 0
+	db 0
+	db 0
+	db 0
+	db 1
+	db 1
+	db 1
+	db 1
+	db 0
+	db 0
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 1
+	db 1
+	db 1
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 1
+	db 1
+	db 1
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 1
+	db 0
+	db 1
+	db 1
+	db 0
+	db 1
+	db 1
+	db 1
+	db 1
+	db 1
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 1
+	db 0
+	db 0
+	db 1
+	db 0
+	db 1
+	db 1
+	db 0
+	db 0
+	db 0
+	db 0
+	db 1
+	db 1
+	db 1
+	db 1
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 1
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0
+	db 0		
