@@ -102,7 +102,7 @@ MoveEnd:
 	move EARTHQUAKE,   NO_ADDITIONAL_EFFECT,       100, GROUND,   100, 10
 	move FISSURE,      OHKO_EFFECT,                  1, GROUND,    30,  5
 	move DIG,          CHARGE_EFFECT,              80, GROUND,   100, 10
-	move TOXIC,        SWIFT_EFFECT,                0, POISON,    100, 10
+	move TOXIC,        POISON_EFFECT,                0, POISON,    100, 10
 	move CONFUSION,    CONFUSION_SIDE_EFFECT,       50, PSYCHIC,  100, 25
 	move PSYCHIC_M,    SPECIAL_DOWN_SIDE_EFFECT,    90, PSYCHIC,  100, 10
 	move HYPNOSIS,     SLEEP_EFFECT,                 0, PSYCHIC,   60, 20
