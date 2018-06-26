@@ -4,7 +4,7 @@ ForestMons:
 		db 4,WEEDLE
 		db 5,KAKUNA
 		db 3,WEEDLE
-		db 5,WEEDLE
+		db 5,CATERPIE
 		db 4,KAKUNA
 		db 6,KAKUNA
 		db 4,METAPOD
