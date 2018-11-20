@@ -13,7 +13,7 @@ dw KrabbyPicFront
 dw KrabbyPicBack
 ; attacks known at lvl 0
 db BUBBLE
-db LEER
+db 0
 db 0
 db 0
 db 0 ; growth rate
@@ -21,7 +21,7 @@ db 0 ; growth rate
 	tmlearn 3,6,8
 	tmlearn 9,10,11,12,13,14
 	tmlearn 20
-	tmlearn 31,32
+	tmlearn 28,31,32
 	tmlearn 34
 	tmlearn 44,48
 	tmlearn 50,51,53,54

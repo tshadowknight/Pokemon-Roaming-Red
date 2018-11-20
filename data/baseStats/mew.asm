@@ -14,8 +14,8 @@ dw MewPicFront
 dw MewPicBack
 ; attacks known at lvl 0
 db POUND
-db 0
-db 0
+db CONFUSION
+db MIMIC
 db 0
 db 3 ; growth rate
 ; learnset

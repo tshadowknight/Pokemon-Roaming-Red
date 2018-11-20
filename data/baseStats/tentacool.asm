@@ -12,7 +12,7 @@ INCBIN "pic/bmon/tentacool.pic",0,1 ; 55, sprite dimensions
 dw TentacoolPicFront
 dw TentacoolPicBack
 ; attacks known at lvl 0
-db ACID
+db POISON_STING
 db WATER_GUN
 db 0
 db 0

@@ -14,8 +14,8 @@ dw ExeggutorPicBack
 ; attacks known at lvl 0
 db BARRAGE
 db HYPNOSIS
-db 0
-db 0
+db CONFUSION
+db STUN_SPORE
 db 5 ; growth rate
 ; learnset
 	tmlearn 3,6
@@ -24,5 +24,5 @@ db 5 ; growth rate
 	tmlearn 29,30,31,32
 	tmlearn 33,34,36,37
 	tmlearn 44,46,47
-	tmlearn 50,54
+	tmlearn 50,54,55
 db 0 ; padding

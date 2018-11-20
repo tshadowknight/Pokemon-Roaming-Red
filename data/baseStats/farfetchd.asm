@@ -14,7 +14,7 @@ dw FarfetchdPicBack
 ; attacks known at lvl 0
 db PECK
 db SAND_ATTACK
-db 0
+db LEER
 db 0
 db 0 ; growth rate
 ; learnset
