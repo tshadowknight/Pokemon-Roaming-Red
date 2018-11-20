@@ -7,7 +7,7 @@ IslandMonsB4:
 	db 29,PSYDUCK
 	db 31,SEEL
 	db 31,PSYDUCK
-	db 29,SEEL
-	db 39,GOLDUCK
+	db 29,SQUIRTLE
+	db 39,SQUIRTLE
 	db 32,GOLBAT	
 	db $00

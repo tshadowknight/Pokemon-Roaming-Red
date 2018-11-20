@@ -6,8 +6,8 @@ MansionMons3:
 	db 32,PONYTA
 	db 34,MAGMAR
 	db 40,MAGMAR
-	db 34,GRIMER
+	db 34,CHARMANDER
 	db 38,WEEZING
-	db 36,PONYTA
+	db 36,CHARMANDER
 	db 42,MUK	
 	db $00
