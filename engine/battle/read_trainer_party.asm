@@ -6,7 +6,7 @@ ModifyLevel:
 	Call DetermineReferenceLevel
 	ld a, [wReferenceLevel]
 	ld d, a
-	call RandomizeTrainerMonVarianceLocal
+	farcall RandomizeTrainerMonVariance
 	ld a, [wReferenceLevel]
 	and %0011
 	ld b, a
@@ -105,44 +105,6 @@ ModifyLevel:
 	db 1
 	db 0
 
-RandomizeTrainerMonVarianceLocal:
-	ld hl, .doneRandomizingMonVariance	
-	push hl
-	ld a, BANK(.doneRandomizingMonVariance)	
-	push af	
-	ld hl, RandomizeTrainerMonVariance
-	push hl
-	ld a, BANK(RandomizeTrainerMonVariance)
-	push af
-	jp BankSwitchCall
-.doneRandomizingMonVariance
-	ret	
-	
-ModifyEvoStageLocal:
-	ld hl, .doneModifyingEvoStage	
-	push hl
-	ld a, BANK(.doneModifyingEvoStage)	
-	push af	
-	ld hl, ModifyEvoStage
-	push hl
-	ld a, BANK(ModifyEvoStage)
-	push af
-	jp BankSwitchCall
-.doneModifyingEvoStage		
-	ret
-
-RandomizeTrainerMonLocal:
-	ld hl, .doneRandomizingMon	
-	push hl
-	ld a, BANK(.doneRandomizingMon)	
-	push af	
-	ld hl, RandomizeTrainerMon
-	push hl
-	ld a, BANK(RandomizeTrainerMon)
-	push af
-	jp BankSwitchCall
-.doneRandomizingMon	
-	ret
 ReadTrainer:
 
 ; don't change any moves in a link battle
@@ -217,11 +179,11 @@ ReadTrainer:
 	ld [wcf91],a ; write species somewhere (XXX why?)
 	push hl
 	push bc
-	call RandomizeTrainerMonLocal
+	farcall RandomizeTrainerMon
 	pop bc	
 	pop hl
 	push hl
-	call ModifyEvoStageLocal
+	farcall ModifyEvoStage
 	pop hl
 	ld a,ENEMY_PARTY_DATA
 	ld [wMonDataLocation],a	
@@ -261,11 +223,11 @@ ReadTrainer:
 	ld [wcf91],a
 	push hl
 	push bc
-	call RandomizeTrainerMonLocal
+	farcall RandomizeTrainerMon
 	pop bc	
 	pop hl
 	push hl
-	call ModifyEvoStageLocal
+	farcall ModifyEvoStage
 	pop hl
 	ld a,ENEMY_PARTY_DATA
 	ld [wMonDataLocation],a

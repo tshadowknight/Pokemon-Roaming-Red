@@ -151,7 +151,7 @@ CeruleanCityScript1:
 	ld [wCurOpponent], a
 
 	; select which team to use during the encounter
-	call DetermineRivalClassAndRosterCerulean
+	farcall DetermineRivalClassAndRoster
 
 	xor a
 	ld [hJoyHeld], a
@@ -453,16 +453,3 @@ CeruleanCityText17:
 	db "@"
 
 
-
-DetermineRivalClassAndRosterCerulean:
-	ld hl, .doneDeterminingRival	
-	push hl
-	ld a, BANK(.doneDeterminingRival)	
-	push af	
-	ld hl, DetermineRivalClassAndRoster
-	push hl
-	ld a, BANK(DetermineRivalClassAndRoster)
-	push af
-	jp BankSwitchCall
-.doneDeterminingRival		
-	ret	

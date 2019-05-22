@@ -146,7 +146,7 @@ PokemonTower2Text1:
 	ld [wCurOpponent], a
 
 	; select which team to use during the encounter
-	call DetermineRivalClassAndRosterTower
+	farcall DetermineRivalClassAndRoster
 
 	ld a, $1
 	ld [wPokemonTower2CurScript], a
@@ -173,16 +173,3 @@ PokemonTower2Text_6063c:
 PokemonTower2Text2:
 	TX_FAR _PokemonTower2Text2
 	db "@"
-
-DetermineRivalClassAndRosterTower:
-	ld hl, .doneDeterminingRival	
-	push hl
-	ld a, BANK(.doneDeterminingRival)	
-	push af	
-	ld hl, DetermineRivalClassAndRoster
-	push hl
-	ld a, BANK(DetermineRivalClassAndRoster)
-	push af
-	jp BankSwitchCall
-.doneDeterminingRival		
-	ret		

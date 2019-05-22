@@ -3016,14 +3016,5 @@ CheckMapForMon:
 	ret
 
 ModifyEvoStageItems:
-	ld hl, .doneModifyingEvoStage	
-	push hl
-	ld a, BANK(.doneModifyingEvoStage)	
-	push af
-	ld hl, ModifyEvoStage
-	push hl
-	ld a, BANK(ModifyEvoStage)
-	push af
-	jp BankSwitchCall
-.doneModifyingEvoStage		
+	farcall ModifyEvoStage			
 	ret

@@ -4605,16 +4605,7 @@ RandomizeItem_:
 	push bc
 	push de
 	push hl
-	ld hl, .doneRandomizingItem	
-	push hl
-	ld a, [H_LOADEDROMBANK]
-	push af	
-	ld hl, RandomizeItem
-	push hl
-	ld a, BANK(RandomizeItem)
-	push af
-	jp BankSwitchCall
-.doneRandomizingItem
+	farcall RandomizeItem
 	pop hl
 	pop de
 	pop bc
@@ -4844,25 +4835,9 @@ RandomizeMon:
 	push bc
 	push de
 	push hl
-	ld hl, .doneRandomizingMon	
-	push hl
-	ld a, [H_LOADEDROMBANK]
-	push af	
-	ld hl, RandomizeWildMon
-	push hl
-	ld a, BANK(RandomizeWildMon)
-	push af
-	jp BankSwitchCall
-.doneRandomizingMon
+	farcall RandomizeWildMon
 	pop hl
 	pop de
 	pop bc
 	pop af
-	ret	
-
-	
-BankSwitchCall:
-	pop af
-	ld [H_LOADEDROMBANK],a
-	ld [MBC1RomBank],a
 	ret	

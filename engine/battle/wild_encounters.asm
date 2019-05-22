@@ -24,19 +24,6 @@ ModifyLevelWild:
 	pop bc
 	pop af	
 	ret
-
-RandomizeWildMonLocal:
-	ld hl, .doneRandomizingMon	
-	push hl
-	ld a, BANK(.doneRandomizingMon)	
-	push af	
-	ld hl, RandomizeWildMon
-	push hl
-	ld a, BANK(RandomizeWildMon)
-	push af
-	jp BankSwitchCall
-.doneRandomizingMon	
-	ret
 	
 ; try to initiate a wild pokemon encounter
 ; returns success in Z
@@ -126,22 +113,13 @@ TryDoWildEncounter:
 	ld a, [hl]
 	ld [wcf91], a
 	ld [wEnemyMonSpecies2], a
-	call RandomizeWildMonLocal
+	farcall RandomizeWildMon
 	ld a, [wcf91]
 	ld [wEnemyMonSpecies2], a
 	call Random
 	and 1
 	jr nz, .noEvoStageModification	
-	ld hl, .doneModifyingEvoStage	
-	push hl
-	ld a, BANK(.doneModifyingEvoStage)	
-	push af	
-	ld hl, ModifyEvoStage
-	push hl
-	ld a, BANK(ModifyEvoStage)
-	push af
-	jp BankSwitchCall
-.doneModifyingEvoStage	
+	farcall ModifyEvoStage
 	ld a, [wcf91]
 	ld [wEnemyMonSpecies2], a
 .noEvoStageModification	

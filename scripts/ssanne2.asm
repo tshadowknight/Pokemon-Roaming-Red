@@ -101,7 +101,7 @@ SSAnne2Script1:
 	ld [wCurOpponent], a
 
 	; select which team to use during the encounter
-	call DetermineRivalClassAndRosterSSAnne
+	farcall DetermineRivalClassAndRoster
 
 	call SSAnne2Script_61416
 	ld a, $2
@@ -203,15 +203,3 @@ SSAnne2Text3:
 	TX_FAR _SSAnneRivalCaptainText
 	db "@"
 	
-DetermineRivalClassAndRosterSSAnne:
-	ld hl, .doneDeterminingRival	
-	push hl
-	ld a, BANK(.doneDeterminingRival)	
-	push af	
-	ld hl, DetermineRivalClassAndRoster
-	push hl
-	ld a, BANK(DetermineRivalClassAndRoster)
-	push af
-	jp BankSwitchCall
-.doneDeterminingRival		
-	ret	

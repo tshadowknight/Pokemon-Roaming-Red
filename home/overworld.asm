@@ -1504,19 +1504,8 @@ LoadCurrentMapView::
 	ret
 
 AdvancePlayerSprite::
-	ld hl, .advancePlayerSpriteDone
-	push hl
-	ld a, BANK(.advancePlayerSpriteDone)
-	push af
-	ld hl, AdvancePlayerSprite_
-	push hl
-	ld a, BANK(AdvancePlayerSprite_)
-	push af
-	jp BankSwitchCall
-.advancePlayerSpriteDone
-		ret
-
-
+	farcall AdvancePlayerSprite_
+	ret
 
 ; the following 6 functions are used to tell the V-blank handler to redraw
 ; the portion of the map that was newly exposed due to the player's movement

@@ -1,16 +1,7 @@
 RandomizeMoveCore:
 	push hl 
 	push de
-	ld hl, .doneRandomizingMove	
-	push hl
-	ld a, BANK(.doneRandomizingMove)	
-	push af	
-	ld hl, RandomizeMove
-	push hl
-	ld a, BANK(RandomizeMove)
-	push af
-	jp BankSwitchCall
-.doneRandomizingMove	
+	farcall RandomizeMove	
 	pop de
 	pop hl
 	ret

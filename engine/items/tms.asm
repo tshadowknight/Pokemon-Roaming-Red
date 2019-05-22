@@ -1,16 +1,7 @@
 RandomizeTMLocal:
 	push hl 
 	push de
-	ld hl, .doneRandomizingTM	
-	push hl
-	ld a, BANK(.doneRandomizingTM)	
-	push af	
-	ld hl, RandomizeTM
-	push hl
-	ld a, BANK(RandomizeTM)
-	push af
-	jp BankSwitchCall
-.doneRandomizingTM
+	farcall RandomizeTM
 	pop de
 	pop hl
 	ret
@@ -18,16 +9,7 @@ RandomizeTMLocal:
 RandomizeCanLearnTMLocal:
 	push hl 
 	push de
-	ld hl, .doneRandomizingCanLearnTM	
-	push hl
-	ld a, BANK(.doneRandomizingCanLearnTM)	
-	push af	
-	ld hl, RandomizeCanLearnTM
-	push hl
-	ld a, BANK(RandomizeCanLearnTM)
-	push af
-	jp BankSwitchCall
-.doneRandomizingCanLearnTM
+	farcall RandomizeCanLearnTM
 	pop de
 	pop hl
 	ret	

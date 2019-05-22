@@ -287,7 +287,7 @@ Route22Script4:
 	ld hl, Route22RivalDefeatedText2
 	ld de, Route22Text_511d0
 	call SaveEndBattleTextPointers
-	call DetermineRivalClassAndRosterR22
+	farcall DetermineRivalClassAndRoster
 	ld a, $5
 	ld [wRoute22CurScript], a
 	ret
@@ -440,17 +440,3 @@ Route22Text_511d0:
 Route22FrontGateText:
 	TX_FAR _Route22FrontGateText
 	db "@"
-
-		
-DetermineRivalClassAndRosterR22:
-	ld hl, .doneDeterminingRival	
-	push hl
-	ld a, BANK(.doneDeterminingRival)	
-	push af	
-	ld hl, DetermineRivalClassAndRoster
-	push hl
-	ld a, BANK(DetermineRivalClassAndRoster)
-	push af
-	jp BankSwitchCall
-.doneDeterminingRival		
-	ret	

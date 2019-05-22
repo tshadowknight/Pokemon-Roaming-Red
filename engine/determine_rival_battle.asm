@@ -32,4 +32,4 @@ DetermineRivalClassAndRoster::
 	ld a, OPP_SONY1
 	ld [wCurOpponent], a
 .rivalDone		
-	jp BankSwitchCall	
+	ret	

@@ -183,7 +183,7 @@ SilphCo7Script3:
 	ld hl, SilphCo7Text14
 	ld de, SilphCo7Text_51ecd
 	call SaveEndBattleTextPointers
-	call DetermineRivalClassAndRosterSilph
+	farcall DetermineRivalClassAndRoster
 	ld a, $4
 	jp SilphCo7Text_51c10
 
@@ -518,16 +518,3 @@ SilphCo7Text_51ecd:
 SilphCo7Text15:
 	TX_FAR _SilphCo7Text_51ed2
 	db "@"
-	
-DetermineRivalClassAndRosterSilph:
-	ld hl, .doneDeterminingRival	
-	push hl
-	ld a, BANK(.doneDeterminingRival)	
-	push af	
-	ld hl, DetermineRivalClassAndRoster
-	push hl
-	ld a, BANK(DetermineRivalClassAndRoster)
-	push af
-	jp BankSwitchCall
-.doneDeterminingRival		
-	ret		

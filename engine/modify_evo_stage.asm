@@ -44,7 +44,7 @@ ModifyEvoStage:
 	pop bc
 	pop af
 
-	jp BankSwitchCall
+	ret
 
 ApplyStageChange:
 	add hl, bc

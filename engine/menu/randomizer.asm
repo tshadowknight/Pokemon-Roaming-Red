@@ -345,7 +345,7 @@ ShowRandomizerMenu:
 	pop de 
 	pop bc
 	pop af
-	jp BankSwitchCall
+	ret
 
 .drawOKCursor	
 	ld de, FilledCursor

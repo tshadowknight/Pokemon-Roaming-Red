@@ -31,19 +31,6 @@ SetDefaultNames:
 	ld bc, NAME_LENGTH
 	jp CopyData
 	
-ShowRandomizerMenuLocal:
-	ld hl, .doneSettingRandomizerOptions	
-	push hl
-	ld a, BANK(.doneSettingRandomizerOptions)	
-	push af	
-	ld hl, ShowRandomizerMenu
-	push hl
-	ld a, BANK(ShowRandomizerMenu)
-	push af
-	jp BankSwitchCall
-.doneSettingRandomizerOptions
-	ret		
-
 OakSpeech:
 	ld a,$FF
 	call PlaySound ; stop music
@@ -61,7 +48,7 @@ OakSpeech:
 	ld [wItemQuantity],a
 	call AddItemToInventory  ; give one potion
 	
-	call ShowRandomizerMenuLocal
+	farcall ShowRandomizerMenu
 	call ClearScreen
 	xor a
 	ld [hTilesetType],a

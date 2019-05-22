@@ -49,7 +49,7 @@ RandomizeTrainerMonVariance:
 	jr nc, .countPartyMon
 	ld a, [wRNGAdd]
 	ld [wReferenceLevel], a
-	jp BankSwitchCall	
+	ret
 	
 RandomizeTrainerMon:
 	ld a, [wRandomizerOptions]
@@ -123,7 +123,7 @@ RandomizeWildMon:
 Done:	
 	ld a, [wRNGAdd]
 	ld [wcf91], a
-	jp BankSwitchCall
+	ret
 
 IterateUntilValid:
 	ld a, [wRNGAdd]	
@@ -180,7 +180,7 @@ RandomizeMove:
 MoveDone:	
 	ld a, [wRNGAdd]
 	ld [wUnusedC000], a
-	jp BankSwitchCall
+	ret
 
 IterateUntilValidMove:
 	ld a, [wRNGAdd]
@@ -194,7 +194,7 @@ IterateUntilValidMove:
 	sub 164
 	ld [wRNGAdd], a
 	jr IterateUntilValidMove
-	jp BankSwitchCall	
+	ret
 
 RandomizeItem:
 	ld a, [wRandomizerOptions]
@@ -243,7 +243,7 @@ RandomizeItem:
 .done
 	ld a, c
 	ld [wUnusedC000], a	
-	jp BankSwitchCall	
+	ret
 	
 RandomizeTM:
 	ld a, [wRandomizerOptions]

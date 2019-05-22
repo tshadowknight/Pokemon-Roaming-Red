@@ -191,7 +191,7 @@ AdvancePlayerSprite_::
 	dec e
 	jr nz,.spriteShiftLoop
 .done
-	jp BankSwitchCall
+	ret
 	
 ; the following four functions are used to move the pointer to the upper left
 ; corner of the tile block map in the direction of motion
