@@ -736,10 +736,10 @@ Mon153_EvosMoves:
 ;NEEDLER
 ;Evolutions
 	db 0
-;Learnset	
-	db 13,GROWTH
+;Learnset
+	db 13,VINE_WHIP
 	db 18,PIN_MISSILE
-	db 24,VINE_WHIP
+	db 24,GROWTH
 	db 29,SPIKE_CANNON
 	db 33,RAZOR_LEAF
 	db 37,LEECH_SEED
@@ -844,14 +844,15 @@ Mon064_EvosMoves:
 	db 0
 ;Learnset
 	db 16,KINESIS
-	db 18,PSYBEAM
-	db 20,DISABLE
-	db 22,NIGHT_SHADE
-	db 26,SUBSTITUTE
-	db 29,REFLECT
-	db 32,RECOVER
-	db 39,THUNDER_WAVE
-	db 45,PSYCHIC_M
+	db 18,DISABLE
+	db 21,PSYBEAM
+	db 23,FLASH
+	db 26,NIGHT_SHADE
+	db 28,SUBSTITUTE
+	db 31,RECOVER
+	db 33,REFLECT
+	db 36,THUNDER_WAVE
+	db 38,PSYCHIC_M
 	db 0
 
 Mon075_EvosMoves:
@@ -875,15 +876,19 @@ Mon113_EvosMoves:
 ;Evolutions
 	db 0
 ;Learnset
-	db 9,SING
-	db 12,HEADBUTT
-	db 17,MINIMIZE
-	db 21,DEFENSE_CURL
-	db 28,LIGHT_SCREEN
-	db 33,THUNDERBOLT
-	db 37,SOFTBOILED
-	db 42,THUNDER_WAVE
-	db 47,ICE_BEAM
+	db 12,DEFENSE_CURL
+	db 14,TAIL_WHIP
+	db 16,DOUBLESLAP
+	db 20,TAKE_DOWN
+	db 23,MINIMIZE
+	db 27,METRONOME
+	db 31,SING
+	db 34,EGG_BOMB
+	db 38,COUNTER
+	db 42,ICE_BEAM
+	db 46,LIGHT_SCREEN
+	db 50,SOFTBOILED
+	db 54,DOUBLE_EDGE
 	db 0
 
 Mon067_EvosMoves:
@@ -1082,8 +1087,8 @@ Mon155_EvosMoves:
 ;Evolutions
 	db 0
 ;Learnset
-	db 11,TAKE_DOWN
-	db 17,STOMP
+	db 11,STOMP
+	db 17,TAKE_DOWN
 	db 21,AGILITY
 	db 27,THRASH
 	db 31,DOUBLE_EDGE
@@ -1188,16 +1193,15 @@ Mon086_EvosMoves:
 	db EV_LEVEL,25,DEWGONG
 	db 0
 ;Learnset
-	db 3,LICK
-	db 7,DISABLE
-	db 11,WATER_GUN
-	db 13,SLAM
-	db 17,AURORA_BEAM
-	db 21,REST
-	db 25,BUBBLEBEAM
-	db 32,TAKE_DOWN
-	db 41,ICE_BEAM
-	db 45,HORN_DRILL
+	db 4,LICK
+	db 8,DISABLE
+	db 12,WATER_GUN
+	db 16,SLAM
+	db 20,AURORA_BEAM
+	db 26,REST
+	db 32,WATERFALL
+	db 38,ICE_BEAM
+	db 44,DOUBLE_EDGE
 	db 0
 
 Mon050_EvosMoves:
@@ -2134,16 +2138,16 @@ Mon087_EvosMoves:
 ;Evolutions
 	db 0
 ;Learnset
-	db 3,LICK
-	db 7,DISABLE
-	db 11,WATER_GUN
-	db 13,SLAM
-	db 17,AURORA_BEAM
-	db 21,TAKE_DOWN
-	db 25,BUBBLEBEAM
-	db 32,REST
-	db 41,ICE_BEAM
-	db 45,HORN_DRILL
+	db 4,LICK
+	db 8,DISABLE
+	db 12,WATER_GUN
+	db 16,SLAM
+	db 20,AURORA_BEAM
+	db 25,HORN_DRILL
+	db 26,REST
+	db 32,WATERFALL
+	db 38,ICE_BEAM
+	db 44,DOUBLE_EDGE
 	db 0
 
 Mon171_EvosMoves:
@@ -2385,7 +2389,7 @@ Mon091_EvosMoves:
 	db 16,BUBBLEBEAM
 	db 22,TAKE_DOWN
 	db 26,SCREECH
-	db 30,BARRIER
+	db 30,PIN_MISSILE
 	db 35,CLAMP
 	db 41,ICE_BEAM
 	db 45,HYDRO_PUMP
@@ -2526,14 +2530,15 @@ Mon065_EvosMoves:
 	db 0
 ;Learnset
 	db 16,KINESIS
-	db 18,PSYBEAM
-	db 20,DISABLE
-	db 22,NIGHT_SHADE
-	db 26,SUBSTITUTE
-	db 29,REFLECT
-	db 32,RECOVER
-	db 39,THUNDER_WAVE
-	db 45,PSYCHIC_M
+	db 18,DISABLE
+	db 21,PSYBEAM
+	db 23,FLASH
+	db 26,NIGHT_SHADE
+	db 28,SUBSTITUTE
+	db 31,RECOVER
+	db 33,REFLECT
+	db 36,THUNDER_WAVE
+	db 38,PSYCHIC_M
 	db 0
 
 Mon017_EvosMoves:
@@ -2850,16 +2855,14 @@ Mon142_EvosMoves:
 ;Evolutions
 	db 0
 ;Learnset
-	db 4,SUPERSONIC
-	db 9,ROAR
-	db 13,BITE
-	db 17,ROCK_THROW
-	db 25,TAKE_DOWN
-	db 33,DOUBLE_EDGE
-	db 39,ROCK_SLIDE
-	db 45,EARTHQUAKE
-	db 51,SKY_ATTACK
-	db 57,HYPER_BEAM
+	db 7,ROAR
+	db 14,ROCK_THROW
+	db 21,TAKE_DOWN
+	db 28,AGILITY
+	db 35,FLY
+	db 42,ROCK_SLIDE
+	db 49,EARTHQUAKE
+	db 56,HYPER_BEAM
 	db 0
 
 Mon184_EvosMoves:
